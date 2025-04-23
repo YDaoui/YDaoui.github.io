@@ -1,73 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/styles.css">
-        <title>Landing page responsive portfolio</title>
-    </head>
-    <body>
-        <!-- OVERLAY -->
-        <div class="overlay first"></div>
-        <div class="overlay second"></div>
-        <div class="overlay third"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Lien CSS corrigé -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>Landing page responsive portfolio</title>
+</head>
+<body>
+    <!-- OVERLAY -->
+    <div class="overlay first"></div>
+    <div class="overlay second"></div>
+    <div class="overlay third"></div>
 
-        <!-- HEADER -->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="#" class="nav__logo">YDaoui</a>
-                </div>
-
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
-                        <li class="nav__item"><a href="#" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#" class="nav__link">Services</a></li>
-                        <li class="nav__item"><a href="#" class="nav__link">Blog</a></li>
-                        <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="nav__toggle" id="nav-toggle">
-                    <ion-icon name="menu"></ion-icon>
-                </div>
-            </nav>
-        </header>
-
-        <!-- MAIN -->
-        <main class="l-main bd-grid">
-            <div class="home">
-                <div class="home__information">
-                    <span class="home__pressent anime-text">Hello, My name is</span>
-                    <h1 class="home__title anime-text">Yassine Daoui</h1>
-                    <span class="home__skill anime-text">Data Consultant</span>
-                    
-                    <div>
-                        <a href="#" class="home__button anime-text">DOWNLOAD CV</a>
-                    </div>
-                </div>
-
-                <div class="home__img">
-                    <img src="assets/img/img.jpg" alt="">
-                </div>
-                
-                <div class="home__social">
-                    <ion-icon name="logo-facebook" class="home__social-icon"></ion-icon>
-                    <ion-icon name="logo-instagram" class="home__social-icon"></ion-icon>
-                    <ion-icon name="logo-twitter" class="home__social-icon"></ion-icon>
-                </div>
-
+    <!-- HEADER -->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="#" class="nav__logo">YDaoui</a>
             </div>
-        </main>
 
-        <!-- GSAP -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
+                    <li class="nav__item"><a href="#blog" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
 
-        <!-- MAIN -->
-        <script src="assets/js/main.js"></script>
-    
-        <!-- ICONS -->
-        <script  type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
-    </body>
+            <div class="nav__toggle" id="nav-toggle">
+                <ion-icon name="menu"></ion-icon>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="l-main bd-grid">
+        <div class="home" id="home">
+            <div class="home__information">
+                <span class="home__pressent anime-text">Hello, My name is</span>
+                <h1 class="home__title anime-text">Yassine Daoui</h1>
+                <span class="home__skill anime-text">Data Consultant</span>
+                
+                <!-- Lien CV corrigé -->
+                <div>
+                    <a href="./assets/cv/cv.pdf" download="Yassine-Daoui-CV.pdf" class="home__button anime-text">DOWNLOAD CV</a>
+                </div>
+            </div>
+
+            <!-- Image corrigée -->
+            <div class="home__img">
+                <img src="./assets/img/img.jpg" alt="Yassine Daoui portrait">
+            </div>
+            
+            <div class="home__social">
+                <a href="https://facebook.com" target="_blank"><ion-icon name="logo-facebook" class="home__social-icon"></ion-icon></a>
+                <a href="https://instagram.com" target="_blank"><ion-icon name="logo-instagram" class="home__social-icon"></ion-icon></a>
+                <a href="https://twitter.com" target="_blank"><ion-icon name="logo-twitter" class="home__social-icon"></ion-icon></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+
+    <!-- Lien JS corrigé -->
+    <script src="./assets/js/main.js"></script>
+
+    <!-- ICONS -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
 </html>
