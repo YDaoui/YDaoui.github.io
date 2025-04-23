@@ -278,3 +278,12 @@ img{
     background-color: var(--first-color);
     left: 66.6%;
 }
+.section {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    scroll-margin-top: 3rem; // Évite que le header masque le contenu
+
+    @include respond-to($breakpoint-md) {
+        padding: 6rem 3rem;
+    }
+}
