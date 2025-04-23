@@ -278,3 +278,7 @@ img{
     background-color: var(--first-color);
     left: 66.6%;
 }
+.rotate-icon {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
