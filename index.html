@@ -70,5 +70,59 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+
+    <!-- Ajout des animations -->
+    <script>
+        // Animation de la section Home
+        gsap.from('.home__title', {
+            duration: 1,
+            opacity: 0,
+            y: -50,
+            ease: 'bounce.out'
+        });
+
+        gsap.from('.home__pressent', {
+            duration: 1,
+            opacity: 0,
+            delay: 0.5,
+            y: -50,
+            ease: 'bounce.out'
+        });
+
+        gsap.from('.home__skill', {
+            duration: 1,
+            opacity: 0,
+            delay: 1,
+            y: -50,
+            ease: 'bounce.out'
+        });
+
+        gsap.from('.home__button', {
+            duration: 1,
+            opacity: 0,
+            delay: 1.5,
+            y: -50,
+            ease: 'bounce.out'
+        });
+
+        // Animation de la section Services
+        gsap.from('.services__item', {
+            duration: 1,
+            opacity: 0,
+            stagger: 0.3,
+            delay: 1,
+            y: 50,
+            ease: 'bounce.out'
+        });
+
+        // Animation de la section Contact
+        gsap.from('.contact-form', {
+            duration: 1,
+            opacity: 0,
+            delay: 2,
+            y: 50,
+            ease: 'bounce.out'
+        });
+    </script>
 </body>
 </html>
