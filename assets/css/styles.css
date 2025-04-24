@@ -1,105 +1,61 @@
-/*=============== GOOGLE FONTS ===============*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-/*=============== VARIABLES CSS ===============*/
+/*----- VARIABLES CSS -----*/
+/*Couleurs principales*/
 :root {
-  --header-height: 3.5rem;
-
-  /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
-  /* 
-      Change favorite color
-      Default: hsl(162, 100%, 40%)
-      Orange: hsl(14, 100%, 65%) - Blue: hsl(210, 100%, 70%)
-      Pink: hsl(356, 100%, 75%) - Purple: hsl(250, 100%, 75%)
-
-      For more colors visit: https://colors.dopely.top/color-pedia
-      -> Choose any color 
-      -> click on tab (Color Conversion)
-      -> Copy the color mode (HSL)
-  */
-
-  --hue: 162;
-  --first-color: hsl(var(--hue), 100%, 40%);
-  --first-color-alt: hsl(var(--hue), 56%, 35%);
-  --title-color: hsl(228, 8%, 95%);
-  --text-color: hsl(228, 8%, 65%);
-  --body-color: hsl(228, 15%, 20%);
-  --container-color: hsl(228, 15%, 15%);
-
-  /*========== Font and typography ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
-  --body-font: "Poppins", sans-serif;
-  --biggest-font-size: 2rem;
-  --bigger-font-size: 1.25rem;
-  --h1-font-size: 1.5rem;
-  --h2-font-size: 1.25rem;
-  --h3-font-size: 1rem;
-  --normal-font-size: .938rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
-
-  /*========== Font weight ==========*/
-  --font-regular: 400;
-  --font-medium: 500;
-  --font-semi-bold: 600;
-
-  /*========== z index ==========*/
-  --z-tooltip: 10;
-  --z-fixed: 100;
+  --first-color: #007BFF; /* BLEU MODERNE */
+  --black-color: #000;
+  --white-color: #FFF;
 }
 
-/*========== Responsive typography ==========*/
-@media screen and (min-width: 1152px) {
+/*Typographie*/
+:root {
+  --body-font: 'Poppins', sans-serif;
+  --h1-font-size: 2.5rem;
+  --h2-font-size: 1rem;
+  --normal-font-size: 0.93rem;
+  --small-font-size: 0.81rem;
+}
+
+@media screen and (min-width: 768px) {
   :root {
-    --biggest-font-size: 4rem;
-    --bigger-font-size: 2rem;
-    --h1-font-size: 2.25rem;
-    --h2-font-size: 1.5rem;
-    --h3-font-size: 1.25rem;
+    --h1-font-size: 4.5rem;
+    --h2-font-size: 2rem;
     --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
+    --small-font-size: 1.37rem;
   }
 }
 
-/*=============== BASE ===============*/
-* {
+/*Z-index*/
+:root {
+  --z-back: -10;
+  --z-normal: 1;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/*----- BASE -----*/
+*, ::before, ::after {
   box-sizing: border-box;
-  padding: 0;
+}
+
+body {
+  margin: 3rem 0 0 0;
+  font-family: var(--body-font);
+  background-color: var(--black-color);
+  color: var(--white-color);
+  font-weight: 700;
+  overflow: hidden;
+}
+
+h1, h2 {
   margin: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-input,
-textarea,
-button,
-body {
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
-}
-
-body {
-  background-color: var(--body-color);
-  color: var(--text-color);
-}
-
-input,
-textarea,
-button {
-  outline: none;
-  border: none;
-}
-
-h1, h2, h3, h4 {
-  color: var(--title-color);
-  font-weight: var(--font-medium);
-}
-
 ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -107,105 +63,336 @@ a {
   text-decoration: none;
 }
 
-img,
-svg {
+img {
   max-width: 100%;
   height: auto;
 }
 
-/*=============== REUSABLE CSS CLASSES ===============*/
-.container {
-  max-width: 1120px;
-  margin-inline: 1.5rem;
+/*----- LAYOUT -----*/
+.bd-grid {
+  max-width: 1200px;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.grid {
-  display: grid;
-  gap: 1.5rem;
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--black-color);
 }
 
-.section {
-  padding-block: 5rem 2rem;
+/*----- NAVIGATION -----*/
+.nav {
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
 }
 
-.section__title, 
-.section__subtitle {
+@media screen and (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    background-image: linear-gradient(var(--black-color), var(--first-color));
+    width: 100%;
+    height: 45%;
+    padding: 1.5rem;
+    border-radius: 0 0 1rem 1rem;
+    transition: .5s;
+  }
+}
+
+.nav__list {
   text-align: center;
-  color: var(--title-color);
-  font-weight: var(--font-semi-bold);
 }
 
-.section__title {
-  font-size: var(--h1-font-size);
-  margin-bottom: 1.5rem;
+.nav__item {
+  margin-bottom: 2rem;
 }
 
-.section__subtitle {
+.nav__link {
+  color: var(--white-color);
+}
+
+.nav__link:hover {
+  position: relative;
+}
+
+.nav__link:hover::after {
+  position: absolute;
+  content: '';
+  width: 1.5rem;
+  height: 0.1875rem;
+  left: 0.125rem;
+  top: 2.125rem;
+  background-color: var(--first-color);
+}
+
+.nav__logo {
+  font-size: var(--normal-font-size);
+  color: var(--white-color);
+}
+
+.nav__toggle {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.show {
+  top: 3rem;
+}
+
+/*----- HOME -----*/
+.l-main {
+  height: calc(100vh - 3rem);
+  background-color: var(--black-color);
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content max-content;
+  align-content: space-around;
+  row-gap: 2.3rem;
+  height: 100%;
+  font-weight: 700;
+}
+
+.home__information {
+  padding-left: 1.5rem;
+  border-left: 5px solid var(--white-color);
+  z-index: var(--z-tooltip);
+}
+
+.home__pressent {
   font-size: var(--small-font-size);
-  margin-bottom: .25rem;
 }
 
-.section__subtitle span {
+.home__title {
+  font-size: var(--h1-font-size);
+}
+
+.home__skill {
+  font-size: var(--h2-font-size);
+  display: block; /* Pour forcer un retour à la ligne après “I'm” */
+}
+
+.home__button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: .75rem;
+  color: var(--white-color);
+  padding: .625rem 1rem;
+  border-radius: .25rem;
+  background-image: linear-gradient(to right, var(--black-color), var(--first-color));
+}
+
+.home__img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 291px;
+  z-index: var(--z-normal);
+}
+
+.home__social {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.home__social-icon {
+  margin-bottom: 2rem;
+  font-size: 1.33rem;
+  cursor: pointer;
+}
+
+.home__social-icon:hover {
   color: var(--first-color);
 }
 
-.main {
-  overflow: hidden; /* For animation ScrollReveal */
+/*----- MEDIA QUERIES -----*/
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+
+  .l-main {
+    height: 100vh;
+  }
+
+  .nav {
+    height: 4rem;
+  }
+
+  .nav__list {
+    display: flex;
+    padding-top: 0;
+  }
+
+  .nav__item {
+    margin-left: 3rem;
+    margin-bottom: 0;
+  }
+
+  .nav__toggle, .nav__close {
+    display: none;
+  }
+
+  .nav__link {
+    text-transform: initial;
+  }
+
+  .home {
+    grid-template-rows: max-content 20px;
+    align-content: center;
+  }
+
+  .home__information {
+    margin-top: 2rem;
+  }
+
+  .home__social {
+    flex-direction: row;
+    padding-top: 8rem;
+    padding-bottom: 0;
+  }
+
+  .home__social-icon {
+    margin-right: 2rem;
+    margin-bottom: 0;
+  }
+
+  .home__img {
+    width: 553px;
+    right: 5%;
+  }
 }
 
-/*=============== HEADER & NAV ===============*/
+@media screen and (min-width: 1200px) {
+  .bd-grid {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
+/*----- ANIMATIONS -----*/
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-modal);
+}
 
-/* Navigation for mobile devices */
+.first,
+.second,
+.third {
+  background-color: var(--first-color);
+}
 
+.second {
+  left: 33.3%;
+}
 
-/* Show menu */
+.third {
+  left: 66.6%;
+}
+/* ----- SERVICES SECTION ----- */
+#services {
+  padding: 5rem 2rem;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  text-align: center;
+}
 
+.services-container h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
 
-/* Add blur to header */
+.services-carousel {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
 
+.service-item {
+  background-color: var(--first-color);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+}
 
-/* Active link */
+.service-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
 
+.service-item h3 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
 
-/*=============== HOME ===============*/
+.service-item p {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
 
+/* ----- CONTACT SECTION ----- */
+#contact {
+  padding: 5rem 2rem;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  text-align: center;
+}
 
-/*=============== BUTTON ===============*/
+.contact-container h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
 
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 
-/*=============== ABOUT ===============*/
+#contact-form label {
+  font-size: 1rem;
+  text-align: left;
+}
 
+#contact-form input,
+#contact-form textarea {
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--white-color);
+  background-color: var(--black-color);
+  color: var(--white-color);
+  border-radius: 5px;
+}
 
-/*=============== SKILLS ===============*/
+#contact-form button {
+  padding: 1rem;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-
-/*=============== SERVICES ===============*/
-
-
-/*=============== PROJECTS ===============*/
-
-
-/*=============== CONTACT ===============*/
-
-
-/*=============== FOOTER ===============*/
-
-
-/*=============== SCROLL BAR ===============*/
-
-
-/*=============== SCROLL UP ===============*/
-
-
-/* Show Scroll Up */
-
-
-/*=============== BREAKPOINTS ===============*/
-/* For small devices */
-
-
-/* For medium devices */
-
-
-/* For large devices */
+#contact-form button:hover {
+  background-color: var(--black-color);
+  color: var(--first-color);
+}
