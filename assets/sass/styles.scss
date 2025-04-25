@@ -278,3 +278,34 @@ img{
     background-color: var(--first-color);
     left: 66.6%;
 }
+/*----- SECTIONS -----*/
+.section {
+    padding: 4rem 0 2rem;
+    background-color: var(--black-color);
+    color: var(--white-color);
+    
+    h2 {
+        font-size: var(--h2-font-size);
+        margin-bottom: 2rem;
+        color: var(--first-color);
+    }
+    
+    p, li {
+        margin-bottom: 1rem;
+        font-weight: 400;
+    }
+    
+    a {
+        color: var(--first-color);
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .section {
+        padding: 6rem 0 4rem;
+    }
+}
