@@ -1,43 +1,37 @@
-<!-- ===== Navbar ===== -->
-<header>
-  <nav class="navbar">
-    <ul>
-      <li><a href="#services" class="nav-link active">Services</a></li>
-      <li><a href="#blog" class="nav-link">Blog</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-  </nav>
-</header>
 
-<!-- ===== Mes Services ===== -->
-<section id="services" class="section">
-  <h2 class="section-title">Mes Services</h2>
-  <p class="section-content">
-    Développement de dashboards dynamiques (Power BI, RShiny), Data Science, automatisation VBA, 
-    développement Cloud (AWS, Azure, GCP), et création d’applications de reporting.
-  </p>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing page responsive portfolio</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+    <!-- OVERLAY -->
+    <div class="overlay first"></div>
+    <div class="overlay second"></div>
+    <div class="overlay third"></div>
 
-<!-- ===== Blog ===== -->
-<section id="blog" class="section">
-  <h2 class="section-title">Blog</h2>
-  <article class="blog-post">
-    <h3>Comment j'automatise mes analyses de données avec Python et Power BI</h3>
-    <p>
-      Dans cet article, je vous explique comment j'ai mis en place une architecture 
-      pour automatiser les flux de données entre Python, SQL Server, et Power BI...
-    </p>
-    <a href="#" class="read-more">Lire plus</a>
-  </article>
-</section>
+    <!-- HEADER -->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="#" class="nav__logo">Porfolio</a>
+            </div>
 
-<!-- ===== Contact ===== -->
-<section id="contact" class="section">
-  <h2 class="section-title">Contactez-moi</h2>
-  <form action="mailto:daoui00yassine@gmail.com" method="post" enctype="text/plain" class="contact-form">
-    <input type="text" name="name" placeholder="Votre Nom" required>
-    <input type="email" name="email" placeholder="Votre Email" required>
-    <textarea name="message" rows="5" placeholder="Votre Message" required></textarea>
-    <button type="submit" class="submit-btn">Envoyer</button>
-  </form>
-</section>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
+                    <li class="nav__item"><a href="#blog" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <ion-icon name="menu"></ion-icon>
+            </div>
+        </nav>
+    </header>
