@@ -143,4 +143,27 @@ gsap.from(".service-card", {
     stagger: 0.2,
     duration: 1
 });
+// Animation pour la section About
+gsap.from(".about__content > *", {
+    scrollTrigger: {
+        trigger: "#about",
+        start: "top 70%"
+    },
+    opacity: 0,
+    y: 30,
+    stagger: 0.2,
+    duration: 1
+});
+
+// Animation pour les services
+gsap.from(".service-card", {
+    scrollTrigger: {
+        trigger: "#services",
+        start: "top 70%"
+    },
+    opacity: 0,
+    y: 50,
+    stagger: 0.2,
+    duration: 1
+});
 
