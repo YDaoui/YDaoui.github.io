@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Vérifier si GSAP est chargé
     if(typeof gsap !== 'undefined') {
         /* ANIMATIONS */
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(Expo);
         
         // OVERLAY
         gsap.to(".first", {duration: 1.5, delay: 0.5, top: "-100%", ease: "expo.inOut"});
@@ -62,61 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "expo.out",
             stagger: 0.2
         });
-
-        // SECTION ANIMATIONS
-        // About Section
-        gsap.from("#about .section-title, .about__content > *", {
-            scrollTrigger: {
-                trigger: "#about",
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            stagger: 0.2,
-            duration: 1
-        });
-
-        // Services Section
-        gsap.from(".service-card", {
-            scrollTrigger: {
-                trigger: "#services",
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            stagger: 0.2,
-            duration: 1
-        });
     } else {
         console.error("GSAP not loaded!");
     }
 
-    /* SMOOTH SCROLLING & ACTIVE NAV LINKS */
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav__link');
-
-    window.addEventListener('scroll', () => {
-        let current = "";
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    });
-
+    /* SMOOTH SCROLLING */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -139,4 +89,56 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+// Activation des liens de navigation
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+  let current = "";
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (pageYOffset >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === "#" + current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+// Dans votre DOMContentLoaded, ajoutez :
+gsap.from("#about .section-title", {
+    scrollTrigger: {
+        trigger: "#about",
+        start: "top 80%"
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1
+});
+
+gsap.from(".service-card", {
+    scrollTrigger: {
+        trigger: "#services",
+        start: "top 80%"
+    },
+    opacity: 0,
+    y: 50,
+    stagger: 0.2,
+    duration: 1
 });
