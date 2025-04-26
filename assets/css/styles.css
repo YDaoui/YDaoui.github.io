@@ -416,3 +416,103 @@ img {
 .submit-btn:hover {
   background: #0088cc;
 }
+/* ===== ABOUT SECTION ===== */
+.about__content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.social-badges {
+    margin: 1rem 0;
+}
+
+.social-badges img {
+    margin-right: 0.5rem;
+    height: 28px;
+}
+
+.experience {
+    margin-top: 2rem;
+}
+
+.job {
+    background: rgba(43, 191, 240, 0.1);
+    padding: 1rem;
+    border-left: 3px solid var(--first-color);
+    margin-bottom: 1.5rem;
+    border-radius: 0 5px 5px 0;
+}
+
+.tech-stack {
+    margin-top: 2rem;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* ===== SERVICES SECTION ===== */
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: rgba(43, 191, 240, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background: rgba(43, 191, 240, 0.2);
+}
+
+.service-card ion-icon {
+    font-size: 3rem;
+    color: var(--first-color);
+    margin-bottom: 1rem;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    background: var(--first-color);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background: #00a0d6;
+}
