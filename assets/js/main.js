@@ -122,4 +122,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
   });
 });
+// Dans votre DOMContentLoaded, ajoutez :
+gsap.from("#about .section-title", {
+    scrollTrigger: {
+        trigger: "#about",
+        start: "top 80%"
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1
+});
+
+gsap.from(".service-card", {
+    scrollTrigger: {
+        trigger: "#services",
+        start: "top 80%"
+    },
+    opacity: 0,
+    y: 50,
+    stagger: 0.2,
+    duration: 1
+});
 
