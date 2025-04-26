@@ -309,3 +309,45 @@ img{
         padding: 6rem 0 4rem;
     }
 }
+section {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color); // si tu utilises des variables
+}
+
+section p, section form {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background: #222;
+  color: #fff;
+}
+
+form button {
+  background-color: var(--accent-color); // couleur accent de ton thème
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background-color: lighten(var(--accent-color), 10%);
+}
+
