@@ -1,3 +1,2 @@
-# .gitattributes
-/assets/cv/* linguist-vendored     # Masque le dossier CV (pdf)
-/assets/sass/* linguist-generated  # Masque les sources SASS
+/assets/cv/* linguist-vendored
+/assets/sass/* linguist-generated
