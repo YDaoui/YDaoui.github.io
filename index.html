@@ -102,33 +102,112 @@
         </section>
         
         <!-- ===== SERVICES SECTION ===== -->
-        <section class="section" id="services">
-            <div class="bd-grid">
-                <h2 class="section-title">Mes Services</h2>
-                <div class="services__grid">
-                    <div class="service-card">
-                        <ion-icon name="analytics-outline"></ion-icon>
-                        <h3>Analyse de Données</h3>
-                        <p>Extraction, traitement et visualisation avancée de données</p>
-                    </div>
-                    <div class="service-card">
-                        <ion-icon name="bar-chart-outline"></ion-icon>
-                        <h3>Business Intelligence</h3>
-                        <p>Tableaux de bord Power BI & Tableau</p>
-                    </div>
-                    <div class="service-card">
-                        <ion-icon name="bulb-outline"></ion-icon>
-                        <h3>Consulting Data</h3>
-                        <p>Audit et stratégie d'exploitation des données</p>
-                    </div>
-                    <div class="service-card">
-                        <ion-icon name="cloud-upload-outline"></ion-icon>
-                        <h3>Migration Data</h3>
-                        <p>Migration sécurisée entre plateformes et systèmes</p>
+       <!-- ===== SERVICES SECTION ===== -->
+<section class="section" id="services">
+    <div class="bd-grid">
+        <h2 class="section-title">Mes Services</h2>
+        <div class="services__grid">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div class="service-header" onclick="toggleServiceDetails('analyse-details')">
+                    <ion-icon name="analytics-outline"></ion-icon>
+                    <h3>Analyse de Données</h3>
+                    <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
+                </div>
+                <p class="service-brief">Extraction, traitement et visualisation avancée de données</p>
+                
+                <div id="analyse-details" class="service-details">
+                    <ul>
+                        <li>Nettoyage et préparation des données (Python, Pandas, SQL)</li>
+                        <li>Analyse statistique et exploration de données (R, NumPy)</li>
+                        <li>Création de visualisations interactives (Matplotlib, Seaborn, Plotly)</li>
+                        <li>Automatisation de rapports avec Jupyter Notebook</li>
+                    </ul>
+                    <div class="service-tech">
+                        <span>Outils :</span> Python · SQL · Power BI · Tableau
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div class="service-header" onclick="toggleServiceDetails('bi-details')">
+                    <ion-icon name="bar-chart-outline"></ion-icon>
+                    <h3>Business Intelligence</h3>
+                    <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
+                </div>
+                <p class="service-brief">Tableaux de bord Power BI & Tableau</p>
+                
+                <div id="bi-details" class="service-details">
+                    <ul>
+                        <li>Conception de modèles de données optimisés</li>
+                        <li>Création de KPI et indicateurs clés</li>
+                        <li>Développement de dashboards interactifs</li>
+                        <li>Formation des équipes à l'utilisation des outils</li>
+                    </ul>
+                    <div class="service-tech">
+                        <span>Outils :</span> Power BI · Tableau · DAX · SQL Server
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ajoutez les autres services sur le même modèle -->
+        </div>
+    </div>
+</section>
+
+<style>
+    .service-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .service-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .service-arrow {
+        margin-left: auto;
+        transition: transform 0.3s ease;
+    }
+    
+    .service-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, padding 0.3s ease;
+    }
+    
+    .service-details.active {
+        max-height: 500px;
+        padding-top: 15px;
+    }
+    
+    .service-arrow.active {
+        transform: rotate(180deg);
+    }
+    
+    .service-tech {
+        margin-top: 10px;
+        font-style: italic;
+        color: #555;
+    }
+</style>
+
+<script>
+    function toggleServiceDetails(id) {
+        const details = document.getElementById(id);
+        const arrow = document.querySelector(`#${id}`).previousElementSibling.querySelector('.service-arrow');
+        
+        details.classList.toggle('active');
+        arrow.classList.toggle('active');
+    }
+</script>
         
         <!-- ===== CONTACT SECTION ===== -->
         <section class="section" id="contact">
