@@ -1,5 +1,5 @@
-Index===>
-
+Index.html
+============================================================
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,11 +71,84 @@ Index===>
                 <a href="https://www.linkedin.com/in/yassinedaoui" target="_blank">
                     <ion-icon name="logo-linkedin" class="home__social-icon"></ion-icon>
                 </a>
-                <a href="mailto:yassine.daoui@gmail.com" target="_blank">
+                <a href="mailto:daoui00yasine@gmail.com" target="_blank">
                     <ion-icon name="mail-outline" class="home__social-icon"></ion-icon>
                 </a>
             </div>
         </div>
+        <!-- ===== ABOUT SECTION ===== -->
+<section class="section" id="about">
+    <div class="bd-grid">
+        <h2 class="section-title">About Me</h2>
+        <div class="about__content">
+            <!-- Votre contenu About au format HTML -->
+            <h3>YASSINE DAOUI</h3>
+            <h4>Data Scientist</h4>
+            <div class="social-badges">
+                <a href="https://linkedin.com/in/yassine-daoui-56a7ab1a0" target="_blank">
+                    <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
+                </a>
+                <a href="mailto:daoui00yassine@gmail.com" target="_blank">
+                    <img src="https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white" alt="Email">
+                </a>
+            </div>
+            
+            <!-- Expérience Professionnelle -->
+            <div class="experience">
+                <h3>🔭 Expérience Professionnelle</h3>
+                <!-- Répétez ce bloc pour chaque expérience -->
+                <div class="job">
+                    <h4>Data Miner - Bouygues Telecom</h4>
+                    <p><strong>Durée :</strong> Avril 2022 - Juillet 2024</p>
+                    <p><strong>Compétences :</strong> VBA, SQL Server, R Shiny, C#, Azure, AWS, GCP, Power BI</p>
+                </div>
+                <!-- ... autres expériences ... -->
+            </div>
+            
+            <!-- Tech Stack -->
+                    <div class="tech-stack">
+                        <h3>💻 Tech Stack</h3>
+                        <div class="badges">
+                            <img src="https://img.shields.io/badge/VBA-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="VBA">
+                            <!-- Ajoutez toutes vos badges ici -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== SERVICES SECTION ===== -->
+        <section class="section" id="services">
+            <div class="bd-grid">
+                <h2 class="section-title">My Services</h2>
+                <div class="services__grid">
+                    <div class="service-card">
+                        <ion-icon name="analytics-outline"></ion-icon>
+                        <h3>Data Analysis</h3>
+                        <p>Advanced data mining and visualization</p>
+                    </div>
+                    <div class="service-card">
+                        <ion-icon name="bar-chart-outline"></ion-icon>
+                        <h3>Business Intelligence</h3>
+                        <p>Power BI & Tableau dashboards</p>
+                    </div>
+                    <!-- Ajoutez d'autres services -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== CONTACT SECTION ===== -->
+        <section class="section" id="contact">
+            <div class="bd-grid">
+                <h2 class="section-title">Contact Me</h2>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <!-- GSAP -->
@@ -89,7 +162,9 @@ Index===>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
-==================================Styles.css====> sous le dossier css ===>
+=============================================================================================================================
+Styles.css
+================================================================================================================================
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 /*----- VARIABLES CSS Y SASS -----*/
@@ -415,37 +490,344 @@ img {
 .third {
   background-color: var(--first-color);
   left: 66.6%;
-}===================================Node js ==> Main code ==> 
-/* MENU SHOW */ 
-const showMenu = (toggleId, navId) =>{
-    const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId)
-
-    if(toggle && nav){
-        toggle.addEventListener('click', ()=>{
-            nav.classList.toggle('show')
-        })
-    }
+}
+/* Navbar */
+.navbar {
+  background: #111;
+  padding: 10px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar ul li {
+  display: inline-block;
+  margin: 0 15px;
+}
+.navbar ul li a {
+  text-decoration: none;
+  color: #bbb;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.navbar ul li a.active, .navbar ul li a:hover {
+  color: #00aaff;
 }
 
-showMenu('nav-toggle','nav-menu')
+/* Sections */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #1a1a1a;
+  color: #eee;
+}
+.section:nth-child(even) {
+  background-color: #222;
+}
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+.section-content, .blog-post p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
 
-/*----- ANIMATE -----*/
-// OVERLAY
-gsap.to(".first", 1.5, {delay: .5, top: "-100%", ease: Expo.easeInOut});
-gsap.to(".second", 1.5, {delay: .7, top: "-100%", ease: Expo.easeInOut});
-gsap.to(".third", 1.5, {delay: .9, top: "-100%", ease: Expo.easeInOut});
+/* Blog Post */
+.blog-post {
+  background: #333;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+.blog-post h3 {
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+.read-more {
+  color: #00aaff;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-// IMG
-gsap.from('.home__img', {opacity: 0, duration: 2, delay: 2, x: 60})
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact-form input, .contact-form textarea {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background: #333;
+  color: #fff;
+}
+.submit-btn {
+  background: #00aaff;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.submit-btn:hover {
+  background: #0088cc;
+}
+/* ===== ABOUT SECTION ===== */
+.about__content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
 
-// INFORMATION
-gsap.from('.home__information', {opacity: 0, duration: 3, delay: 2.3, y: 25})
-gsap.from('.anime-text', {opacity: 0, duration: 3, delay: 2.3, y: 25, ease:'expo.out', stagger: .3})
+.social-badges {
+    margin: 1rem 0;
+}
 
-// NAV ITEM
-gsap.from('.nav__logo', {opacity:0, duration: 3, delay: 3.2, y: 25, ease:'expo.out'});
-gsap.from('.nav__item', {opacity: 0, duration: 3, delay: 3.2, y: 25, ease:'expo.out', stagger: .2})
+.social-badges img {
+    margin-right: 0.5rem;
+    height: 28px;
+}
 
-// SOCIAL
-gsap.from('.home__social-icon', {opacity: 0, duration: 3, delay: 4, y: 25, ease:'expo.out', stagger: .2})
+.experience {
+    margin-top: 2rem;
+}
+
+.job {
+    background: rgba(43, 191, 240, 0.1);
+    padding: 1rem;
+    border-left: 3px solid var(--first-color);
+    margin-bottom: 1.5rem;
+    border-radius: 0 5px 5px 0;
+}
+
+.tech-stack {
+    margin-top: 2rem;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* ===== SERVICES SECTION ===== */
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: rgba(43, 191, 240, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background: rgba(43, 191, 240, 0.2);
+}
+
+.service-card ion-icon {
+    font-size: 3rem;
+    color: var(--first-color);
+    margin-bottom: 1rem;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    background: var(--first-color);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background: #00a0d6;
+}
+=================================================================================================
+main.js
+===================================================================================================
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM fully loaded");
+    
+    /* MENU SHOW */
+    const showMenu = (toggleId, navId) => {
+        const toggle = document.getElementById(toggleId),
+              nav = document.getElementById(navId);
+
+        if(toggle && nav){
+            toggle.addEventListener('click', () => {
+                console.log("Menu toggle clicked");
+                nav.classList.toggle('show');
+            });
+        } else {
+            console.error("Menu elements not found:", {toggleId, navId});
+        }
+    }
+
+    showMenu('nav-toggle','nav-menu');
+
+    // Vérifier si GSAP est chargé
+    if(typeof gsap !== 'undefined') {
+        /* ANIMATIONS */
+        gsap.registerPlugin(Expo);
+        
+        // OVERLAY
+        gsap.to(".first", {duration: 1.5, delay: 0.5, top: "-100%", ease: "expo.inOut"});
+        gsap.to(".second", {duration: 1.5, delay: 0.7, top: "-100%", ease: "expo.inOut"});
+        gsap.to(".third", {duration: 1.5, delay: 0.9, top: "-100%", ease: "expo.inOut"});
+
+        // IMG
+        gsap.from('.home__img', {opacity: 0, duration: 2, delay: 2, x: 60});
+
+        // INFORMATION
+        gsap.from('.home__information', {opacity: 0, duration: 3, delay: 2.3, y: 25});
+        gsap.from('.anime-text', {
+            opacity: 0,
+            duration: 3,
+            delay: 2.3,
+            y: 25,
+            ease: "expo.out",
+            stagger: 0.3
+        });
+
+        // NAV ITEM
+        gsap.from('.nav__logo', {opacity:0, duration: 3, delay: 3.2, y: 25, ease:"expo.out"});
+        gsap.from('.nav__item', {
+            opacity: 0,
+            duration: 3,
+            delay: 3.2,
+            y: 25,
+            ease: "expo.out",
+            stagger: 0.2
+        });
+
+        // SOCIAL
+        gsap.from('.home__social-icon', {
+            opacity: 0,
+            duration: 3,
+            delay: 4,
+            y: 25,
+            ease: "expo.out",
+            stagger: 0.2
+        });
+    } else {
+        console.error("GSAP not loaded!");
+    }
+
+    /* SMOOTH SCROLLING */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            
+            if(targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                
+                // Fermer le menu mobile si ouvert
+                const navMenu = document.getElementById('nav-menu');
+                if(navMenu && navMenu.classList.contains('show')) {
+                    navMenu.classList.remove('show');
+                }
+            }
+        });
+    });
+});
+// Activation des liens de navigation
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+  let current = "";
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (pageYOffset >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === "#" + current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+// Dans votre DOMContentLoaded, ajoutez :
+gsap.from("#about .section-title", {
+    scrollTrigger: {
+        trigger: "#about",
+        start: "top 80%"
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1
+});
+
+gsap.from(".service-card", {
+    scrollTrigger: {
+        trigger: "#services",
+        start: "top 80%"
+    },
+    opacity: 0,
+    y: 50,
+    stagger: 0.2,
+    duration: 1
+});
