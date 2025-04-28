@@ -142,3 +142,24 @@ gsap.from(".service-card", {
     stagger: 0.2,
     duration: 1
 });
+// Animation du nom "Yassine Daoui"
+gsap.from(".name-title", {
+    x: -200,
+    opacity: 0,
+    duration: 2,
+    delay: 1.5,
+    ease: "power3.out"
+});
+
+// Animation du titre "Consultant Data" avec couleur
+gsap.from(".job-title", {
+    x: 200,
+    opacity: 0,
+    duration: 2,
+    delay: 2,
+    ease: "power3.out",
+    onStart: function() {
+        document.querySelector('.job-title').style.color = "#2bbff0";
+    }
+});
+
