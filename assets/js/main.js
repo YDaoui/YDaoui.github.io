@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.from(".home__title", {
             x: -200,
             opacity: 0,
-            duration: 2,
+            duration: 2.5,
             delay: 1.5,
             ease: "power3.out"
         });
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.from(".home__skill", {
             x: 200,
             opacity: 0,
-            duration: 2,
+            duration: 3.5,
             delay: 2,
             ease: "power3.out",
             onStart: function() {
