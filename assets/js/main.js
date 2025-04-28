@@ -116,3 +116,41 @@ gsap.from(".home__skill", {
     x: 200, opacity: 0, duration: 3, delay: 2, ease: "power3.out",
     onStart: function() {document.querySelector('.home__skill').style.color = "#2bbff0";}
 });
+// Menu mobile
+const navMenu = document.getElementById('nav-menu'),
+      navToggle = document.getElementById('nav-toggle');
+
+if(navToggle){
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+    });
+}
+
+// Fermer le menu quand on clique sur un lien
+const navLink = document.querySelectorAll('.nav__link');
+
+function linkAction(){
+    navMenu.classList.remove('show');
+}
+navLink.forEach(n => n.addEventListener('click', linkAction));
+// Animation des overlays
+gsap.to(".first", {
+    duration: 1.5,
+    width: 0,
+    ease: "expo.inOut",
+    delay: 0.5
+});
+
+gsap.to(".second", {
+    duration: 1.5,
+    width: 0,
+    ease: "expo.inOut",
+    delay: 0.7
+});
+
+gsap.to(".third", {
+    duration: 1.5,
+    width: 0,
+    ease: "expo.inOut",
+    delay: 0.9
+});
