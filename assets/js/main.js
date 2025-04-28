@@ -168,3 +168,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+// Animation du nom "Yassine Daoui"
+gsap.from(".home__title", {
+    x: -200,
+    opacity: 0,
+    duration: 1.5,
+    delay: 1.5,
+    ease: "power3.out"
+});
+
+// Animation du titre "Consultant Data" avec couleur
+gsap.from(".home__skill", {
+    x: 200,
+    opacity: 0,
+    duration: 1.5,
+    delay: 2,
+    ease: "power3.out",
+    onStart: function() {
+        document.querySelector('.home__skill').style.color = "#2bbff0";
+    }
+});
