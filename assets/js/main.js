@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.to(".third", {duration: 2, delay: 0.9, top: "-100%", ease: "expo.inOut"});
 
         // IMG
-        gsap.from('.home__img', {opacity: 0, duration: 2.5, delay: 2, x: 60});
-
+        
+        gsap.from(".home__img", {    duration: 2,     x: 100,     opacity: 0,     ease: "power3.out",    delay: 1.5});
         // INFORMATION
         gsap.from('.home__information', {opacity: 0, duration: 3, delay: 2.3, y: 25});
         gsap.from('.anime-text', {opacity: 0, duration: 3, delay: 2.3, y: 25, ease: "expo.out", stagger: 0.3});
