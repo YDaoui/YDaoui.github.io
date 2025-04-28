@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM fully loaded");
-    
+
     /* MENU SHOW */
     const showMenu = (toggleId, navId) => {
         const toggle = document.getElementById(toggleId),
@@ -62,6 +62,28 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "expo.out",
             stagger: 0.2
         });
+
+        // Animation du nom "Yassine Daoui"
+        gsap.from(".name-title", {
+            x: -200,
+            opacity: 0,
+            duration: 2,
+            delay: 1.5,
+            ease: "power3.out"
+        });
+
+        // Animation du titre "Consultant Data" avec couleur
+        gsap.from(".job-title", {
+            x: 200,
+            opacity: 0,
+            duration: 2,
+            delay: 2,
+            ease: "power3.out",
+            onStart: function() {
+                document.querySelector('.job-title').style.color = "#2bbff0";
+            }
+        });
+
     } else {
         console.error("GSAP not loaded!");
     }
@@ -89,77 +111,60 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
-// Activation des liens de navigation
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-link');
 
-window.addEventListener('scroll', () => {
-  let current = "";
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100;
-    if (pageYOffset >= sectionTop) {
-      current = section.getAttribute('id');
-    }
-  });
+    // Activation des liens de navigation
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === "#" + current) {
-      link.classList.add('active');
-    }
-  });
-});
+    window.addEventListener('scroll', () => {
+        let current = "";
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
 
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === "#" + current) {
+                link.classList.add('active');
+            }
+        });
     });
-  });
-});
-// Dans votre DOMContentLoaded, ajoutez :
-gsap.from("#about .section-title", {
-    scrollTrigger: {
-        trigger: "#about",
-        start: "top 80%"
-    },
-    opacity: 0,
-    y: 50,
-    duration: 1
-});
 
-gsap.from(".service-card", {
-    scrollTrigger: {
-        trigger: "#services",
-        start: "top 80%"
-    },
-    opacity: 0,
-    y: 50,
-    stagger: 0.2,
-    duration: 1
-});
-// Animation du nom "Yassine Daoui"
-gsap.from(".name-title", {
-    x: -200,
-    opacity: 0,
-    duration: 2,
-    delay: 1.5,
-    ease: "power3.out"
-});
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 
-// Animation du titre "Consultant Data" avec couleur
-gsap.from(".job-title", {
-    x: 200,
-    opacity: 0,
-    duration: 2,
-    delay: 2,
-    ease: "power3.out",
-    onStart: function() {
-        document.querySelector('.job-title').style.color = "#2bbff0";
-    }
-});
+    // Animation sur le titre de la section "About"
+    gsap.from("#about .section-title", {
+        scrollTrigger: {
+            trigger: "#about",
+            start: "top 80%"
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1
+    });
 
+    // Animation des cartes de service
+    gsap.from(".service-card", {
+        scrollTrigger: {
+            trigger: "#services",
+            start: "top 80%"
+        },
+        opacity: 0,
+        y: 50,
+        stagger: 0.2,
+        duration: 1
+    });
+
+});
