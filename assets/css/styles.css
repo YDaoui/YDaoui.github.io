@@ -791,3 +791,144 @@ img {
 .service-card.active .service-content {
     max-height: 500px;
 }
+  /* Services Section */
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: rgba(30, 35, 40, 0.7);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(100, 109, 112, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #2bbff0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(43, 191, 240, 0.15);
+    border-color: rgba(43, 191, 240, 0.5);
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.service-header ion-icon:first-child {
+    font-size: 2.5rem;
+    color: #2bbff0;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.service-header h3 {
+    color: white;
+    margin: 0;
+    font-size: 1.3rem;
+    flex-grow: 1;
+}
+
+.service-arrow {
+    color: #646d70;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.service-brief {
+    color: #646d70;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.service-details {
+    height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.service-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.service-details li {
+    padding: 0.5rem 0;
+    color: #e0e0e0;
+    position: relative;
+    padding-left: 1.8rem;
+    line-height: 1.5;
+}
+
+.service-details li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #2bbff0;
+}
+
+.service-details li strong {
+    color: #2bbff0;
+    font-weight: 500;
+}
+
+.service-tech {
+    font-size: 0.85rem;
+    color: #646d70;
+    border-top: 1px dashed rgba(100, 109, 112, 0.3);
+    padding-top: 1rem;
+}
+
+.service-tech span:first-child {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Style spécifique pour Data Analysis */
+.service-card:nth-child(1) {
+    background: linear-gradient(135deg, rgba(30, 35, 40, 0.7) 0%, rgba(43, 191, 240, 0.05) 100%);
+}
+
+.service-card:nth-child(1) .service-header ion-icon:first-child {
+    color: #2bbff0;
+    background: rgba(43, 191, 240, 0.1);
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+/* Animation lorsque le service est ouvert */
+.service-card.active .service-details {
+    height: auto;
+    margin-top: 1rem;
+}
+
+.service-card.active .service-arrow {
+    transform: rotate(180deg);
+    color: #2bbff0;
+}
