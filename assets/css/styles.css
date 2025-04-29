@@ -801,7 +801,9 @@ img {
 .btn__icon {
     font-size: 1.2rem;
 }
-
+html {
+    scroll-behavior: smooth;
+}
 /* Responsive */
 @media (min-width: 768px) {
     .contact__container {
