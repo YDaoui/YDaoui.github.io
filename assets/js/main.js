@@ -183,6 +183,40 @@ gsap.from(".service-card", {
         });
     }
 });
+        // Smooth scrolling avec effet d'inertie
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            // Fermer le menu mobile si ouvert
+            const navMenu = document.getElementById('nav-menu');
+            if (navMenu && navMenu.classList.contains('show')) {
+                navMenu.classList.remove('show');
+            }
+
+            // Animation GSAP pour le scroll avec effet d'inertie
+            gsap.to(window, {
+                duration: 1.5,
+                ease: "expo.out",  // Cette courbe d'animation crée l'effet de ralentissement
+                scrollTo: {
+                    y: targetElement,
+                    offsetY: 80,  // Ajustez ce décalage si nécessaire
+                    autoKill: true
+                }
+            });
+
+            // Mise à jour des liens actifs
+            document.querySelectorAll('.nav__link').forEach(link => {
+                link.classList.remove('active');
+            });
+            this.classList.add('active');
+        }
+    });
+});
 
 // Animation au survol des cartes
 document.querySelectorAll('.service-card').forEach(card => {
