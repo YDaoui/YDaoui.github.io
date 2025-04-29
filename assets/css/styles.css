@@ -575,3 +575,98 @@ img {
 .name-animation span, .job-animation span {
     display: inline-block;
 }
+  /* Styles pour les cartes de services */
+.services__grid {
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(100, 109, 112, 0.2);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(43, 191, 240, 0.1);
+    border-color: #2bbff0;
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
+}
+
+.service-header ion-icon:first-child {
+    font-size: 1.8rem;
+    color: #2bbff0;
+}
+
+.service-header h3 {
+    margin: 0;
+    flex-grow: 1;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.service-arrow {
+    transition: transform 0.3s ease;
+    color: #646d70;
+}
+
+.service-brief {
+    color: #646d70;
+    margin: 0.5rem 0 1rem;
+    font-size: 0.9rem;
+}
+
+.service-details {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.service-details ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 1rem 0;
+}
+
+.service-details li {
+    margin-bottom: 0.8rem;
+    color: #ffffff;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.service-details li:before {
+    content: "•";
+    color: #2bbff0;
+    position: absolute;
+    left: 0;
+}
+
+.service-details li strong {
+    color: #2bbff0;
+}
+
+.service-tech {
+    font-size: 0.8rem;
+    color: #646d70;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(100, 109, 112, 0.3);
+}
+
+.service-tech span {
+    color: #ffffff;
+    font-weight: 500;
+}
