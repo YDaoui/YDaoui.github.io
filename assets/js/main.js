@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM fully loaded");
 
-    /* MENU SHOW */
+    /* ===== MENU TOGGLE ===== */
     const showMenu = (toggleId, navId) => {
         const toggle = document.getElementById(toggleId),
               nav = document.getElementById(navId);
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             toggle.addEventListener('click', () => {
                 console.log("Menu toggle clicked");
                 nav.classList.toggle('show');
+                
                 // Animation du menu
                 if (nav.classList.contains('show')) {
                     gsap.from(nav.querySelectorAll('.nav__item'), {
@@ -28,17 +29,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showMenu('nav-toggle', 'nav-menu');
 
-    // Vérifier si GSAP est chargé
+    /* ===== GSAP ANIMATIONS ===== */
     if (typeof gsap !== 'undefined') {
-        /* ANIMATIONS */
-        // OVERLAY - Animation unique sans répétition
+        // 1. ANIMATION DES OVERLAYS
         const overlays = gsap.timeline();
         overlays
             .to(".first", {duration: 1.5, top: "-100%", ease: "expo.inOut"})
             .to(".second", {duration: 1.5, top: "-100%", ease: "expo.inOut"}, "-=1.2")
             .to(".third", {duration: 1.5, top: "-100%", ease: "expo.inOut"}, "-=1.2");
 
-        // IMAGE - Animation unique
+        // 2. ANIMATION DE L'IMAGE
         gsap.from(".home__img", {
             duration: 2,
             x: 100,
@@ -47,87 +47,132 @@ document.addEventListener('DOMContentLoaded', function() {
             delay: 1.5
         });
 
-        // INFORMATION
-        const infoAnimation = gsap.timeline();
-        infoAnimation
-            .from('.home__information', {opacity: 0, duration: 2, y: 25, delay: 1.8})
-            .from('.anime-text', {
-                opacity: 0,
-                y: 25,
-                duration: 1.5,
-                ease: "expo.out",
-                stagger: 0.2
-            }, "-=1.5");
+        // 3. ANIMATION PRINCIPALE DE LA SECTION HOME
+        const homeTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+        
+        // Animation du conteneur
+        homeTimeline.from('.home__information', {
+            opacity: 0,
+            y: 30,
+            duration: 1.2,
+            delay: 1.5
+        });
 
-        // NAV ITEM
+        // Animation du texte d'introduction
+        homeTimeline.from('.home__pressent', {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            stagger: 0.15
+        }, "-=0.8");
+
+        // Animation spéciale pour le nom "Yassine Daoui"
+        homeTimeline.from(".home__title", {
+            x: -150,
+            opacity: 0,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.8)",
+            onStart: function() {
+                // Effet de couleur progressive
+                gsap.to(".home__title", {
+                    color: "#2bbff0",
+                    duration: 2,
+                    ease: "sine.inOut"
+                });
+            }
+        }, "-=0.5");
+
+        // Animation spéciale pour "Data Consultant"
+        homeTimeline.from(".home__skill", {
+            x: 150,
+            opacity: 0,
+            duration: 1.5,
+            ease: "back.out(3)",
+            onComplete: function() {
+                // Effet de surbrillance finale
+                gsap.to(".home__skill", {
+                    duration: 0.8,
+                    color: "#2bbff0",
+                    yoyo: true,
+                    repeat: 1,
+                    ease: "power1.inOut"
+                });
+            }
+        }, "-=1");
+
+        // Animation du bouton CV
+        homeTimeline.from('.home__button', {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            ease: "bounce.out"
+        }, "-=0.5");
+
+        // 4. ANIMATION DU LOGO ET ICÔNES SOCIALES
         gsap.from('.nav__logo', {
             opacity: 0,
-            duration: 2,
-            delay: 2.5,
+            duration: 1.5,
+            delay: 1,
             y: 25,
             ease: "expo.out"
         });
 
-        // SOCIAL
         gsap.from('.home__social-icon', {
             opacity: 0,
-            duration: 2,
-            delay: 3,
+            duration: 1.5,
+            delay: 2.5,
             y: 25,
-            ease: "expo.out",
-            stagger: 0.2
+            stagger: 0.15,
+            ease: "back.out(2)"
         });
 
-        // Animation du titre
-        gsap.from(".home__title", {
-            x: -200,
-            opacity: 0,
-            duration: 2.5,
-            delay: 1.5,
-            ease: "power3.out"
-        });
-
-        // Animation du sous-titre
-        gsap.from(".home__skill", {
-            x: 200,
-            opacity: 0,
-            duration: 3.5,
-            delay: 2,
-            ease: "power3.out",
-            onStart: function() {
-                document.querySelector('.home__skill').style.color = "#2bbff0";
-            }
-        });
-
-        /* SCROLL ANIMATIONS */
-        // Animation sur le titre de la section "About"
+        /* ===== SCROLL ANIMATIONS ===== */
+        // Animation pour la section "About"
         gsap.from("#about .section-title", {
             scrollTrigger: {
                 trigger: "#about",
-                start: "top 80%"
+                start: "top 80%",
+                toggleActions: "play none none none"
             },
             opacity: 0,
             y: 50,
-            duration: 1
+            duration: 1,
+            ease: "power2.out"
         });
 
-        // Animation des cartes de service
+        // Animation pour les cartes de service
         gsap.from(".service-card", {
             scrollTrigger: {
                 trigger: "#services",
-                start: "top 80%"
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 80,
+            duration: 1,
+            stagger: 0.2,
+            ease: "back.out(1.5)"
+        });
+
+        // Animation pour la section contact
+        gsap.from("#contact .section-title, #contact .contact-form", {
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top 80%",
+                toggleActions: "play none none none"
             },
             opacity: 0,
             y: 50,
+            duration: 1,
             stagger: 0.2,
-            duration: 1
+            ease: "power2.out"
         });
 
     } else {
         console.error("GSAP not loaded!");
     }
 
-    /* SMOOTH SCROLLING */
+    /* ===== SMOOTH SCROLLING ===== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -143,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Scroll vers la cible
                 window.scrollTo({
-                    top: targetElement.offsetTop - 100,
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
 
@@ -156,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Activation des liens de navigation au scroll
+    /* ===== ACTIVE NAV LINK ON SCROLL ===== */
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav__link');
 
@@ -179,4 +224,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    /* ===== SERVICE CARDS TOGGLE ===== */
+    function toggleServiceDetails(id) {
+        const details = document.getElementById(id);
+        const arrow = details.previousElementSibling.querySelector('.service-arrow');
+        
+        gsap.to(details, {
+            height: details.style.height === '0px' ? 'auto' : 0,
+            opacity: details.style.opacity === '0' ? 1 : 0,
+            duration: 0.3,
+            ease: "power1.inOut",
+            onStart: () => {
+                arrow.style.transform = details.style.height === '0px' 
+                    ? 'rotate(180deg)' 
+                    : 'rotate(0deg)';
+            }
+        });
+    }
+
+    // Exposer la fonction au scope global
+    window.toggleServiceDetails = toggleServiceDetails;
 });
