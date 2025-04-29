@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Responsive - Yassine Daoui</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Ajout de GSAP pour les animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <!-- OVERLAY -->
@@ -25,7 +25,7 @@
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#home" class="nav__link active">Accueil</a></li>
+                    <li class="nav__item"><a href="#home" class="nav__link">Accueil</a></li>
                     <li class="nav__item"><a href="#about" class="nav__link">Profil</a></li>
                     <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
                     <li class="nav__item"><a href="#blog" class="nav__link">Blog</a></li>
@@ -41,22 +41,25 @@
 
     <!-- MAIN -->
     <main class="l-main bd-grid">
-        <section class="home" id="home">
-            <div class="home__information">
-                <span class="home__pressent anime-text">Bonjour, Je m'appelle</span>
-                <h1 class="home__title name-animation">Yassine Daoui</h1>
-                <span class="home__pressent anime-text">Je suis<br></span>
-                <span class="home__skill job-animation">Consultant Data</span>
-                
-                <div>
-                    <a href="./assets/cv/cv.pdf" download="Yassine-Daoui-CV.pdf" class="home__button anime-text">TÉLÉCHARGER CV</a>
-                </div>
+        <div class="home" id="home">
+                   <div class="home__information">
+            <span class="home__pressent anime-text">Bonjour, Je m'appelle</span>
+            <h1 class="home__title name-animation">Yassine Daoui</h1> <!-- Ajout de name-animation -->
+            <span class="home__pressent anime-text">Je suis<br></span>
+            <span class="home__skill job-animation">Consultant Data</span> <!-- Ajout de job-animation -->
+            
+            <!-- CV BUTTON -->
+            <div>
+                <a href="./assets/cv/cv.pdf" download="Yassine-Daoui-CV.pdf" class="home__button anime-text">TÉLÉCHARGER CV</a>
             </div>
+        </div>
 
+            <!-- IMAGE -->
             <div class="home__img">
                 <img src="./assets/img/img.jpeg" alt="Portrait de Yassine Daoui">
             </div>
 
+            <!-- SOCIAL LINKS -->
             <div class="home__social">
                 <a href="https://linkedin.com/in/yassinedaoui" target="_blank" rel="noopener noreferrer">
                     <ion-icon name="logo-linkedin" class="home__social-icon"></ion-icon>
@@ -65,12 +68,154 @@
                     <ion-icon name="mail-outline" class="home__social-icon"></ion-icon>
                 </a>
             </div>
+        </div>
+
+        <!-- ===== ABOUT SECTION ===== -->
+        <section class="section" id="about">
+            <div class="bd-grid">
+                <h2 class="section-title anime-text">YASSINE DAOUI</h2>
+                <div class="about__content">
+                    <h3>Data Scientist | Bachelor en Informatique</h3>
+                   <!-- <h4>Data Scientist | Bachelor en Informatique</h4> -->
+                    
+                    <div class="about__description">
+                        <p>
+                            Professionnel des données avec une solide formation en mathématiques et programmation depuis 2003. Titulaire d'un <strong>Diplôme de Technicien Spécialisé en Gestion des Entreprises</strong> (programme de 3 ans), j'y ai développé une expertise en analyse financière et optimisation opérationnelle. Cette double compétence technique et métier me permet de faire le lien entre les données et la prise de décision stratégique.
+                        </p>
+                        
+                        <p>
+                            Mon parcours professionnel inclut une expérience pratique en optimisation des processus et systèmes d'aide à la décision basés sur les données. L'obtention d'un <strong>Bachelor en Informatique</strong> m'a permis de formaliser cette expertise, alignant mes compétences avec les standards du secteur en machine learning, modélisation statistique et ingénierie des données.
+                        </p>
+                        
+                        <p>
+                            Aujourd'hui, je mets à profit ce background multidisciplinaire pour concevoir des solutions data innovantes alliant rigueur technique et sens des affaires, avec un focus sur des résultats concrets et mesurables.
+                        </p>
+                    </div>
+                    
+                    <!-- Liens professionnels -->
+                    <div class="social-badges">
+                        <a href="https://linkedin.com/in/yassine-daoui" target="_blank" rel="noopener noreferrer">
+                            <img src="https://img.shields.io/badge/LinkedIn-Profil_Professionnel-0077B5?logo=linkedin" alt="Profil LinkedIn">
+                        </a>
+                        <a href="mailto:daoui00yassine@gmail.com">
+                            <img src="https://img.shields.io/badge/Email-Me_contacter-D14836?logo=gmail" alt="Contact Email">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Sections restantes inchangées -->
-        <!-- ... -->
+        <!-- ===== SERVICES SECTION ===== -->
+        <section class="section" id="services">
+            <div class="bd-grid">
+                <h2 class="section-title anime-text">Mes Services</h2>
+                <div class="services__grid">
+                    <!-- Service 1 - Analyse de Données -->
+                    <div class="service-card">
+                        <div class="service-header" onclick="toggleServiceDetails('analyse-details')">
+                            <ion-icon name="analytics-outline"></ion-icon>
+                            <h3>Analyse de Données</h3>
+                            <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
+                        </div>
+                        <p class="service-brief">Extraction, traitement et visualisation avancée de données</p>
+                        
+                        <div id="analyse-details" class="service-details">
+                            <ul>
+                                <li><strong>Data Mining</strong> : Extraction de insights depuis des sources multiples</li>
+                                <li><strong>Data Cleaning</strong> : Nettoyage avec Python (Pandas, NumPy)</li>
+                                <li><strong>Visualisation</strong> : Création de dashboards interactifs</li>
+                                <li><strong>Reporting</strong> : Automatisation avec Jupyter et Power BI</li>
+                            </ul>
+                            <div class="service-tech">
+                                <span>Stack technique :</span> Python · SQL · Power BI · Tableau · Spark
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 - Business Intelligence -->
+                    <div class="service-card">
+                        <div class="service-header" onclick="toggleServiceDetails('bi-details')">
+                            <ion-icon name="bar-chart-outline"></ion-icon>
+                            <h3>Business Intelligence</h3>
+                            <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
+                        </div>
+                        <p class="service-brief">Solutions complètes de BI pour votre entreprise</p>
+                        
+                        <div id="bi-details" class="service-details">
+                            <ul>
+                                <li><strong>Data Modeling</strong> : Conception de modèles star-schema</li>
+                                <li><strong>ETL/ELT</strong> : Pipelines d'intégration de données</li>
+                                <li><strong>KPI Tracking</strong> : Suivi des indicateurs clés</li>
+                                <li><strong>Training</strong> : Formation des équipes métiers</li>
+                            </ul>
+                            <div class="service-tech">
+                                <span>Outils principaux :</span> Power BI · Tableau · SSIS · DAX · MDX
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 - Consulting Data -->
+                    <div class="service-card">
+                        <div class="service-header" onclick="toggleServiceDetails('consulting-details')">
+                            <ion-icon name="bulb-outline"></ion-icon>
+                            <h3>Consulting Data</h3>
+                            <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
+                        </div>
+                        <p class="service-brief">Stratégie data sur mesure pour votre organisation</p>
+                        
+                        <div id="consulting-details" class="service-details">
+                            <ul>
+                                <li><strong>Data Audit</strong> : Évaluation de votre maturité data</li>
+                                <li><strong>Roadmap</strong> : Plan d'action priorisé</li>
+                                <li><strong>Governance</strong> : Politiques de gestion des données</li>
+                                <li><strong>Use Cases</strong> : Identification des cas d'usage</li>
+                            </ul>
+                            <div class="service-tech">
+                                <span>Méthodologies :</span> CRISP-DM · TDSP · Data Mesh
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 4 - Migration Data -->
+                    <div class="service-card">
+                        <div class="service-header" onclick="toggleServiceDetails('migration-details')">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <h3>Migration Data</h3>
+                            <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
+                        </div>
+                        <p class="service-brief">Transition sécurisée entre systèmes</p>
+                        
+                        <div id="migration-details" class="service-details">
+                            <ul>
+                                <li><strong>Assessment</strong> : Analyse de compatibilité</li>
+                                <li><strong>Schema Mapping</strong> : Conversion des modèles</li>
+                                <li><strong>Data Transfer</strong> : Migration incrémentale</li>
+                                <li><strong>Validation</strong> : Vérification d'intégrité</li>
+                            </ul>
+                            <div class="service-tech">
+                                <span>Technologies :</span> Azure Data Factory · AWS DMS · Talend · Informatica
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section class="section" id="contact">
+            <div class="bd-grid">
+                <h2 class="section-title anime-text">Contact</h2>
+                <form class="contact-form">
+                    <input type="text" placeholder="Votre Nom" required>
+                    <input type="email" placeholder="Votre Email" required>
+                    <textarea placeholder="Votre Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Envoyer</button>
+                </form>
+            </div>
+        </section>
     </main>
 
+    <!-- MAIN JS -->
     <script src="./assets/js/main.js"></script>
 </body>
 </html>
