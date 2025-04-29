@@ -565,3 +565,13 @@ img {
 .submit-btn:hover {
     background: #00a0d6;
 }
+
+
+  .name-animation, .job-animation {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.name-animation span, .job-animation span {
+    display: inline-block;
+}
