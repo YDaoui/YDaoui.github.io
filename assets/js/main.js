@@ -57,27 +57,30 @@ document.addEventListener('DOMContentLoaded', function() {
             delay: 1.5
         });
 
-        // Animation du texte d'introduction
+        // Animation du texte d'introduction en #646d70 (gris)
         homeTimeline.from('.home__pressent', {
             opacity: 0,
             y: 20,
             duration: 0.8,
             stagger: 0.15,
             onStart: function() {
+                // Définit la couleur en gris (#646d70)
                 document.querySelectorAll('.home__pressent').forEach(el => {
                     el.style.color = "#646d70";
                 });
             }
         }, "-=0.8");
 
-        // Animation spéciale pour le nom "Yassine Daoui"
+        // Animation spéciale pour le nom "Yassine Daoui" (blanc -> bleu)
         homeTimeline.from(".home__title", {
             x: -150,
             opacity: 0,
             duration: 1.5,
             ease: "elastic.out(1, 0.8)",
             onStart: function() {
+                // Définit la couleur initiale en blanc
                 document.querySelector('.home__title').style.color = "#ffffff";
+                // Animation vers #2bbff0 (bleu)
                 gsap.to(".home__title", {
                     color: "#2bbff0",
                     duration: 1.8,
@@ -86,16 +89,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=0.5");
 
-        // Animation spéciale pour "Consultant Data"
+        // Animation spéciale pour "Consultant Data" (blanc -> bleu)
         homeTimeline.from(".home__skill", {
             x: 150,
             opacity: 0,
             duration: 1.5,
             ease: "back.out(3)",
             onStart: function() {
+                // Définit la couleur initiale en blanc
                 document.querySelector('.home__skill').style.color = "#ffffff";
             },
             onComplete: function() {
+                // Animation vers #2bbff0 avec effet de pulsation
                 gsap.to(".home__skill", {
                     color: "#2bbff0",
                     duration: 0.8,
@@ -133,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         /* ===== SCROLL ANIMATIONS ===== */
-        // Animation pour la section About
         gsap.from("#about .section-title", {
             scrollTrigger: {
                 trigger: "#about",
@@ -146,24 +150,49 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "power2.out"
         });
 
-        // Animation pour les services
-        gsap.from(".service-card", {
-            scrollTrigger: {
-                trigger: "#services",
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            stagger: {
-                each: 0.15,
-                from: "random"
-            },
-            ease: "back.out(1.7)"
+        // Ajoutez cette partie dans la section GSAP Animations
+gsap.from(".service-card", {
+    scrollTrigger: {
+        trigger: "#services",
+        start: "top 80%",
+        toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: {
+        each: 0.2,
+        from: "random"
+    },
+    ease: "back.out(1.7)",
+    onStart: function() {
+        // Animation de couleur pour les icônes
+        gsap.from(".service-header ion-icon:first-child", {
+            color: "#646d70",
+            duration: 1.5,
+            ease: "power2.inOut",
+            stagger: 0.1
         });
+    }
+});
 
-        // Animation pour la section Contact
+// Animation au survol des cartes
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        gsap.to(card.querySelector('.service-header h3'), {
+            color: "#2bbff0",
+            duration: 0.3
+        });
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        gsap.to(card.querySelector('.service-header h3'), {
+            color: "#ffffff",
+            duration: 0.3
+        });
+    });
+});
+
         gsap.from("#contact .section-title, #contact .contact-form", {
             scrollTrigger: {
                 trigger: "#contact",
@@ -177,28 +206,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "power2.out"
         });
 
-        // Animation au survol des cartes
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                gsap.to(card.querySelector('.service-header h3'), {
-                    color: "#2bbff0",
-                    duration: 0.3
-                });
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card.querySelector('.service-header h3'), {
-                    color: "#ffffff",
-                    duration: 0.3
-                });
-            });
-        });
-
     } else {
         console.error("GSAP not loaded!");
     }
 
-    /* ===== SMOOTH SCROLLING AVEC EFFET D'INERTIE ===== */
+    /* ===== SMOOTH SCROLLING ===== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -211,26 +223,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     navMenu.classList.remove('show');
                 }
 
-                // Animation GSAP pour le scroll avec effet d'inertie
-                gsap.to(window, {
-                    duration: 1.8,  // Durée un peu plus longue pour un effet plus doux
-                    ease: "expo.out",  // Courbe d'animation pour l'effet de ralentissement
-                    scrollTo: {
-                        y: targetElement,
-                        offsetY: 80,  // Ajustement pour la hauteur du header
-                        autoKill: false  // Empêche l'interruption brutale
-                    },
-                    onComplete: function() {
-                        // Petit rebond à la fin pour un effet plus naturel
-                        gsap.to(window, {
-                            scrollTo: {
-                                y: targetElement,
-                                offsetY: 80
-                            },
-                            duration: 0.5,
-                            ease: "elastic.out(1, 0.5)"
-                        });
-                    }
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
                 });
 
                 document.querySelectorAll('.nav__link').forEach(link => {
@@ -268,51 +263,19 @@ document.addEventListener('DOMContentLoaded', function() {
     /* ===== SERVICE CARDS TOGGLE ===== */
     function toggleServiceDetails(id) {
         const details = document.getElementById(id);
-        const card = details.closest('.service-card');
-        const arrow = card.querySelector('.service-arrow');
+        const arrow = details.previousElementSibling.querySelector('.service-arrow');
         
-        // Fermer toutes les autres cartes
-        document.querySelectorAll('.service-card').forEach(item => {
-            if (item !== card) {
-                item.classList.remove('active');
-                gsap.to(item.querySelector('.service-details'), {
-                    height: 0,
-                    duration: 0.4
-                });
-                gsap.to(item.querySelector('.service-arrow'), {
-                    rotate: 0,
-                    color: "#646d70",
-                    duration: 0.3
-                });
+        gsap.to(details, {
+            height: details.style.height === '0px' ? 'auto' : 0,
+            opacity: details.style.opacity === '0' ? 1 : 0,
+            duration: 0.3,
+            ease: "power1.inOut",
+            onStart: () => {
+                arrow.style.transform = details.style.height === '0px' 
+                    ? 'rotate(180deg)' 
+                    : 'rotate(0deg)';
             }
         });
-        
-        // Basculer l'état actif
-        card.classList.toggle('active');
-        
-        if (card.classList.contains('active')) {
-            gsap.to(details, {
-                height: 'auto',
-                duration: 0.4,
-                ease: "power2.out"
-            });
-            gsap.to(arrow, {
-                rotate: 180,
-                color: "#2bbff0",
-                duration: 0.3
-            });
-        } else {
-            gsap.to(details, {
-                height: 0,
-                duration: 0.4,
-                ease: "power2.in"
-            });
-            gsap.to(arrow, {
-                rotate: 0,
-                color: "#646d70",
-                duration: 0.3
-            });
-        }
     }
 
     window.toggleServiceDetails = toggleServiceDetails;
