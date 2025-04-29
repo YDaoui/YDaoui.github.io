@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Menu toggle clicked");
                 nav.classList.toggle('show');
                 
-                // Animation du menu
                 if (nav.classList.contains('show')) {
                     gsap.from(nav.querySelectorAll('.nav__item'), {
                         opacity: 0,
@@ -73,12 +72,15 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 1.5,
             ease: "elastic.out(1, 0.8)",
             onStart: function() {
-                // Effet de couleur progressive
-                gsap.to(".home__title", {
-                    color: "#2bbff0",
-                    duration: 2,
-                    ease: "sine.inOut"
-                });
+                // Couleur initiale en #646d70 et transition vers #2bbff0
+                gsap.fromTo(".home__title", 
+                    { color: "#646d70" },
+                    { 
+                        color: "#2bbff0",
+                        duration: 1.5,
+                        ease: "sine.inOut"
+                    }
+                );
             }
         }, "-=0.5");
 
@@ -88,11 +90,15 @@ document.addEventListener('DOMContentLoaded', function() {
             opacity: 0,
             duration: 1.5,
             ease: "back.out(3)",
+            onStart: function() {
+                // Définit la couleur initiale en #646d70
+                document.querySelector('.home__skill').style.color = "#646d70";
+            },
             onComplete: function() {
-                // Effet de surbrillance finale
+                // Animation vers #2bbff0 avec effet de pulsation
                 gsap.to(".home__skill", {
-                    duration: 0.8,
                     color: "#2bbff0",
+                    duration: 0.8,
                     yoyo: true,
                     repeat: 1,
                     ease: "power1.inOut"
@@ -127,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         /* ===== SCROLL ANIMATIONS ===== */
-        // Animation pour la section "About"
         gsap.from("#about .section-title", {
             scrollTrigger: {
                 trigger: "#about",
@@ -140,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "power2.out"
         });
 
-        // Animation pour les cartes de service
         gsap.from(".service-card", {
             scrollTrigger: {
                 trigger: "#services",
@@ -154,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "back.out(1.5)"
         });
 
-        // Animation pour la section contact
         gsap.from("#contact .section-title, #contact .contact-form", {
             scrollTrigger: {
                 trigger: "#contact",
@@ -180,19 +183,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // Fermer le menu mobile si ouvert
                 const navMenu = document.getElementById('nav-menu');
                 if (navMenu && navMenu.classList.contains('show')) {
                     navMenu.classList.remove('show');
                 }
 
-                // Scroll vers la cible
                 window.scrollTo({
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
 
-                // Mise à jour de l'état actif
                 document.querySelectorAll('.nav__link').forEach(link => {
                     link.classList.remove('active');
                 });
@@ -243,6 +243,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Exposer la fonction au scope global
     window.toggleServiceDetails = toggleServiceDetails;
 });
