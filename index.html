@@ -204,17 +204,52 @@
         </section>
 
         <!-- ===== CONTACT SECTION ===== -->
-        <section class="section" id="contact">
-            <div class="bd-grid">
-                <h2 class="section-title anime-text">Contact</h2>
-                <form class="contact-form">
-                    <input type="text" placeholder="Votre Nom" required>
-                    <input type="email" placeholder="Votre Email" required>
-                    <textarea placeholder="Votre Message" rows="5" required></textarea>
-                    <button type="submit" class="submit-btn">Envoyer</button>
-                </form>
+        <!-- ===== CONTACT SECTION ===== -->
+<section class="section" id="contact">
+    <div class="bd-grid">
+        <h2 class="section-title anime-text">Contact</h2>
+        
+        <div class="contact__container">
+            <div class="contact__info">
+                <h3 class="contact__subtitle">Disponible pour de nouvelles opportunités</h3>
+                <p class="contact__text">N'hésitez pas à me contacter pour discuter de votre projet ou pour toute demande d'information.</p>
+                
+                <div class="contact__details">
+                    <div class="contact__detail">
+                        <ion-icon name="mail-outline" class="contact__icon"></ion-icon>
+                        <span>daoui00yassine@gmail.com</span>
+                    </div>
+                    <div class="contact__detail">
+                        <ion-icon name="logo-linkedin" class="contact__icon"></ion-icon>
+                        <a href="https://linkedin.com/in/yassinedaoui" target="_blank">linkedin.com/in/yassinedaoui</a>
+                    </div>
+                </div>
             </div>
-        </section>
+            
+            <form class="contact-form">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder=" " required>
+                    <label class="form__label">Votre Nom</label>
+                </div>
+                
+                <div class="form__group">
+                    <input type="email" class="form__input" placeholder=" " required>
+                    <label class="form__label">Votre Email</label>
+                </div>
+                
+                <div class="form__group">
+                    <textarea class="form__textarea" placeholder=" " rows="5" required></textarea>
+                    <label class="form__label">Votre Message</label>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span>Envoyer</span>
+                    <ion-icon name="send-outline" class="btn__icon"></ion-icon>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
     </main>
 
     <!-- MAIN JS -->
