@@ -57,42 +57,47 @@ document.addEventListener('DOMContentLoaded', function() {
             delay: 1.5
         });
 
-        // Animation du texte d'introduction
+        // Animation du texte d'introduction en #646d70 (gris)
         homeTimeline.from('.home__pressent', {
             opacity: 0,
             y: 20,
             duration: 0.8,
-            stagger: 0.15
+            stagger: 0.15,
+            onStart: function() {
+                // Définit la couleur en gris (#646d70)
+                document.querySelectorAll('.home__pressent').forEach(el => {
+                    el.style.color = "#646d70";
+                });
+            }
         }, "-=0.8");
 
-        // Animation spéciale pour le nom "Yassine Daoui"
+        // Animation spéciale pour le nom "Yassine Daoui" (blanc -> bleu)
         homeTimeline.from(".home__title", {
             x: -150,
             opacity: 0,
             duration: 1.5,
             ease: "elastic.out(1, 0.8)",
             onStart: function() {
-                // Couleur initiale en #646d70 et transition vers #2bbff0
-                gsap.fromTo(".home__title", 
-                    { color: "#646d70" },
-                    { 
-                        color: "#2bbff0",
-                        duration: 1.5,
-                        ease: "sine.inOut"
-                    }
-                );
+                // Définit la couleur initiale en blanc
+                document.querySelector('.home__title').style.color = "#ffffff";
+                // Animation vers #2bbff0 (bleu)
+                gsap.to(".home__title", {
+                    color: "#2bbff0",
+                    duration: 1.8,
+                    ease: "sine.inOut"
+                });
             }
         }, "-=0.5");
 
-        // Animation spéciale pour "Data Consultant"
+        // Animation spéciale pour "Consultant Data" (blanc -> bleu)
         homeTimeline.from(".home__skill", {
             x: 150,
             opacity: 0,
             duration: 1.5,
             ease: "back.out(3)",
             onStart: function() {
-                // Définit la couleur initiale en #646d70
-                document.querySelector('.home__skill').style.color = "#646d70";
+                // Définit la couleur initiale en blanc
+                document.querySelector('.home__skill').style.color = "#ffffff";
             },
             onComplete: function() {
                 // Animation vers #2bbff0 avec effet de pulsation
