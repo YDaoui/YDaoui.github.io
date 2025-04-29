@@ -280,3 +280,11 @@ document.querySelectorAll('.service-card').forEach(card => {
 
     window.toggleServiceDetails = toggleServiceDetails;
 });
+// Dans votre fonction d'initialisation des animations
+animateOnScroll("#contact .contact__container", { 
+    y: 50,
+    stagger: {
+        each: 0.1,
+        from: "left"
+    }
+});
