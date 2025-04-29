@@ -1,139 +1,253 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Menu Toggle
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-            
-            if (navMenu.classList.contains('show')) {
-                gsap.from(navMenu.querySelectorAll('.nav__item'), {
-                    opacity: 0,
-                    y: 20,
-                    duration: 0.5,
-                    stagger: 0.1,
-                    ease: "power2.out"
-                });
-            }
-        });
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM fully loaded");
 
-    // GSAP Animations
+    /* ===== MENU TOGGLE ===== */
+    const showMenu = (toggleId, navId) => {
+        const toggle = document.getElementById(toggleId),
+              nav = document.getElementById(navId);
+
+        if (toggle && nav) {
+            toggle.addEventListener('click', () => {
+                console.log("Menu toggle clicked");
+                nav.classList.toggle('show');
+                
+                if (nav.classList.contains('show')) {
+                    gsap.from(nav.querySelectorAll('.nav__item'), {
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "power2.out"
+                    });
+                }
+            });
+        } else {
+            console.error("Menu elements not found:", {toggleId, navId});
+        }
+    };
+
+    showMenu('nav-toggle', 'nav-menu');
+
+    /* ===== GSAP ANIMATIONS ===== */
     if (typeof gsap !== 'undefined') {
-        // Overlay Animation
-        const overlayTL = gsap.timeline();
-        overlayTL
+        // 1. ANIMATION DES OVERLAYS
+        const overlays = gsap.timeline();
+        overlays
             .to(".first", {duration: 1.5, top: "-100%", ease: "expo.inOut"})
             .to(".second", {duration: 1.5, top: "-100%", ease: "expo.inOut"}, "-=1.2")
             .to(".third", {duration: 1.5, top: "-100%", ease: "expo.inOut"}, "-=1.2");
 
-        // Home Animation
-        const homeTL = gsap.timeline({ defaults: { ease: "power3.out" } });
-        homeTL
-            .from('.home__information', { opacity: 0, y: 30, duration: 1.2, delay: 1.5 })
-            .from('.home__pressent', { opacity: 0, y: 20, duration: 0.8, stagger: 0.15 }, "-=0.8")
-            .from(".home__title", { 
-                x: -150, 
-                opacity: 0, 
-                duration: 1.5, 
-                ease: "elastic.out(1, 0.8)",
-                onStart: () => {
-                    gsap.to(".home__title", {
-                        color: "#2bbff0",
-                        duration: 1.8,
-                        ease: "sine.inOut"
-                    });
-                }
-            }, "-=0.5")
-            .from(".home__skill", {
-                x: 150,
-                opacity: 0,
-                duration: 1.5,
-                ease: "back.out(3)",
-                onComplete: () => {
-                    gsap.to(".home__skill", {
-                        color: "#2bbff0",
-                        duration: 0.8,
-                        yoyo: true,
-                        repeat: 1
-                    });
-                }
-            }, "-=1")
-            .from('.home__button', { opacity: 0, y: 30, duration: 0.8, ease: "bounce.out" }, "-=0.5")
-            .from('.home__img', { x: 100, opacity: 0, duration: 2, ease: "power3.out" }, "-=1.5")
-            .from('.nav__logo', { opacity: 0, y: 25, duration: 1.5, ease: "expo.out" }, "-=1.5")
-            .from('.home__social-icon', { 
-                opacity: 0, 
-                y: 25, 
-                duration: 1.5, 
-                stagger: 0.15, 
-                ease: "back.out(2)" 
-            }, "-=1.5");
-
-        // Scroll Animations
-        gsap.registerPlugin(ScrollTrigger);
-        
-        const animateOnScroll = (selector, options = {}) => {
-            gsap.from(selector, {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: selector,
-                    start: "top 80%",
-                    toggleActions: "play none none none"
-                },
-                ...options
-            });
-        };
-
-        animateOnScroll("#about .section-title");
-        animateOnScroll("#services .section-title");
-        animateOnScroll("#contact .section-title");
-        animateOnScroll(".service-card", { 
-            y: 50,
-            stagger: {
-                each: 0.15,
-                from: "random"
-            },
-            ease: "back.out(1.7)"
+        // 2. ANIMATION DE L'IMAGE
+        gsap.from(".home__img", {
+            duration: 2,
+            x: 100,
+            opacity: 0,
+            ease: "power3.out",
+            delay: 1.5
         });
-        animateOnScroll("#contact .contact-form", { y: 50 });
+
+        // 3. ANIMATION PRINCIPALE DE LA SECTION HOME
+        const homeTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+        
+        // Animation du conteneur
+        homeTimeline.from('.home__information', {
+            opacity: 0,
+            y: 30,
+            duration: 1.2,
+            delay: 1.5
+        });
+
+        // Animation du texte d'introduction en #646d70 (gris)
+        homeTimeline.from('.home__pressent', {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            stagger: 0.15,
+            onStart: function() {
+                // Définit la couleur en gris (#646d70)
+                document.querySelectorAll('.home__pressent').forEach(el => {
+                    el.style.color = "#646d70";
+                });
+            }
+        }, "-=0.8");
+
+        // Animation spéciale pour le nom "Yassine Daoui" (blanc -> bleu)
+        homeTimeline.from(".home__title", {
+            x: -150,
+            opacity: 0,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.8)",
+            onStart: function() {
+                // Définit la couleur initiale en blanc
+                document.querySelector('.home__title').style.color = "#ffffff";
+                // Animation vers #2bbff0 (bleu)
+                gsap.to(".home__title", {
+                    color: "#2bbff0",
+                    duration: 1.8,
+                    ease: "sine.inOut"
+                });
+            }
+        }, "-=0.5");
+
+        // Animation spéciale pour "Consultant Data" (blanc -> bleu)
+        homeTimeline.from(".home__skill", {
+            x: 150,
+            opacity: 0,
+            duration: 1.5,
+            ease: "back.out(3)",
+            onStart: function() {
+                // Définit la couleur initiale en blanc
+                document.querySelector('.home__skill').style.color = "#ffffff";
+            },
+            onComplete: function() {
+                // Animation vers #2bbff0 avec effet de pulsation
+                gsap.to(".home__skill", {
+                    color: "#2bbff0",
+                    duration: 0.8,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: "power1.inOut"
+                });
+            }
+        }, "-=1");
+
+        // Animation du bouton CV
+        homeTimeline.from('.home__button', {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            ease: "bounce.out"
+        }, "-=0.5");
+
+        // 4. ANIMATION DU LOGO ET ICÔNES SOCIALES
+        gsap.from('.nav__logo', {
+            opacity: 0,
+            duration: 1.5,
+            delay: 1,
+            y: 25,
+            ease: "expo.out"
+        });
+
+        gsap.from('.home__social-icon', {
+            opacity: 0,
+            duration: 1.5,
+            delay: 2.5,
+            y: 25,
+            stagger: 0.15,
+            ease: "back.out(2)"
+        });
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        gsap.from("#about .section-title", {
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power2.out"
+        });
+
+        // Ajoutez cette partie dans la section GSAP Animations
+gsap.from(".service-card", {
+    scrollTrigger: {
+        trigger: "#services",
+        start: "top 80%",
+        toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: {
+        each: 0.2,
+        from: "random"
+    },
+    ease: "back.out(1.7)",
+    onStart: function() {
+        // Animation de couleur pour les icônes
+        gsap.from(".service-header ion-icon:first-child", {
+            color: "#646d70",
+            duration: 1.5,
+            ease: "power2.inOut",
+            stagger: 0.1
+        });
+    }
+});
+
+// Animation au survol des cartes
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        gsap.to(card.querySelector('.service-header h3'), {
+            color: "#2bbff0",
+            duration: 0.3
+        });
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        gsap.to(card.querySelector('.service-header h3'), {
+            color: "#ffffff",
+            duration: 0.3
+        });
+    });
+});
+
+        gsap.from("#contact .section-title, #contact .contact-form", {
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power2.out"
+        });
+
+    } else {
+        console.error("GSAP not loaded!");
     }
 
-    // Smooth Scrolling
+    /* ===== SMOOTH SCROLLING ===== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
             
-            if (target) {
-                if (navMenu.classList.contains('show')) {
+            if (targetElement) {
+                const navMenu = document.getElementById('nav-menu');
+                if (navMenu && navMenu.classList.contains('show')) {
                     navMenu.classList.remove('show');
                 }
 
                 window.scrollTo({
-                    top: target.offsetTop - 80,
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
+
+                document.querySelectorAll('.nav__link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
             }
         });
     });
 
-    // Active Link on Scroll
+    /* ===== ACTIVE NAV LINK ON SCROLL ===== */
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav__link');
-    
+
     window.addEventListener('scroll', () => {
-        let current = '';
+        let current = "";
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             
-            if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
+            if (window.pageYOffset >= (sectionTop - sectionHeight / 3)) {
                 current = section.getAttribute('id');
             }
         });
@@ -146,30 +260,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Service Cards Toggle
-    window.toggleServiceDetails = (id) => {
+    /* ===== SERVICE CARDS TOGGLE ===== */
+    function toggleServiceDetails(id) {
         const details = document.getElementById(id);
-        const card = details.closest('.service-card');
-        const arrow = card.querySelector('.service-arrow');
+        const arrow = details.previousElementSibling.querySelector('.service-arrow');
         
-        // Close other cards
-        document.querySelectorAll('.service-card').forEach(item => {
-            if (item !== card) {
-                item.classList.remove('active');
-                gsap.to(item.querySelector('.service-details'), { height: 0, duration: 0.4 });
-                gsap.to(item.querySelector('.service-arrow'), { rotate: 0, color: "#646d70", duration: 0.3 });
+        gsap.to(details, {
+            height: details.style.height === '0px' ? 'auto' : 0,
+            opacity: details.style.opacity === '0' ? 1 : 0,
+            duration: 0.3,
+            ease: "power1.inOut",
+            onStart: () => {
+                arrow.style.transform = details.style.height === '0px' 
+                    ? 'rotate(180deg)' 
+                    : 'rotate(0deg)';
             }
         });
-        
-        // Toggle current card
-        card.classList.toggle('active');
-        
-        if (card.classList.contains('active')) {
-            gsap.to(details, { height: 'auto', duration: 0.4 });
-            gsap.to(arrow, { rotate: 180, color: "#2bbff0", duration: 0.3 });
-        } else {
-            gsap.to(details, { height: 0, duration: 0.4 });
-            gsap.to(arrow, { rotate: 0, color: "#646d70", duration: 0.3 });
-        }
-    };
+    }
+
+    window.toggleServiceDetails = toggleServiceDetails;
 });
