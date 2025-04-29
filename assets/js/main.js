@@ -136,6 +136,14 @@ document.addEventListener('DOMContentLoaded', function() {
             stagger: 0.15,
             ease: "back.out(2)"
         });
+        // Dans votre fonction d'initialisation des animations
+            animateOnScroll("#contact .contact__container", { 
+            y: 50,
+            stagger: {
+                each: 0.1,
+                from: "left"
+            }
+        });
 
         /* ===== SCROLL ANIMATIONS ===== */
         gsap.from("#about .section-title", {
@@ -280,11 +288,4 @@ document.querySelectorAll('.service-card').forEach(card => {
 
     window.toggleServiceDetails = toggleServiceDetails;
 });
-// Dans votre fonction d'initialisation des animations
-animateOnScroll("#contact .contact__container", { 
-    y: 50,
-    stagger: {
-        each: 0.1,
-        from: "left"
-    }
-});
+
