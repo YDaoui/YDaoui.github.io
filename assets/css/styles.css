@@ -228,15 +228,18 @@ img {
   padding-bottom: 1rem;
 }
 
+/* Couleur blanche initiale pour les icônes dans la section home__social */
 .home__social-icon {
-  margin-bottom: 2rem;
-  font-size: 1.33rem;
-  cursor: pointer;
+    color: white;
+    font-size: 1.8rem; /* ajuste si nécessaire */
+    transition: color 0.3s ease;
 }
 
+/* Couleur au survol */
 .home__social-icon:hover {
-  color: var(--first-color);
+    color: #2bbff0;
 }
+
 
 /*----- MEDIA QUERIES -----*/
 @media screen and (min-width: 768px) {
