@@ -261,27 +261,22 @@ document.querySelectorAll('.service-card').forEach(card => {
     });
 
     /* ===== SERVICE CARDS TOGGLE ===== */
-   function toggleServiceDetails(id) {
-    const details = document.getElementById(id);
-    const extra = details.querySelector('.extra-details');
-    const arrow = details.previousElementSibling.querySelector('.service-arrow');
-
-    const isHidden = extra.style.display === 'none' || extra.style.display === '';
-
-    gsap.to(extra, {
-        height: isHidden ? 'auto' : 0,
-        opacity: isHidden ? 1 : 0,
-        duration: 0.3,
-        ease: "power1.inOut",
-        onStart: () => {
-            arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
-        },
-        onComplete: () => {
-            extra.style.display = isHidden ? 'block' : 'none';
-        }
-    });
-}
-
+    function toggleServiceDetails(id) {
+        const details = document.getElementById(id);
+        const arrow = details.previousElementSibling.querySelector('.service-arrow');
+        
+        gsap.to(details, {
+            height: details.style.height === '0px' ? 'auto' : 0,
+            opacity: details.style.opacity === '0' ? 1 : 0,
+            duration: 0.3,
+            ease: "power1.inOut",
+            onStart: () => {
+                arrow.style.transform = details.style.height === '0px' 
+                    ? 'rotate(180deg)' 
+                    : 'rotate(0deg)';
+            }
+        });
+    }
 
     window.toggleServiceDetails = toggleServiceDetails;
 });
