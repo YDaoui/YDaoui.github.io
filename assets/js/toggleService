@@ -261,22 +261,72 @@ document.querySelectorAll('.service-card').forEach(card => {
     });
 
     /* ===== SERVICE CARDS TOGGLE ===== */
-    function toggleServiceDetails(id) {
-        const details = document.getElementById(id);
-        const arrow = details.previousElementSibling.querySelector('.service-arrow');
-        
-        gsap.to(details, {
-            height: details.style.height === '0px' ? 'auto' : 0,
-            opacity: details.style.opacity === '0' ? 1 : 0,
-            duration: 0.3,
-            ease: "power1.inOut",
-            onStart: () => {
-                arrow.style.transform = details.style.height === '0px' 
-                    ? 'rotate(180deg)' 
-                    : 'rotate(0deg)';
-            }
+   // Fonction de basculement des services
+function toggleService(card) {
+    const serviceCard = card.closest('.service-card');
+    const isActive = serviceCard.classList.contains('active');
+    
+    // Fermer toutes les autres cartes
+    document.querySelectorAll('.service-card.active').forEach(activeCard => {
+        if (activeCard !== serviceCard) {
+            activeCard.classList.remove('active');
+            gsap.to(activeCard.querySelector('.service-content'), {
+                maxHeight: 0,
+                duration: 0.5,
+                ease: "power2.inOut"
+            });
+            gsap.to(activeCard.querySelector('.service-arrow'), {
+                rotate: 0,
+                color: "#646d70",
+                duration: 0.3
+            });
+        }
+    });
+    
+    // Basculer l'état actif
+    serviceCard.classList.toggle('active');
+    
+    if (serviceCard.classList.contains('active')) {
+        gsap.to(serviceCard.querySelector('.service-content'), {
+            maxHeight: "500px",
+            duration: 0.5,
+            ease: "power2.inOut"
+        });
+        gsap.to(serviceCard.querySelector('.service-arrow'), {
+            rotate: 180,
+            color: "#2bbff0",
+            duration: 0.3
+        });
+    } else {
+        gsap.to(serviceCard.querySelector('.service-content'), {
+            maxHeight: 0,
+            duration: 0.5,
+            ease: "power2.inOut"
+        });
+        gsap.to(serviceCard.querySelector('.service-arrow'), {
+            rotate: 0,
+            color: "#646d70",
+            duration: 0.3
         });
     }
+}
+
+// Animation d'entrée des cartes
+gsap.from(".service-card", {
+    scrollTrigger: {
+        trigger: "#services",
+        start: "top 70%",
+        toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 50,
+    duration: 0.8,
+    stagger: {
+        each: 0.15,
+        from: "random"
+    },
+    ease: "back.out(1.7)"
+});
 
     window.toggleServiceDetails = toggleServiceDetails;
 });
