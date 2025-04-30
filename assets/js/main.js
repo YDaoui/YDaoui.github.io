@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ===== GSAP ANIMATIONS ===== */
     if (typeof gsap !== 'undefined') {
-
         const overlays = gsap.timeline();
         overlays
             .to(".first", { duration: 1.5, top: "-100%", ease: "expo.inOut" })
