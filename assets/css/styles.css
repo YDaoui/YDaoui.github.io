@@ -650,78 +650,104 @@ img {
     font-weight: 500;
 }
   /* Section Experience */
-#blog {
-  padding: 50px;
-}
-
+/* Conteneur pour la grille d'expériences */
 .experience-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grille flexible */
-  gap: 30px; /* Espacement entre les cartes */
-  padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Crée des colonnes adaptatives */
+    gap: 20px; /* Espacement entre les cartes */
+    padding: 20px;
 }
 
+/* Carte individuelle de l'expérience */
 .experience-card {
-  background-color: #333;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #1d1d1d; /* Fond sombre pour chaque carte */
+    color: #fff; /* Texte blanc */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
+.experience-card:hover {
+    transform: scale(1.05); /* Effet d'agrandissement au survol */
+}
+
+/* Entête de la carte d'expérience */
 .experience-card-header {
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #444;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #333; /* Fond sombre pour l'en-tête */
 }
 
-.experience-card-header .company-logo img {
-  max-width: 50px;
-  border-radius: 50%;
+.company-logo img {
+    width: 50px;
+    height: auto;
+    margin-right: 20px;
 }
 
-.experience-card-header .experience-title h3 {
-  margin: 0;
-  color: #fff;
+.experience-title h3 {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
-.experience-card-header .experience-arrow {
-  color: #fff;
+.experience-title p {
+    margin: 5px 0;
+    font-size: 1em;
+    font-weight: normal;
 }
 
+.experience-arrow {
+    margin-left: auto;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+/* Détails de la carte d'expérience (affichés au clic) */
 .experience-card-details {
-  padding: 20px;
-  background-color: #555;
+    display: none;
+    padding: 20px;
+    background-color: #2a2a2a;
 }
 
-.experience-card-details .experience-meta {
-  font-size: 0.9rem;
-  margin-bottom: 15px;
+/* Lorsque l'élément est activé (via toggleExperienceDetails), il devient visible */
+.experience-card-details.active {
+    display: block;
 }
 
-.experience-card-details .experience-description ul {
-  padding-left: 20px;
-  list-style-type: disc;
+.experience-meta {
+    font-size: 0.9em;
+    margin-bottom: 10px;
 }
 
-.experience-card-details .tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.experience-description {
+    margin-bottom: 15px;
+}
+
+.experience-tech h4 {
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .tech-tag {
-  background-color: #777;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 0.9rem;
+    background-color: #555;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9em;
 }
 
+/* Responsive : ajuster la grille sur les petits écrans */
 @media (max-width: 768px) {
-  .experience-container {
-    grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
-  }
+    .experience-container {
+        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
+    }
 }
+
 
