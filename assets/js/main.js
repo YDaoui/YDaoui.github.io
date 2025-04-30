@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log("DOM fully loaded");
 
     /* ===== MENU TOGGLE ===== */
@@ -10,19 +10,22 @@ document.addEventListener('DOMContentLoaded', function() {
             toggle.addEventListener('click', () => {
                 console.log("Menu toggle clicked");
                 nav.classList.toggle('show');
-                
+
                 if (nav.classList.contains('show')) {
-                    gsap.from(nav.querySelectorAll('.nav__item'), {
-                        opacity: 0,
-                        y: 20,
-                        duration: 0.5,
-                        stagger: 0.1,
-                        ease: "power2.out"
-                    });
+                    const items = nav.querySelectorAll('.nav__item');
+                    if (items.length > 0) {
+                        gsap.from(items, {
+                            opacity: 0,
+                            y: 20,
+                            duration: 0.5,
+                            stagger: 0.1,
+                            ease: "power2.out"
+                        });
+                    }
                 }
             });
         } else {
-            console.error("Menu elements not found:", {toggleId, navId});
+            console.error("Menu elements not found:", { toggleId, navId });
         }
     };
 
@@ -30,14 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /* ===== GSAP ANIMATIONS ===== */
     if (typeof gsap !== 'undefined') {
-        // 1. ANIMATION DES OVERLAYS
+        if (typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+        }
+
         const overlays = gsap.timeline();
         overlays
-            .to(".first", {duration: 1.5, top: "-100%", ease: "expo.inOut"})
-            .to(".second", {duration: 1.5, top: "-100%", ease: "expo.inOut"}, "-=1.2")
-            .to(".third", {duration: 1.5, top: "-100%", ease: "expo.inOut"}, "-=1.2");
+            .to(".first", { duration: 1.5, top: "-100%", ease: "expo.inOut" })
+            .to(".second", { duration: 1.5, top: "-100%", ease: "expo.inOut" }, "-=1.2")
+            .to(".third", { duration: 1.5, top: "-100%", ease: "expo.inOut" }, "-=1.2");
 
-        // 2. ANIMATION DE L'IMAGE
         gsap.from(".home__img", {
             duration: 2,
             x: 100,
@@ -46,10 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
             delay: 1.5
         });
 
-        // 3. ANIMATION PRINCIPALE DE LA SECTION HOME
         const homeTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-        
-        // Animation du conteneur
+
         homeTimeline.from('.home__information', {
             opacity: 0,
             y: 30,
@@ -57,56 +60,58 @@ document.addEventListener('DOMContentLoaded', function() {
             delay: 1.5
         });
 
-        // Animation du texte d'introduction en #646d70 (gris)
         homeTimeline.from('.home__pressent', {
             opacity: 0,
             y: 20,
             duration: 0.8,
             stagger: 0.15,
-            onStart: function() {
+            onStart: function () {
                 document.querySelectorAll('.home__pressent').forEach(el => {
                     el.style.color = "#646d70";
                 });
             }
         }, "-=0.8");
 
-        // Animation spéciale pour le nom "Yassine Daoui" (blanc -> bleu)
-        homeTimeline.from(".home__title", {
+        const homeTitle = document.querySelector(".home__title");
+        homeTimeline.from(homeTitle, {
             x: -150,
             opacity: 0,
             duration: 1.5,
             ease: "elastic.out(1, 0.8)",
-            onStart: function() {
-                document.querySelector('.home__title').style.color = "#ffffff";
-                gsap.to(".home__title", {
-                    color: "#2bbff0",
-                    duration: 1.8,
-                    ease: "sine.inOut"
-                });
+            onStart: function () {
+                if (homeTitle) {
+                    homeTitle.style.color = "#ffffff";
+                    gsap.to(homeTitle, {
+                        color: "#2bbff0",
+                        duration: 1.8,
+                        ease: "sine.inOut"
+                    });
+                }
             }
         }, "-=0.5");
 
-        // Animation spéciale pour "Consultant Data" (blanc -> bleu)
-        homeTimeline.from(".home__skill", {
+        const homeSkill = document.querySelector(".home__skill");
+        homeTimeline.from(homeSkill, {
             x: 150,
             opacity: 0,
             duration: 1.5,
             ease: "back.out(3)",
-            onStart: function() {
-                document.querySelector('.home__skill').style.color = "#ffffff";
+            onStart: function () {
+                if (homeSkill) homeSkill.style.color = "#ffffff";
             },
-            onComplete: function() {
-                gsap.to(".home__skill", {
-                    color: "#2bbff0",
-                    duration: 0.8,
-                    yoyo: true,
-                    repeat: 1,
-                    ease: "power1.inOut"
-                });
+            onComplete: function () {
+                if (homeSkill) {
+                    gsap.to(homeSkill, {
+                        color: "#2bbff0",
+                        duration: 0.8,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: "power1.inOut"
+                    });
+                }
             }
         }, "-=1");
 
-        // Animation du bouton CV
         homeTimeline.from('.home__button', {
             opacity: 0,
             y: 30,
@@ -114,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "bounce.out"
         }, "-=0.5");
 
-        // 4. ANIMATION DU LOGO ET ICÔNES SOCIALES
         gsap.from('.nav__logo', {
             opacity: 0,
             duration: 1.5,
@@ -132,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "back.out(2)"
         });
 
-        /* ===== SCROLL ANIMATIONS ===== */
         gsap.from("#about .section-title", {
             scrollTrigger: {
                 trigger: "#about",
@@ -145,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "power2.out"
         });
 
-        // Animation pour les cartes de service
         gsap.from(".service-card", {
             scrollTrigger: {
                 trigger: "#services",
@@ -160,17 +162,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 from: "random"
             },
             ease: "back.out(1.7)",
-            onStart: function() {
-                gsap.from(".service-header ion-icon:first-child", {
-                    color: "#646d70",
-                    duration: 1.5,
-                    ease: "power2.inOut",
-                    stagger: 0.1
-                });
+            onStart: function () {
+                const icons = document.querySelectorAll(".service-header ion-icon:first-child");
+                if (icons.length > 0) {
+                    gsap.from(icons, {
+                        color: "#646d70",
+                        duration: 1.5,
+                        ease: "power2.inOut",
+                        stagger: 0.1
+                    });
+                }
             }
         });
 
-        // Animation pour les cartes d'expérience
         gsap.from(".experience-card", {
             scrollTrigger: {
                 trigger: "#blog",
@@ -187,38 +191,28 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "back.out(1.7)"
         });
 
-        // Animation au survol des cartes de service
         document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                gsap.to(card.querySelector('.service-header h3'), {
-                    color: "#2bbff0",
-                    duration: 0.3
+            const title = card.querySelector('.service-header h3');
+            if (title) {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(title, { color: "#2bbff0", duration: 0.3 });
                 });
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card.querySelector('.service-header h3'), {
-                    color: "#ffffff",
-                    duration: 0.3
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(title, { color: "#ffffff", duration: 0.3 });
                 });
-            });
+            }
         });
 
-        // Animation au survol des cartes d'expérience
         document.querySelectorAll('.experience-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                gsap.to(card.querySelector('.experience-title h3'), {
-                    color: "#2bbff0",
-                    duration: 0.3
+            const title = card.querySelector('.experience-title h3');
+            if (title) {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(title, { color: "#2bbff0", duration: 0.3 });
                 });
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card.querySelector('.experience-title h3'), {
-                    color: "#ffffff",
-                    duration: 0.3
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(title, { color: "#ffffff", duration: 0.3 });
                 });
-            });
+            }
         });
 
         gsap.from("#contact .section-title, #contact .contact-form", {
@@ -233,21 +227,20 @@ document.addEventListener('DOMContentLoaded', function() {
             stagger: 0.2,
             ease: "power2.out"
         });
-
     } else {
         console.error("GSAP not loaded!");
     }
 
     /* ===== SMOOTH SCROLLING ===== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            
+
             if (targetElement) {
                 const navMenu = document.getElementById('nav-menu');
-                if (navMenu && navMenu.classList.contains('show')) {
+                if (navMenu?.classList.contains('show')) {
                     navMenu.classList.remove('show');
                 }
 
@@ -270,11 +263,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', () => {
         let current = "";
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            
+
             if (window.pageYOffset >= (sectionTop - sectionHeight / 3)) {
                 current = section.getAttribute('id');
             }
@@ -291,20 +284,24 @@ document.addEventListener('DOMContentLoaded', function() {
     /* ===== EXPERIENCE CARDS TOGGLE ===== */
     function toggleExperienceDetails(id) {
         const details = document.getElementById(id);
+        if (!details) return;
+
         const card = details.closest('.experience-card');
-        
-        // Close all other open cards
+        if (!card) return;
+
         document.querySelectorAll('.experience-card').forEach(item => {
             if (item !== card && item.classList.contains('active')) {
                 item.classList.remove('active');
-                item.querySelector('.experience-card-details').style.maxHeight = '0';
-                item.querySelector('.experience-card-details').style.padding = '0 20px';
+                const detailEl = item.querySelector('.experience-card-details');
+                if (detailEl) {
+                    detailEl.style.maxHeight = '0';
+                    detailEl.style.padding = '0 20px';
+                }
             }
         });
-        
-        // Toggle current card
+
         card.classList.toggle('active');
-        
+
         if (card.classList.contains('active')) {
             details.style.maxHeight = details.scrollHeight + 'px';
             details.style.padding = '20px';
@@ -332,9 +329,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (arrow) arrow.style.transform = 'rotate(0deg)';
         } else {
             details.classList.add('show');
-            gsap.to(details, {
-                height: 'auto',
-                opacity: 1,
+            gsap.set(details, { height: 'auto' });
+            gsap.from(details, {
+                height: 0,
+                opacity: 0,
                 duration: 0.3,
                 ease: "power1.inOut"
             });
@@ -342,19 +340,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialize service details
     document.querySelectorAll('.service-details').forEach(details => {
         details.style.height = '0';
         details.style.opacity = '0';
     });
 
-    // Initialize experience cards
     document.querySelectorAll('.experience-card-details').forEach(details => {
         details.style.maxHeight = '0';
         details.style.padding = '0 20px';
     });
 
-    // Make functions available globally
     window.toggleServiceDetails = toggleServiceDetails;
     window.toggleExperienceDetails = toggleExperienceDetails;
 });
