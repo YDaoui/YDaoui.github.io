@@ -150,48 +150,48 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "power2.out"
         });
 
-        // Ajoutez cette partie dans la section GSAP Animations
-gsap.from(".service-card", {
-    scrollTrigger: {
-        trigger: "#services",
-        start: "top 80%",
-        toggleActions: "play none none none"
-    },
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: {
-        each: 0.2,
-        from: "random"
-    },
-    ease: "back.out(1.7)",
-    onStart: function() {
-        // Animation de couleur pour les icônes
-        gsap.from(".service-header ion-icon:first-child", {
-            color: "#646d70",
-            duration: 1.5,
-            ease: "power2.inOut",
-            stagger: 0.1
+        // Animation des cartes de services
+        gsap.from(".service-card", {
+            scrollTrigger: {
+                trigger: "#services",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: {
+                each: 0.2,
+                from: "random"
+            },
+            ease: "back.out(1.7)",
+            onStart: function() {
+                // Animation de couleur pour les icônes
+                gsap.from(".service-header ion-icon:first-child", {
+                    color: "#646d70",
+                    duration: 1.5,
+                    ease: "power2.inOut",
+                    stagger: 0.1
+                });
+            }
         });
-    }
-});
 
-// Animation au survol des cartes
-document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        gsap.to(card.querySelector('.service-header h3'), {
-            color: "#2bbff0",
-            duration: 0.3
+        // Animation au survol des cartes
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card.querySelector('.service-header h3'), {
+                    color: "#2bbff0",
+                    duration: 0.3
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card.querySelector('.service-header h3'), {
+                    color: "#ffffff",
+                    duration: 0.3
+                });
+            });
         });
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        gsap.to(card.querySelector('.service-header h3'), {
-            color: "#ffffff",
-            duration: 0.3
-        });
-    });
-});
 
         gsap.from("#contact .section-title, #contact .contact-form", {
             scrollTrigger: {
