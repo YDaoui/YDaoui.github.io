@@ -3,6 +3,44 @@
 /*Varibles sass*/
 /*Variables css*/
 /*Colores*/
+/* Ajoutez ceci en haut de votre CSS */
+body, html {
+    background-color: #000 !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Noir par défaut */
+}
+
+.first {
+    left: 0;
+}
+
+.second {
+    left: 33.33%;
+}
+
+.third {
+    left: 66.66%;
+}
 :root {
   --first-color: #2bbff0;
   --black-color: #000;
