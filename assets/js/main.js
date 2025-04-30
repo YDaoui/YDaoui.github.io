@@ -260,25 +260,28 @@ document.querySelectorAll('.service-card').forEach(card => {
         });
     });
     // Experience section toggle
+// Experience accordion functionality
 function toggleExperienceDetails(id) {
     const details = document.getElementById(id);
-    const item = details.parentElement;
+    const card = details.closest('.experience-card');
     
-    // Close all other open items
-    document.querySelectorAll('.experience-item').forEach(expItem => {
-        if (expItem !== item && expItem.classList.contains('active')) {
-            expItem.classList.remove('active');
-            expItem.querySelector('.experience-details').style.maxHeight = '0';
+    // Close all other open cards
+    document.querySelectorAll('.experience-card').forEach(item => {
+        if (item !== card && item.classList.contains('active')) {
+            item.classList.remove('active');
+            item.querySelector('.experience-card-details').style.maxHeight = '0';
         }
     });
     
-    // Toggle current item
-    item.classList.toggle('active');
+    // Toggle current card
+    card.classList.toggle('active');
     
-    if (item.classList.contains('active')) {
+    if (card.classList.contains('active')) {
         details.style.maxHeight = details.scrollHeight + 'px';
+        details.style.padding = '20px';
     } else {
         details.style.maxHeight = '0';
+        details.style.padding = '0 20px';
     }
 }
 
@@ -317,3 +320,4 @@ function toggleExperienceDetails(id) {
 
     window.toggleServiceDetails = toggleServiceDetails;
 });
+
