@@ -477,3 +477,44 @@ img {
         overflow-y: visible;
     }
 }
+/* ===== EXPERIENCE SECTION ===== */
+.experience {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.job {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px 25px;
+    border-radius: 10px;
+    border-left: 4px solid var(--first-color);
+    transition: all 0.4s ease;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.job:hover {
+    transform: translateY(-10px);
+    background: rgba(43, 191, 240, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.job h3 {
+    color: var(--first-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.job-period {
+    color: #bbb;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.job-description {
+    color: #ddd;
+    line-height: 1.6;
+}
