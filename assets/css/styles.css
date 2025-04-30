@@ -3,44 +3,6 @@
 /*Varibles sass*/
 /*Variables css*/
 /*Colores*/
-/* Ajoutez ceci en haut de votre CSS */
-body, html {
-    background-color: #000 !important;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.overlay-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    pointer-events: none;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000; /* Noir par défaut */
-}
-
-.first {
-    left: 0;
-}
-
-.second {
-    left: 33.33%;
-}
-
-.third {
-    left: 66.66%;
-}
 :root {
   --first-color: #2bbff0;
   --black-color: #000;
@@ -165,7 +127,7 @@ img {
 }
 
 .nav__link {
-  color: var(--white-color);
+  color: var(--text-color);
 }
 
 .nav__link:hover {
@@ -190,7 +152,6 @@ img {
 .nav__toggle {
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--white-color);
 }
 
 /*Aparecer menu*/
@@ -210,6 +171,7 @@ img {
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
   -ms-grid-rows: max-content max-content;
+      grid-template-rows: -webkit-max-content -webkit-max-content;
       grid-template-rows: max-content max-content;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
@@ -226,17 +188,14 @@ img {
 
 .home__pressent {
   font-size: var(--small-font-size);
-  color: var(--white-color);
 }
 
 .home__title {
   font-size: var(--h1-font-size);
-  color: var(--white-color);
 }
 
 .home__skill {
   font-size: var(--h2-font-size);
-  color: var(--white-color);
 }
 
 .home__button {
@@ -269,15 +228,18 @@ img {
   padding-bottom: 1rem;
 }
 
+/* Couleur blanche initiale pour les icônes dans la section home__social */
 .home__social-icon {
-    color: var(--white-color);
-    font-size: 1.8rem;
+    color: white;
+    font-size: 1.8rem; /* ajuste si nécessaire */
     transition: color 0.3s ease;
 }
 
+/* Couleur au survol */
 .home__social-icon:hover {
-    color: var(--first-color);
+    color: #2bbff0;
 }
+
 
 /*----- MEDIA QUERIES -----*/
 @media screen and (min-width: 768px) {
@@ -308,6 +270,7 @@ img {
   }
   .home {
     -ms-grid-rows: max-content 20px;
+        grid-template-rows: -webkit-max-content 20px;
         grid-template-rows: max-content 20px;
     -ms-flex-line-pack: center;
         align-content: center;
@@ -342,7 +305,7 @@ img {
 
 /*ANIMATE*/
 .overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -363,7 +326,6 @@ img {
   background-color: var(--first-color);
   left: 66.6%;
 }
-
 /* Navbar */
 .navbar {
   background: #111;
@@ -393,6 +355,8 @@ img {
 }
 
 /* Sections */
+/* ===== SERVICES SECTION ===== */
+/* ===== SERVICES SECTION ===== */
 .section {
     padding: 80px 20px;
     text-align: center;
@@ -458,9 +422,7 @@ img {
 }
 
 .service-header h3 {
-    font-size: 1.2rem;
-    margin: 0;
-}
+    font-size
 
 /* Blog Post */
 .blog-post {
@@ -506,7 +468,6 @@ img {
 .submit-btn:hover {
   background: #0088cc;
 }
-
 /* ===== ABOUT SECTION ===== */
 .about__content {
     background: rgba(0, 0, 0, 0.7);
@@ -548,6 +509,9 @@ img {
     margin-top: 1rem;
 }
 
+/* ===== SERVICES SECTION ===== */
+
+
 /* ===== CONTACT SECTION ===== */
 .contact-form {
     max-width: 600px;
@@ -581,7 +545,8 @@ img {
     background: #00a0d6;
 }
 
-.name-animation, .job-animation {
+
+  .name-animation, .job-animation {
     display: inline-block;
     overflow: hidden;
 }
@@ -589,8 +554,7 @@ img {
 .name-animation span, .job-animation span {
     display: inline-block;
 }
-
-/* Styles pour les cartes de services */
+  /* Styles pour les cartes de services */
 .services__grid {
     gap: 2rem;
     margin-top: 2rem;
@@ -684,4 +648,42 @@ img {
 .service-tech span {
     color: #ffffff;
     font-weight: 500;
+}
+    /* Ajoutez ceci en haut de votre CSS */
+body, html {
+    background-color: #000 !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Noir par défaut */
+}
+
+.first {
+    left: 0;
+}
+
+.second {
+    left: 33.33%;
+}
+
+.third {
+    left: 66.66%;
 }
