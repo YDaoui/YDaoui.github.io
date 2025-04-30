@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 0.8,
             stagger: 0.15,
             onStart: function() {
-                // Définit la couleur en gris (#646d70)
                 document.querySelectorAll('.home__pressent').forEach(el => {
                     el.style.color = "#646d70";
                 });
@@ -78,9 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 1.5,
             ease: "elastic.out(1, 0.8)",
             onStart: function() {
-                // Définit la couleur initiale en blanc
                 document.querySelector('.home__title').style.color = "#ffffff";
-                // Animation vers #2bbff0 (bleu)
                 gsap.to(".home__title", {
                     color: "#2bbff0",
                     duration: 1.8,
@@ -96,11 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 1.5,
             ease: "back.out(3)",
             onStart: function() {
-                // Définit la couleur initiale en blanc
                 document.querySelector('.home__skill').style.color = "#ffffff";
             },
             onComplete: function() {
-                // Animation vers #2bbff0 avec effet de pulsation
                 gsap.to(".home__skill", {
                     color: "#2bbff0",
                     duration: 0.8,
@@ -150,48 +145,55 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "power2.out"
         });
 
-        // Ajoutez cette partie dans la section GSAP Animations
-gsap.from(".service-card", {
-    scrollTrigger: {
-        trigger: "#services",
-        start: "top 80%",
-        toggleActions: "play none none none"
-    },
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: {
-        each: 0.2,
-        from: "random"
-    },
-    ease: "back.out(1.7)",
-    onStart: function() {
-        // Animation de couleur pour les icônes
-        gsap.from(".service-header ion-icon:first-child", {
-            color: "#646d70",
-            duration: 1.5,
-            ease: "power2.inOut",
-            stagger: 0.1
+        // Animation des cartes de services
+        gsap.from(".service-card", {
+            scrollTrigger: {
+                trigger: "#services",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: {
+                each: 0.2,
+                from: "random"
+            },
+            ease: "back.out(1.7)",
+            onStart: function() {
+                gsap.from(".service-header ion-icon:first-child", {
+                    color: "#646d70",
+                    duration: 1.5,
+                    ease: "power2.inOut",
+                    stagger: 0.1
+                });
+            }
         });
-    }
-});
 
-// Animation au survol des cartes
-document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        gsap.to(card.querySelector('.service-header h3'), {
-            color: "#2bbff0",
-            duration: 0.3
+        // Animation des cartes d'expérience
+        gsap.from(".experience-card", {
+            scrollTrigger: {
+                trigger: "#blog",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            stagger: {
+                each: 0.2,
+                from: "random"
+            },
+            ease: "back.out(1.7)",
+            onStart: function() {
+                gsap.from(".company-logo", {
+                    scale: 0,
+                    duration: 0.6,
+                    ease: "elastic.out(1, 0.5)",
+                    stagger: 0.1
+                });
+            }
         });
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        gsap.to(card.querySelector('.service-header h3'), {
-            color: "#ffffff",
-            duration: 0.3
-        });
-    });
-});
 
         gsap.from("#contact .section-title, #contact .contact-form", {
             scrollTrigger: {
@@ -293,5 +295,65 @@ document.querySelectorAll('.service-card').forEach(card => {
         details.style.opacity = '0';
     });
 
+    /* ===== EXPERIENCE CARDS TOGGLE ===== */
+    function toggleExperienceDetails(id) {
+        const details = document.getElementById(id);
+        if (!details) return;
+
+        const arrow = details.previousElementSibling.querySelector('.experience-arrow');
+
+        if (details.classList.contains('show')) {
+            gsap.to(details, {
+                height: 0,
+                opacity: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
+                duration: 0.3,
+                ease: "power1.inOut",
+                onComplete: () => details.classList.remove('show')
+            });
+            arrow.style.transform = 'rotate(0deg)';
+        } else {
+            details.classList.add('show');
+            gsap.to(details, {
+                height: 'auto',
+                opacity: 1,
+                paddingTop: 0,
+                paddingBottom: '1.5rem',
+                duration: 0.3,
+                ease: "power1.inOut"
+            });
+            arrow.style.transform = 'rotate(180deg)';
+        }
+    }
+
+    // Initialisation des cartes
+    document.querySelectorAll('.service-details, .experience-card-details').forEach(details => {
+        details.style.height = '0';
+        details.style.opacity = '0';
+        if (details.classList.contains('experience-card-details')) {
+            details.style.paddingTop = '0';
+            details.style.paddingBottom = '0';
+        }
+    });
+
+    // Animation au survol des cartes de service
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            gsap.to(card.querySelector('.service-header h3'), {
+                color: "#2bbff0",
+                duration: 0.3
+            });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            gsap.to(card.querySelector('.service-header h3'), {
+                color: "#ffffff",
+                duration: 0.3
+            });
+        });
+    });
+
     window.toggleServiceDetails = toggleServiceDetails;
+    window.toggleExperienceDetails = toggleExperienceDetails;
 });
