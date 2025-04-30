@@ -261,22 +261,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     /* ===== SERVICE CARDS TOGGLE ===== */
-    function toggleServiceDetails(id) {
-        const details = document.getElementById(id);
-        const arrow = details.previousElementSibling.querySelector('.service-arrow');
+    /* ===== SERVICE CARDS TOGGLE ===== */
+        function toggleServiceDetails(id) {
+            const details = document.getElementById(id);
+            const arrow = details.previousElementSibling.querySelector('.service-arrow');
+            
+            // Basculer la classe 'show' pour afficher/masquer les détails
+            details.classList.toggle('show');
+            
+            // Animation de la flèche
+            arrow.style.transform = details.classList.contains('show') 
+                ? 'rotate(180deg)'
+                : 'rotate(0deg)';
+        }
         
-        gsap.to(details, {
-            height: details.style.height === '0px' ? 'auto' : 0,
-            opacity: details.style.opacity === '0' ? 1 : 0,
-            duration: 0.3,
-            ease: "power1.inOut",
-            onStart: () => {
-                arrow.style.transform = details.style.height === '0px' 
-                    ? 'rotate(180deg)' 
-                    : 'rotate(0deg)';
-            }
+        // Masquer tous les détails au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.service-details').forEach(details => {
+                details.style.height = '0';
+                details.style.opacity = '0';
+            });
         });
-    }
 
     window.toggleServiceDetails = toggleServiceDetails;
 });
