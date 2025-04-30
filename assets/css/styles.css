@@ -487,3 +487,11 @@ body {
 .social-badges img {
   margin-right: 0.5rem;
 }
+.experience-logo {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
