@@ -673,3 +673,14 @@ img {
     color: #ffffff;
     font-weight: 500;
 }
+.service-details {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.service-details.show {
+    height: auto;
+    opacity: 1;
+}
