@@ -365,4 +365,6 @@ document.querySelectorAll('.experience-card').forEach(card => {
     });
 });
 
-window.toggleExperienceDetails = toggleExperienceDetails;
+ window.toggleServiceDetails = toggleServiceDetails;
+    window.toggleExperienceDetails = toggleExperienceDetails;
+});
