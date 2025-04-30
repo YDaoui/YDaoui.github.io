@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log("DOM fully loaded");
 
     // Force le fond noir au chargement
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             toggle.addEventListener('click', () => {
                 console.log("Menu toggle clicked");
                 nav.classList.toggle('show');
-                
+
                 if (nav.classList.contains('show')) {
                     gsap.from(nav.querySelectorAll('.nav__item'), {
                         opacity: 0,
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         } else {
-            console.error("Menu elements not found:", {toggleId, navId});
+            console.error("Menu elements not found:", { toggleId, navId });
         }
     };
 
@@ -34,14 +34,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /* ===== GSAP ANIMATIONS ===== */
     if (typeof gsap !== 'undefined') {
-        // 1. ANIMATION DES OVERLAYS
+
         const overlays = gsap.timeline();
         overlays
-            .to(".first", {duration: 1.5, top: "-100%", ease: "expo.inOut"})
-            .to(".second", {duration: 1.5, top: "-100%", ease: "expo.inOut"}, "-=1.2")
-            .to(".third", {duration: 1.5, top: "-100%", ease: "expo.inOut"}, "-=1.2");
+            .to(".first", { duration: 1.5, top: "-100%", ease: "expo.inOut" })
+            .to(".second", { duration: 1.5, top: "-100%", ease: "expo.inOut" }, "-=1.2")
+            .to(".third", { duration: 1.5, top: "-100%", ease: "expo.inOut" }, "-=1.2");
 
-        // 2. ANIMATION DE L'IMAGE
         gsap.from(".home__img", {
             duration: 2,
             x: 100,
@@ -50,10 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
             delay: 1.5
         });
 
-        // 3. ANIMATION PRINCIPALE DE LA SECTION HOME
         const homeTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-        
-        // Animation du conteneur
+
         homeTimeline.from('.home__information', {
             opacity: 0,
             y: 30,
@@ -61,27 +58,26 @@ document.addEventListener('DOMContentLoaded', function() {
             delay: 1.5
         });
 
-        // Animation du texte d'introduction en #646d70 (gris)
         homeTimeline.from('.home__pressent', {
             opacity: 0,
             y: 20,
             duration: 0.8,
             stagger: 0.15,
-            onStart: function() {
+            onStart: function () {
                 document.querySelectorAll('.home__pressent').forEach(el => {
                     el.style.color = "#646d70";
                 });
             }
         }, "-=0.8");
 
-        // Animation spéciale pour le nom "Yassine Daoui" (blanc -> bleu)
         homeTimeline.from(".home__title", {
             x: -150,
             opacity: 0,
             duration: 1.5,
             ease: "elastic.out(1, 0.8)",
-            onStart: function() {
-                document.querySelector('.home__title').style.color = "#ffffff";
+            onStart: function () {
+                const title = document.querySelector('.home__title');
+                if (title) title.style.color = "#ffffff";
                 gsap.to(".home__title", {
                     color: "#2bbff0",
                     duration: 1.8,
@@ -90,16 +86,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=0.5");
 
-        // Animation spéciale pour "Consultant Data" (blanc -> bleu)
         homeTimeline.from(".home__skill", {
             x: 150,
             opacity: 0,
             duration: 1.5,
             ease: "back.out(3)",
-            onStart: function() {
-                document.querySelector('.home__skill').style.color = "#ffffff";
+            onStart: function () {
+                const skill = document.querySelector('.home__skill');
+                if (skill) skill.style.color = "#ffffff";
             },
-            onComplete: function() {
+            onComplete: function () {
                 gsap.to(".home__skill", {
                     color: "#2bbff0",
                     duration: 0.8,
@@ -110,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=1");
 
-        // Animation du bouton CV
         homeTimeline.from('.home__button', {
             opacity: 0,
             y: 30,
@@ -118,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "bounce.out"
         }, "-=0.5");
 
-        // 4. ANIMATION DU LOGO ET ICÔNES SOCIALES
         gsap.from('.nav__logo', {
             opacity: 0,
             duration: 1.5,
@@ -136,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "back.out(2)"
         });
 
-        /* ===== SCROLL ANIMATIONS ===== */
         gsap.from("#about .section-title", {
             scrollTrigger: {
                 trigger: "#about",
@@ -163,29 +156,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 from: "random"
             },
             ease: "back.out(1.7)",
-            onStart: function() {
-                gsap.from(".service-header ion-icon:first-child", {
-                    color: "#646d70",
-                    duration: 1.5,
-                    ease: "power2.inOut",
-                    stagger: 0.1
-                });
+            onStart: function () {
+                const icon = document.querySelector(".service-header ion-icon:first-child");
+                if (icon) {
+                    gsap.from(icon, {
+                        color: "#646d70",
+                        duration: 1.5,
+                        ease: "power2.inOut",
+                        stagger: 0.1
+                    });
+                }
             }
         });
 
         document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
-                gsap.to(card.querySelector('.service-header h3'), {
-                    color: "#2bbff0",
-                    duration: 0.3
-                });
+                const h3 = card.querySelector('.service-header h3');
+                if (h3) {
+                    gsap.to(h3, {
+                        color: "#2bbff0",
+                        duration: 0.3
+                    });
+                }
             });
-            
+
             card.addEventListener('mouseleave', () => {
-                gsap.to(card.querySelector('.service-header h3'), {
-                    color: "#ffffff",
-                    duration: 0.3
-                });
+                const h3 = card.querySelector('.service-header h3');
+                if (h3) {
+                    gsap.to(h3, {
+                        color: "#ffffff",
+                        duration: 0.3
+                    });
+                }
             });
         });
 
@@ -208,11 +210,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /* ===== SMOOTH SCROLLING ===== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            
+
             if (targetElement) {
                 const navMenu = document.getElementById('nav-menu');
                 if (navMenu && navMenu.classList.contains('show')) {
@@ -238,11 +240,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', () => {
         let current = "";
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            
+
             if (window.pageYOffset >= (sectionTop - sectionHeight / 3)) {
                 current = section.getAttribute('id');
             }
@@ -259,8 +261,10 @@ document.addEventListener('DOMContentLoaded', function() {
     /* ===== SERVICE CARDS TOGGLE ===== */
     function toggleServiceDetails(id) {
         const details = document.getElementById(id);
-        const arrow = details.previousElementSibling.querySelector('.service-arrow');
-        
+        if (!details) return;
+
+        const arrow = details.previousElementSibling?.querySelector('.service-arrow');
+
         if (details.classList.contains('show')) {
             gsap.to(details, {
                 height: 0,
@@ -269,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ease: "power1.inOut",
                 onComplete: () => details.classList.remove('show')
             });
-            arrow.style.transform = 'rotate(0deg)';
+            if (arrow) arrow.style.transform = 'rotate(0deg)';
         } else {
             details.classList.add('show');
             gsap.to(details, {
@@ -278,11 +282,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 duration: 0.3,
                 ease: "power1.inOut"
             });
-            arrow.style.transform = 'rotate(180deg)';
+            if (arrow) arrow.style.transform = 'rotate(180deg)';
         }
     }
 
-    // Masquer tous les détails au chargement
     document.querySelectorAll('.service-details').forEach(details => {
         details.style.height = '0';
         details.style.opacity = '0';
