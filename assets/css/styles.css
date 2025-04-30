@@ -468,6 +468,21 @@ img {
 .social-badges {
   margin: 1rem 0;
 }
+/* Fix overflow and ensure scrolling works */
+body {
+  overflow: auto; /* Autorise le scroll vertical */
+}
+
+/* Corrige la hauteur des sections */
+.l-main {
+  min-height: 100vh; /* Au lieu de height, permet d'ajuster si contenu plus grand */
+  overflow: auto;
+}
+
+.section {
+  overflow: visible;
+}
+
 
 .social-badges img {
   margin-right: 0.5rem;
