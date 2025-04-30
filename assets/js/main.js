@@ -296,64 +296,73 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     /* ===== EXPERIENCE CARDS TOGGLE ===== */
-    function toggleExperienceDetails(id) {
-        const details = document.getElementById(id);
-        if (!details) return;
+   /* ===== EXPERIENCE CARDS TOGGLE ===== */
+function toggleExperienceDetails(id) {
+    const details = document.getElementById(id);
+    if (!details) return;
 
-        const arrow = details.previousElementSibling.querySelector('.experience-arrow');
+    const card = details.closest('.experience-card');
+    const arrow = card.querySelector('.experience-arrow');
 
-        if (details.classList.contains('show')) {
-            gsap.to(details, {
-                height: 0,
-                opacity: 0,
-                paddingTop: 0,
-                paddingBottom: 0,
-                duration: 0.3,
-                ease: "power1.inOut",
-                onComplete: () => details.classList.remove('show')
-            });
-            arrow.style.transform = 'rotate(0deg)';
-        } else {
-            details.classList.add('show');
-            gsap.to(details, {
-                height: 'auto',
-                opacity: 1,
-                paddingTop: 0,
-                paddingBottom: '1.5rem',
-                duration: 0.3,
-                ease: "power1.inOut"
-            });
-            arrow.style.transform = 'rotate(180deg)';
-        }
+    if (details.classList.contains('show')) {
+        gsap.to(details, {
+            height: 0,
+            opacity: 0,
+            paddingTop: 0,
+            paddingBottom: 0,
+            marginTop: 0,
+            duration: 0.3,
+            ease: "power1.inOut",
+            onComplete: () => details.classList.remove('show')
+        });
+        gsap.to(arrow, {
+            rotation: 0,
+            duration: 0.3
+        });
+    } else {
+        details.classList.add('show');
+        gsap.to(details, {
+            height: 'auto',
+            opacity: 1,
+            paddingTop: '15px',
+            paddingBottom: '15px',
+            marginTop: '15px',
+            duration: 0.3,
+            ease: "power1.inOut"
+        });
+        gsap.to(arrow, {
+            rotation: 180,
+            duration: 0.3
+        });
     }
+}
 
-    // Initialisation des cartes
-    document.querySelectorAll('.service-details, .experience-card-details').forEach(details => {
-        details.style.height = '0';
-        details.style.opacity = '0';
-        if (details.classList.contains('experience-card-details')) {
-            details.style.paddingTop = '0';
-            details.style.paddingBottom = '0';
-        }
+// Initialisation des cartes
+document.querySelectorAll('.experience-card-details').forEach(details => {
+    gsap.set(details, {
+        height: 0,
+        opacity: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
+        marginTop: 0
     });
-
-    // Animation au survol des cartes de service
-    document.querySelectorAll('.service-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            gsap.to(card.querySelector('.service-header h3'), {
-                color: "#2bbff0",
-                duration: 0.3
-            });
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card.querySelector('.service-header h3'), {
-                color: "#ffffff",
-                duration: 0.3
-            });
-        });
-    });
-
-    window.toggleServiceDetails = toggleServiceDetails;
-    window.toggleExperienceDetails = toggleExperienceDetails;
 });
+
+// Animation au survol des cartes d'expérience
+document.querySelectorAll('.experience-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        gsap.to(card.querySelector('.experience-title h3'), {
+            color: "#2bbff0",
+            duration: 0.3
+        });
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        gsap.to(card.querySelector('.experience-title h3'), {
+            color: "#ffffff",
+            duration: 0.3
+        });
+    });
+});
+
+window.toggleExperienceDetails = toggleExperienceDetails;
