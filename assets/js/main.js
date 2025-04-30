@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM fully loaded");
 
+    // Force le fond noir au chargement
+    document.body.style.backgroundColor = '#000';
+    document.documentElement.style.backgroundColor = '#000';
+
     /* ===== MENU TOGGLE ===== */
     const showMenu = (toggleId, navId) => {
         const toggle = document.getElementById(toggleId),
@@ -64,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 0.8,
             stagger: 0.15,
             onStart: function() {
-                // Définit la couleur en gris (#646d70)
                 document.querySelectorAll('.home__pressent').forEach(el => {
                     el.style.color = "#646d70";
                 });
@@ -78,9 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 1.5,
             ease: "elastic.out(1, 0.8)",
             onStart: function() {
-                // Définit la couleur initiale en blanc
                 document.querySelector('.home__title').style.color = "#ffffff";
-                // Animation vers #2bbff0 (bleu)
                 gsap.to(".home__title", {
                     color: "#2bbff0",
                     duration: 1.8,
@@ -96,11 +97,9 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 1.5,
             ease: "back.out(3)",
             onStart: function() {
-                // Définit la couleur initiale en blanc
                 document.querySelector('.home__skill').style.color = "#ffffff";
             },
             onComplete: function() {
-                // Animation vers #2bbff0 avec effet de pulsation
                 gsap.to(".home__skill", {
                     color: "#2bbff0",
                     duration: 0.8,
@@ -150,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "power2.out"
         });
 
-        // Animation des cartes de services
         gsap.from(".service-card", {
             scrollTrigger: {
                 trigger: "#services",
@@ -166,7 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             ease: "back.out(1.7)",
             onStart: function() {
-                // Animation de couleur pour les icônes
                 gsap.from(".service-header ion-icon:first-child", {
                     color: "#646d70",
                     duration: 1.5,
@@ -176,7 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Animation au survol des cartes
         document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
                 gsap.to(card.querySelector('.service-header h3'), {
@@ -261,27 +257,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     /* ===== SERVICE CARDS TOGGLE ===== */
-    /* ===== SERVICE CARDS TOGGLE ===== */
-        function toggleServiceDetails(id) {
-            const details = document.getElementById(id);
-            const arrow = details.previousElementSibling.querySelector('.service-arrow');
-            
-            // Basculer la classe 'show' pour afficher/masquer les détails
-            details.classList.toggle('show');
-            
-            // Animation de la flèche
-            arrow.style.transform = details.classList.contains('show') 
-                ? 'rotate(180deg)'
-                : 'rotate(0deg)';
-        }
+    function toggleServiceDetails(id) {
+        const details = document.getElementById(id);
+        const arrow = details.previousElementSibling.querySelector('.service-arrow');
         
-        // Masquer tous les détails au chargement de la page
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.service-details').forEach(details => {
-                details.style.height = '0';
-                details.style.opacity = '0';
+        if (details.classList.contains('show')) {
+            gsap.to(details, {
+                height: 0,
+                opacity: 0,
+                duration: 0.3,
+                ease: "power1.inOut",
+                onComplete: () => details.classList.remove('show')
             });
-        });
+            arrow.style.transform = 'rotate(0deg)';
+        } else {
+            details.classList.add('show');
+            gsap.to(details, {
+                height: 'auto',
+                opacity: 1,
+                duration: 0.3,
+                ease: "power1.inOut"
+            });
+            arrow.style.transform = 'rotate(180deg)';
+        }
+    }
 
-     window.toggleServiceDetails = toggleServiceDetails;
-   });
+    // Masquer tous les détails au chargement
+    document.querySelectorAll('.service-details').forEach(details => {
+        details.style.height = '0';
+        details.style.opacity = '0';
+    });
+
+    window.toggleServiceDetails = toggleServiceDetails;
+});
