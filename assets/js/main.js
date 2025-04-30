@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // 3. ANIMATION PRINCIPALE DE LA SECTION HOME
         const homeTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
         
-        // Animation du conteneur
         homeTimeline.from('.home__information', {
             opacity: 0,
             y: 30,
@@ -57,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
             delay: 1.5
         });
 
-        // Animation du texte d'introduction en #646d70 (gris)
         homeTimeline.from('.home__pressent', {
             opacity: 0,
             y: 20,
@@ -70,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=0.8");
 
-        // Animation spéciale pour le nom "Yassine Daoui" (blanc -> bleu)
         homeTimeline.from(".home__title", {
             x: -150,
             opacity: 0,
@@ -86,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=0.5");
 
-        // Animation spéciale pour "Consultant Data" (blanc -> bleu)
         homeTimeline.from(".home__skill", {
             x: 150,
             opacity: 0,
@@ -106,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=1");
 
-        // Animation du bouton CV
         homeTimeline.from('.home__button', {
             opacity: 0,
             y: 30,
@@ -133,44 +128,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         /* ===== SCROLL ANIMATIONS ===== */
-        gsap.from("#about .section-title", {
-            scrollTrigger: {
-                trigger: "#about",
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: "power2.out"
+        // Animation des sections
+        gsap.utils.toArray('section').forEach(section => {
+            gsap.from(section.querySelectorAll('.section-title, .about__content, .services__grid, .experience-container, .contact__container'), {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power2.out"
+            });
         });
 
-        // Animation des cartes de services
-        gsap.from(".service-card", {
-            scrollTrigger: {
-                trigger: "#services",
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            stagger: {
-                each: 0.2,
-                from: "random"
-            },
-            ease: "back.out(1.7)",
-            onStart: function() {
-                gsap.from(".service-header ion-icon:first-child", {
-                    color: "#646d70",
-                    duration: 1.5,
-                    ease: "power2.inOut",
-                    stagger: 0.1
-                });
-            }
-        });
-
-        // Animation des cartes d'expérience
+        // Animation spécifique pour les cartes d'expérience
         gsap.from(".experience-card", {
             scrollTrigger: {
                 trigger: "#blog",
@@ -193,19 +167,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     stagger: 0.1
                 });
             }
-        });
-
-        gsap.from("#contact .section-title, #contact .contact-form", {
-            scrollTrigger: {
-                trigger: "#contact",
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power2.out"
         });
 
     } else {
@@ -290,81 +251,81 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    document.querySelectorAll('.service-details').forEach(details => {
-        details.style.height = '0';
-        details.style.opacity = '0';
-    });
-
     /* ===== EXPERIENCE CARDS TOGGLE ===== */
-   /* ===== EXPERIENCE CARDS TOGGLE ===== */
-function toggleExperienceDetails(id) {
-    const details = document.getElementById(id);
-    if (!details) return;
+    function toggleExperienceDetails(id) {
+        const details = document.getElementById(id);
+        if (!details) return;
 
-    const card = details.closest('.experience-card');
-    const arrow = card.querySelector('.experience-arrow');
+        const card = details.closest('.experience-card');
+        const arrow = card.querySelector('.experience-arrow');
 
-    if (details.classList.contains('show')) {
-        gsap.to(details, {
+        if (details.classList.contains('show')) {
+            gsap.to(details, {
+                height: 0,
+                opacity: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
+                marginTop: 0,
+                duration: 0.3,
+                ease: "power1.inOut",
+                onComplete: () => details.classList.remove('show')
+            });
+            gsap.to(arrow, {
+                rotation: 0,
+                duration: 0.3
+            });
+        } else {
+            details.classList.add('show');
+            gsap.to(details, {
+                height: 'auto',
+                opacity: 1,
+                paddingTop: '15px',
+                paddingBottom: '15px',
+                marginTop: '15px',
+                duration: 0.3,
+                ease: "power1.inOut"
+            });
+            gsap.to(arrow, {
+                rotation: 180,
+                duration: 0.3
+            });
+        }
+    }
+
+    // Initialisation des cartes
+    document.querySelectorAll('.service-details, .experience-card-details').forEach(details => {
+        gsap.set(details, {
             height: 0,
             opacity: 0,
             paddingTop: 0,
             paddingBottom: 0,
-            marginTop: 0,
-            duration: 0.3,
-            ease: "power1.inOut",
-            onComplete: () => details.classList.remove('show')
-        });
-        gsap.to(arrow, {
-            rotation: 0,
-            duration: 0.3
-        });
-    } else {
-        details.classList.add('show');
-        gsap.to(details, {
-            height: 'auto',
-            opacity: 1,
-            paddingTop: '15px',
-            paddingBottom: '15px',
-            marginTop: '15px',
-            duration: 0.3,
-            ease: "power1.inOut"
-        });
-        gsap.to(arrow, {
-            rotation: 180,
-            duration: 0.3
-        });
-    }
-}
-
-// Initialisation des cartes
-document.querySelectorAll('.experience-card-details').forEach(details => {
-    gsap.set(details, {
-        height: 0,
-        opacity: 0,
-        paddingTop: 0,
-        paddingBottom: 0,
-        marginTop: 0
-    });
-});
-
-// Animation au survol des cartes d'expérience
-document.querySelectorAll('.experience-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        gsap.to(card.querySelector('.experience-title h3'), {
-            color: "#2bbff0",
-            duration: 0.3
+            marginTop: 0
         });
     });
-    
-    card.addEventListener('mouseleave', () => {
-        gsap.to(card.querySelector('.experience-title h3'), {
-            color: "#ffffff",
-            duration: 0.3
+
+    // Animation au survol des cartes
+    document.querySelectorAll('.service-card, .experience-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            const title = card.querySelector('h3');
+            if (title) {
+                gsap.to(title, {
+                    color: "#2bbff0",
+                    duration: 0.3
+                });
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            const title = card.querySelector('h3');
+            if (title) {
+                gsap.to(title, {
+                    color: "#ffffff",
+                    duration: 0.3
+                });
+            }
         });
     });
-});
 
- window.toggleServiceDetails = toggleServiceDetails;
+    window.toggleServiceDetails = toggleServiceDetails;
     window.toggleExperienceDetails = toggleExperienceDetails;
 });
