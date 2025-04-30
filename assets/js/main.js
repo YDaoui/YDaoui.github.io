@@ -259,6 +259,28 @@ document.querySelectorAll('.service-card').forEach(card => {
             }
         });
     });
+    // Experience section toggle
+function toggleExperienceDetails(id) {
+    const details = document.getElementById(id);
+    const item = details.parentElement;
+    
+    // Close all other open items
+    document.querySelectorAll('.experience-item').forEach(expItem => {
+        if (expItem !== item && expItem.classList.contains('active')) {
+            expItem.classList.remove('active');
+            expItem.querySelector('.experience-details').style.maxHeight = '0';
+        }
+    });
+    
+    // Toggle current item
+    item.classList.toggle('active');
+    
+    if (item.classList.contains('active')) {
+        details.style.maxHeight = details.scrollHeight + 'px';
+    } else {
+        details.style.maxHeight = '0';
+    }
+}
 
     /* ===== SERVICE CARDS TOGGLE ===== */
     function toggleServiceDetails(id) {
