@@ -320,4 +320,28 @@ function toggleExperienceDetails(id) {
 
     window.toggleServiceDetails = toggleServiceDetails;
 });
+// Animation for experience cards when scrolling
+function animateExperienceCards() {
+    const experienceCards = document.querySelectorAll('.experience-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    experienceCards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Call this function after DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // ... votre code existant ...
+    
+    // Ajoutez cette ligne à la fin
+    animateExperienceCards();
+});
 
