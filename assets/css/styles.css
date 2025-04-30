@@ -651,98 +651,104 @@ img {
 }
   /* Section Experience */
 /* Conteneur pour la grille d'expériences */
+/* ===== EXPERIENCE GRID ===== */
 .experience-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Crée des colonnes adaptatives */
-    gap: 20px; /* Espacement entre les cartes */
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
 }
 
-/* Carte individuelle de l'expérience */
 .experience-card {
-    background-color: #1d1d1d; /* Fond sombre pour chaque carte */
-    color: #fff; /* Texte blanc */
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    transition: transform 0.3s ease;
+    border-left: 4px solid var(--first-color);
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .experience-card:hover {
-    transform: scale(1.05); /* Effet d'agrandissement au survol */
+    transform: translateY(-5px);
+    background: rgba(43, 191, 240, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Entête de la carte d'expérience */
 .experience-card-header {
     display: flex;
     align-items: center;
-    padding: 20px;
-    background-color: #333; /* Fond sombre pour l'en-tête */
+    gap: 15px;
+    cursor: pointer;
+    margin-bottom: 15px;
 }
 
-.company-logo img {
+.company-logo {
     width: 50px;
-    height: auto;
-    margin-right: 20px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 8px;
 }
 
 .experience-title h3 {
     margin: 0;
-    font-size: 1.2em;
-    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .experience-title p {
-    margin: 5px 0;
-    font-size: 1em;
-    font-weight: normal;
+    margin: 5px 0 0 0;
+    color: var(--first-color);
+    font-size: 0.9rem;
 }
 
 .experience-arrow {
     margin-left: auto;
-    font-size: 1.5em;
-    color: #fff;
+    transition: transform 0.3s ease;
 }
 
-/* Détails de la carte d'expérience (affichés au clic) */
 .experience-card-details {
-    display: none;
-    padding: 20px;
-    background-color: #2a2a2a;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
 }
 
-/* Lorsque l'élément est activé (via toggleExperienceDetails), il devient visible */
-.experience-card-details.active {
-    display: block;
+.experience-card.active .experience-card-details {
+    max-height: 1000px;
+    opacity: 1;
+    margin-top: 15px;
+}
+
+.experience-card.active .experience-arrow {
+    transform: rotate(180deg);
 }
 
 .experience-meta {
-    font-size: 0.9em;
-    margin-bottom: 10px;
-}
-
-.experience-description {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #bbb;
     margin-bottom: 15px;
-}
-
-.experience-tech h4 {
-    font-size: 1em;
-    margin-top: 20px;
 }
 
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
+    margin-top: 15px;
 }
 
 .tech-tag {
-    background-color: #555;
-    padding: 5px 10px;
+    background: rgba(43, 191, 240, 0.2);
+    padding: 4px 10px;
     border-radius: 20px;
-    font-size: 0.9em;
+    font-size: 0.8rem;
 }
 
+@media screen and (max-width: 768px) {
+    .experience-container {
+        grid-template-columns: 1fr;
+    }
+}
 /* Responsive : ajuster la grille sur les petits écrans */
 @media (max-width: 768px) {
     .experience-container {
