@@ -918,3 +918,12 @@ img {
     position: relative;
     overflow: hidden;
 }
+/* Assure que les détails sont cachés par défaut */
+.service-details:not(.show) {
+  display: none;
+}
+
+/* Animation pour l'icône flèche */
+.service-arrow.rotated {
+  transform: rotate(180deg);
+}
