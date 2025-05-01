@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // 3. ANIMATION PRINCIPALE DE LA SECTION HOME
         const homeTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
         
-        // Animation du conteneur
         homeTimeline.from('.home__information', {
             opacity: 0,
             y: 30,
@@ -57,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
             delay: 1.5
         });
 
-        // Animation du texte d'introduction en #646d70 (gris)
         homeTimeline.from('.home__pressent', {
             opacity: 0,
             y: 20,
@@ -70,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=0.8");
 
-        // Animation spéciale pour le nom "Yassine Daoui" (blanc -> bleu)
         homeTimeline.from(".home__title", {
             x: -150,
             opacity: 0,
@@ -86,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=0.5");
 
-        // Animation spéciale pour "Consultant Data" (blanc -> bleu)
         homeTimeline.from(".home__skill", {
             x: 150,
             opacity: 0,
@@ -106,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=1");
 
-        // Animation du bouton CV
         homeTimeline.from('.home__button', {
             opacity: 0,
             y: 30,
@@ -145,7 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "power2.out"
         });
 
-        // Animation des cartes de services
         gsap.from(".service-card", {
             scrollTrigger: {
                 trigger: "#services",
@@ -170,7 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Animation des cartes d'expérience
         gsap.from(".experience-card", {
             scrollTrigger: {
                 trigger: "#blog",
@@ -327,7 +320,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialisation des cartes
     document.querySelectorAll('.service-details, .experience-card-details').forEach(details => {
         details.style.height = '0';
         details.style.opacity = '0';
@@ -337,7 +329,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Animation au survol des cartes de service
     document.querySelectorAll('.service-card').forEach(card => {
         card.addEventListener('mouseenter', () => {
             gsap.to(card.querySelector('.service-header h3'), {
