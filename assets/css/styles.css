@@ -925,3 +925,36 @@ img {
     position: relative;
     overflow: hidden;
 }
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1000;
+}
+
+.menu-icon .bar {
+  width: 30px;
+  height: 3px;
+  background-color: white; /* ou ta couleur principale */
+}
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex;
+  }
+
+  nav {
+    display: none; /* Masquer le menu en mobile */
+    flex-direction: column;
+    background-color: #111; /* ou ta couleur de fond */
+    position: absolute;
+    top: 60px; /* ajuste selon ton header */
+    left: 0;
+    width: 100%;
+  }
+
+  nav.active {
+    display: flex; /* Affiche le menu quand l’icône est cliquée */
+  }
+}
+
