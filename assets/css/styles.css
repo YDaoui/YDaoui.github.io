@@ -551,3 +551,33 @@ img {
     flex-direction: column;
   }
 }
+  /* SECTION ABOUT */
+#about {
+  background-color: var(--black-color);
+  padding: 2rem 1rem;
+  margin: 2rem 0;
+}
+
+.about__content {
+  background-color: rgba(43, 191, 240, 0.1); /* Bleu très clair transparent */
+  border: 2px solid var(--first-color); /* Bordure bleue */
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(43, 191, 240, 0.3); /* Légère lueur bleue */
+}
+
+.about__content h3, 
+.about__content h4,
+.about__content p {
+  color: var(--white-color);
+}
+
+/* Boutons sociaux */
+.social-badges a img {
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
+}
+.social-badges a:hover img {
+  transform: scale(1.1);
+}
+
