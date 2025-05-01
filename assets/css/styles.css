@@ -551,33 +551,112 @@ img {
     flex-direction: column;
   }
 }
-  /* SECTION ABOUT */
+  /* ===== ABOUT SECTION ===== */
 #about {
-  background-color: var(--black-color);
-  padding: 2rem 1rem;
-  margin: 2rem 0;
+    background-color: var(--black-color);
+    padding: 80px 20px;
 }
 
-.about__content {
-  background-color: rgba(43, 191, 240, 0.1); /* Bleu très clair transparent */
-  border: 2px solid var(--first-color); /* Bordure bleue */
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 0 20px rgba(43, 191, 240, 0.3); /* Légère lueur bleue */
+#about .bd-grid {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.about__content h3, 
-.about__content h4,
-.about__content p {
-  color: var(--white-color);
+#about .about__content {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--first-color);
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 0 20px rgba(43, 191, 240, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Boutons sociaux */
-.social-badges a img {
-  margin-right: 1rem;
-  transition: transform 0.3s ease;
+#about .about__content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(43, 191, 240, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: var(--z-back);
 }
-.social-badges a:hover img {
-  transform: scale(1.1);
+
+#about .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--white-color);
+    text-align: center;
+    position: relative;
+}
+
+#about .section-title::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    background: var(--first-color);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#about h3 {
+    color: var(--first-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#about h4 {
+    color: var(--white-color);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+#about .about__description p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: #ddd;
+}
+
+#about .social-badges {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+#about .social-badges a {
+    transition: transform 0.3s;
+}
+
+#about .social-badges a:hover {
+    transform: translateY(-3px);
+}
+
+.anime-text {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.anime-text::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--first-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s ease;
+}
+
+.anime-text:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
