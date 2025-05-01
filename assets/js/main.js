@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 3. ANIMATION PRINCIPALE DE LA SECTION HOME
         const homeTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
         
+        // Animation du conteneur
         homeTimeline.from('.home__information', {
             opacity: 0,
             y: 30,
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             delay: 1.5
         });
 
+        // Animation du texte d'introduction en #646d70 (gris)
         homeTimeline.from('.home__pressent', {
             opacity: 0,
             y: 20,
@@ -68,14 +70,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=0.8");
 
+        // Animation spéciale pour le nom "Yassine Daoui" (blanc -> bleu)
         homeTimeline.from(".home__title", {
             x: -150,
             opacity: 0,
             duration: 1.5,
             ease: "elastic.out(1, 0.8)",
             onStart: function() {
-                const title = document.querySelector('.home__title');
-                if (title) title.style.color = "#ffffff";
+                document.querySelector('.home__title').style.color = "#ffffff";
                 gsap.to(".home__title", {
                     color: "#2bbff0",
                     duration: 1.8,
@@ -84,14 +86,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=0.5");
 
+        // Animation spéciale pour "Consultant Data" (blanc -> bleu)
         homeTimeline.from(".home__skill", {
             x: 150,
             opacity: 0,
             duration: 1.5,
             ease: "back.out(3)",
             onStart: function() {
-                const skill = document.querySelector('.home__skill');
-                if (skill) skill.style.color = "#ffffff";
+                document.querySelector('.home__skill').style.color = "#ffffff";
             },
             onComplete: function() {
                 gsap.to(".home__skill", {
@@ -104,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, "-=1");
 
+        // Animation du bouton CV
         homeTimeline.from('.home__button', {
             opacity: 0,
             y: 30,
@@ -111,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "bounce.out"
         }, "-=0.5");
 
+        // 4. ANIMATION DU LOGO ET ICÔNES SOCIALES
         gsap.from('.nav__logo', {
             opacity: 0,
             duration: 1.5,
@@ -141,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: "power2.out"
         });
 
+        // Animation des cartes de services
         gsap.from(".service-card", {
             scrollTrigger: {
                 trigger: "#services",
@@ -165,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
+        // Animation des cartes d'expérience
         gsap.from(".experience-card", {
             scrollTrigger: {
                 trigger: "#blog",
@@ -265,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (details.classList.contains('show')) {
             gsap.to(details, {
-                maxHeight: 0,
+                height: 0,
                 opacity: 0,
                 duration: 0.3,
                 ease: "power1.inOut",
@@ -275,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             details.classList.add('show');
             gsap.to(details, {
-                maxHeight: '500px',
+                height: 'auto',
                 opacity: 1,
                 duration: 0.3,
                 ease: "power1.inOut"
@@ -283,8 +289,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (arrow) arrow.style.transform = 'rotate(180deg)';
         }
     }
-
-    window.toggleServiceDetails = toggleServiceDetails;
 
     document.querySelectorAll('.service-details').forEach(details => {
         details.style.height = '0';
@@ -296,7 +300,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const details = document.getElementById(id);
         if (!details) return;
 
-        const arrow = details.previousElementSibling?.querySelector('.experience-arrow');
+        const arrow = details.previousElementSibling.querySelector('.experience-arrow');
+
         if (details.classList.contains('show')) {
             gsap.to(details, {
                 height: 0,
@@ -307,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ease: "power1.inOut",
                 onComplete: () => details.classList.remove('show')
             });
-            if (arrow) arrow.style.transform = 'rotate(0deg)';
+            arrow.style.transform = 'rotate(0deg)';
         } else {
             details.classList.add('show');
             gsap.to(details, {
@@ -318,12 +323,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 duration: 0.3,
                 ease: "power1.inOut"
             });
-            if (arrow) arrow.style.transform = 'rotate(180deg)';
+            arrow.style.transform = 'rotate(180deg)';
         }
     }
 
-    window.toggleExperienceDetails = toggleExperienceDetails;
-
+    // Initialisation des cartes
     document.querySelectorAll('.service-details, .experience-card-details').forEach(details => {
         details.style.height = '0';
         details.style.opacity = '0';
@@ -333,6 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Animation au survol des cartes de service
     document.querySelectorAll('.service-card').forEach(card => {
         card.addEventListener('mouseenter', () => {
             gsap.to(card.querySelector('.service-header h3'), {
@@ -340,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 duration: 0.3
             });
         });
-
+        
         card.addEventListener('mouseleave', () => {
             gsap.to(card.querySelector('.service-header h3'), {
                 color: "#ffffff",
@@ -349,4 +354,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    window.toggleServiceDetails = toggleServiceDetails;
+    window.toggleExperienceDetails = toggleExperienceDetails;
 });
