@@ -517,34 +517,73 @@
 </section>
 
         <!-- ===== CONTACT SECTION ===== -->
-        <!-- ===== CONTACT SECTION ===== -->
-<!-- Dernier bloc Contact corrigé -->
-<section class="section" id="contact">
+      <section class="section" id="contact">
     <div class="bd-grid">
-        <h2 class="section-title anime-text">Contact</h2>
-
+        <h2 class="section-title anime-text">Contactez-moi</h2>
+        
         <div class="contact__container">
+            <!-- Colonne d'informations -->
             <div class="contact__info">
-                <h3 class="contact__subtitle">Disponible pour de nouvelles opportunités</h3>
-                <p class="contact__text">N'hésitez pas à me contacter pour discuter de votre projet ou pour toute demande d'information.</p>
-
+                <h3 class="contact__subtitle">Collaborons ensemble</h3>
+                <p class="contact__text">Je suis disponible pour discuter de vos projets data, répondre à vos questions ou explorer de nouvelles opportunités professionnelles.</p>
+                
                 <div class="contact__details">
                     <div class="contact__detail">
                         <ion-icon name="mail-outline" class="contact__icon"></ion-icon>
-                        <span>daoui00yassine@gmail.com</span>
+                        <a href="mailto:daoui00yassine@gmail.com" class="contact__link">daoui00yassine@gmail.com</a>
                     </div>
                     <div class="contact__detail">
                         <ion-icon name="location-outline" class="contact__icon"></ion-icon>
-                        <span>Paris, France</span>
+                        <span>Paris, France (Remote possible)</span>
+                    </div>
+                    <div class="contact__detail">
+                        <ion-icon name="calendar-outline" class="contact__icon"></ion-icon>
+                        <span>Disponibilité : Immédiate</span>
                     </div>
                 </div>
+                
+                <div class="contact__social">
+                    <a href="#" class="contact__social-link" aria-label="LinkedIn">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                    <a href="#" class="contact__social-link" aria-label="GitHub">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </a>
+                    <a href="#" class="contact__social-link" aria-label="Twitter">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                </div>
             </div>
-
-            <form action="mailto:daoui00yassine@gmail.com" method="post" enctype="text/plain" class="contact__form">
-                <input type="text" name="name" placeholder="Votre nom" class="contact__input" required>
-                <input type="email" name="email" placeholder="Votre email" class="contact__input" required>
-                <textarea name="message" placeholder="Votre message" class="contact__input" required></textarea>
-                <button type="submit" class="contact__button">Envoyer</button>
+            
+            <!-- Formulaire de contact -->
+            <form id="contactForm" class="contact__form">
+                <div class="form__group">
+                    <input type="text" name="name" id="name" class="contact__input" required>
+                    <label for="name" class="form__label">Votre nom complet</label>
+                </div>
+                
+                <div class="form__group">
+                    <input type="email" name="email" id="email" class="contact__input" required>
+                    <label for="email" class="form__label">Votre email professionnel</label>
+                </div>
+                
+                <div class="form__group">
+                    <input type="text" name="subject" id="subject" class="contact__input" required>
+                    <label for="subject" class="form__label">Objet du message</label>
+                </div>
+                
+                <div class="form__group">
+                    <textarea name="message" id="message" rows="5" class="contact__input contact__textarea" required></textarea>
+                    <label for="message" class="form__label">Décrivez votre projet ou demande</label>
+                </div>
+                
+                <div class="form__footer">
+                    <button type="submit" class="contact__button">
+                        <span>Envoyer le message</span>
+                        <ion-icon name="send-outline" class="button__icon"></ion-icon>
+                    </button>
+                    <p class="form__notice">Je m'engage à vous répondre sous 48 heures</p>
+                </div>
             </form>
         </div>
     </div>
