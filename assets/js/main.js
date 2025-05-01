@@ -353,4 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
+    window.toggleServiceDetails = toggleServiceDetails;
+    window.toggleExperienceDetails = toggleExperienceDetails;
 });
