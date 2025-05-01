@@ -263,32 +263,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     /* ===== SERVICE CARDS TOGGLE ===== */
-    function toggleServiceDetails(id) {
-        const details = document.getElementById(id);
-        if (!details) return;
+    /* ===== SERVICE CARDS TOGGLE ===== */
+function toggleServiceDetails(id) {
+    const details = document.getElementById(id);
+    if (!details) return;
 
-        const arrow = details.previousElementSibling?.querySelector('.service-arrow');
+    const arrow = details.previousElementSibling?.querySelector('.service-arrow');
 
-        if (details.classList.contains('show')) {
-            gsap.to(details, {
-                height: 0,
-                opacity: 0,
-                duration: 0.3,
-                ease: "power1.inOut",
-                onComplete: () => details.classList.remove('show')
-            });
-            if (arrow) arrow.style.transform = 'rotate(0deg)';
-        } else {
-            details.classList.add('show');
-            gsap.to(details, {
-                height: 'auto',
-                opacity: 1,
-                duration: 0.3,
-                ease: "power1.inOut"
-            });
-            if (arrow) arrow.style.transform = 'rotate(180deg)';
-        }
+    // Si le détail est déjà visible
+    if (details.classList.contains('show')) {
+        gsap.to(details, {
+            maxHeight: 0,
+            opacity: 0,
+            duration: 0.3,
+            ease: "power1.inOut",
+            onComplete: () => details.classList.remove('show')
+        });
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+    } else {
+        details.classList.add('show');
+        gsap.to(details, {
+            maxHeight: '500px', // Ajuste selon la hauteur de ton contenu
+            opacity: 1,
+            duration: 0.3,
+            ease: "power1.inOut"
+        });
+        if (arrow) arrow.style.transform = 'rotate(180deg)';
     }
+}
+
 
     document.querySelectorAll('.service-details').forEach(details => {
         details.style.height = '0';
