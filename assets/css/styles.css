@@ -502,4 +502,21 @@ img {
 .third { top: 66.66%; left: 0; }
 
 
+.nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 0 1rem;
+    background-color: var(--black-color-light);
+    transition: .4s;
+    z-index: 99;
+    border-bottom: 2px solid var(--first-color);
+}
+
+.show-menu {
+    top: 3rem;
+}
+
+
   
