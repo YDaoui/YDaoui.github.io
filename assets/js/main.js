@@ -354,6 +354,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    document.getElementById('refresh-logo').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // 1. Scroll vers le haut en douceur
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // 2. Rafraîchissement après un léger délai
+    setTimeout(() => {
+        // Le paramètre 'true' force le rechargement depuis le serveur
+        window.location.reload(true); 
+    }, 500);
+});
+
     window.toggleServiceDetails = toggleServiceDetails;
     window.toggleExperienceDetails = toggleExperienceDetails;
 });
