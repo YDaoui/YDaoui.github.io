@@ -442,570 +442,112 @@ img {
 }
 
 /* Contact Form */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.contact-form input, .contact-form textarea {
-  width: 80%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 5px;
-  background: #333;
-  color: #fff;
-}
-.submit-btn {
-  background: #00aaff;
-  color: white;
-  border: none;
-  padding: 10px 30px;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.submit-btn:hover {
-  background: #0088cc;
-}
-/* ===== ABOUT SECTION ===== */
-.about__content {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 2rem;
-    border-radius: 15px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.social-badges {
-    margin: 1rem 0;
-}
-
-.social-badges img {
-    margin-right: 0.5rem;
-    height: 28px;
-}
-
-.experience {
-    margin-top: 2rem;
-}
-
-.job {
-    background: rgba(43, 191, 240, 0.1);
-    padding: 1rem;
-    border-left: 3px solid var(--first-color);
-    margin-bottom: 1.5rem;
-    border-radius: 0 5px 5px 0;
-}
-
-.tech-stack {
-    margin-top: 2rem;
-}
-
-.badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-/* ===== SERVICES SECTION ===== */
-
-
-/* ===== CONTACT SECTION ===== */
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    border-radius: 5px;
-}
-
-.submit-btn {
-    background: var(--first-color);
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.submit-btn:hover {
-    background: #00a0d6;
-}
-
-
-  .name-animation, .job-animation {
-    display: inline-block;
-    overflow: hidden;
-}
-
-.name-animation span, .job-animation span {
-    display: inline-block;
-}
-  /* Styles pour les cartes de services */
-.services__grid {
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.service-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 1.5rem;
-    border: 1px solid rgba(100, 109, 112, 0.2);
-    transition: all 0.3s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(43, 191, 240, 0.1);
-    border-color: #2bbff0;
-}
-
-.service-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-    padding: 0.5rem 0;
-}
-
-.service-header ion-icon:first-child {
-    font-size: 1.8rem;
-    color: #2bbff0;
-}
-
-.service-header h3 {
-    margin: 0;
-    flex-grow: 1;
-    color: #ffffff;
-    font-size: 1.2rem;
-}
-
-.service-arrow {
-    transition: transform 0.3s ease;
-    color: #646d70;
-}
-
-.service-brief {
-    color: #646d70;
-    margin: 0.5rem 0 1rem;
-    font-size: 0.9rem;
-}
-
-.service-details {
-    overflow: hidden;
-    height: 0;
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.service-details ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin: 1rem 0;
-}
-
-.service-details li {
-    margin-bottom: 0.8rem;
-    color: #ffffff;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.service-details li:before {
-    content: "•";
-    color: #2bbff0;
-    position: absolute;
-    left: 0;
-}
-
-.service-details li strong {
-    color: #2bbff0;
-}
-
-.service-tech {
-    font-size: 0.8rem;
-    color: #646d70;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px dashed rgba(100, 109, 112, 0.3);
-}
-
-.service-tech span {
-    color: #ffffff;
-    font-weight: 500;
-}
-  /* Section Experience */
-/* Conteneur pour la grille d'expériences */
-/* ===== EXPERIENCE GRID ===== */
-.experience-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.experience-card {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 25px;
-    border-radius: 10px;
-    border-left: 4px solid var(--first-color);
-    transition: all 0.4s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.experience-card:hover {
-    transform: translateY(-5px);
-    background: rgba(43, 191, 240, 0.1);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.experience-card-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    cursor: pointer;
-    margin-bottom: 15px;
-}
-
-.company-logo {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    border-radius: 8px;
-}
-
-.experience-title h3 {
-    margin: 0;
-    font-size: 1.2rem;
-}
-
-.experience-title p {
-    margin: 5px 0 0 0;
-    color: var(--first-color);
-    font-size: 0.9rem;
-}
-
-.experience-arrow {
-    margin-left: auto;
-    transition: transform 0.3s ease;
-}
-
-.experience-card-details {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
-}
-
-.experience-card.active .experience-card-details {
-    max-height: 1000px;
-    opacity: 1;
-    margin-top: 15px;
-}
-
-.experience-card.active .experience-arrow {
-    transform: rotate(180deg);
-}
-
-.experience-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    color: #bbb;
-    margin-bottom: 15px;
-}
-
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-.tech-tag {
-    background: rgba(43, 191, 240, 0.2);
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-}
-
-@media screen and (max-width: 768px) {
-    .experience-container {
-        grid-template-columns: 1fr;
-    }
-}
-/* Responsive : ajuster la grille sur les petits écrans */
-@media (max-width: 768px) {
-    .experience-container {
-        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
-    }
-}
-  /* ===== EXPÉRIENCES EN GRID ===== */
-.experience {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.job {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 25px;
-    border-radius: 10px;
-    border-left: 4px solid var(--first-color);
-    transition: all 0.4s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    height: 100%;
-}
-
-.job:hover {
-    transform: translateY(-5px);
-    background: rgba(43, 191, 240, 0.1);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.job-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.job-logo {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    border-radius: 8px;
-}
-
-.job-company {
-    color: var(--first-color);
-    font-weight: 600;
-}
-
-.job-period {
-    display: block;
-    color: #bbb;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-}
-
-.job-tech {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px dashed rgba(255,255,255,0.1);
-}
-
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
-}
-
-.tech-tags span {
-    background: rgba(43, 191, 240, 0.2);
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-}
-
-@media screen and (max-width: 768px) {
-    .experience {
-        grid-template-columns: 1fr;
-    }
-}
-
-
- /* le css a a jouter pour le contact  */
-  /* ===== CONTACT SECTION ===== */
+/* ===== CONTACT SECTION AMÉLIORÉE ===== */
 .contact__container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background: #111; /* gris très foncé */
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid #2bbff0;
+  box-shadow: 0 0 20px rgba(43, 191, 240, 0.15);
 }
 
 .contact__info {
-    background: rgba(43, 191, 240, 0.05);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(43, 191, 240, 0.1);
-}
-
-.contact__subtitle {
-    font-size: 1.5rem;
-    color: var(--first-color);
-    margin-bottom: 1.5rem;
-    position: relative;
-}
-
-.contact__subtitle::after {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 3px;
-    background: var(--first-color);
-    bottom: -10px;
-    left: 0;
-}
-
-.contact__text {
-    color: #bbb;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-.contact__details {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.contact__detail {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.contact__icon {
-    font-size: 1.5rem;
-    color: var(--first-color);
-    flex-shrink: 0;
-}
-
-.contact__link {
-    color: #fff;
-    transition: color 0.3s;
-}
-
-.contact__link:hover {
-    color: var(--first-color);
-}
-
-.contact__social {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.contact__social-link {
-    color: #fff;
-    font-size: 1.5rem;
-    transition: all 0.3s;
-}
-
-.contact__social-link:hover {
-    color: var(--first-color);
-    transform: translateY(-3px);
+  flex: 1 1 300px;
+  color: #fff;
 }
 
 .contact__form {
-    display: grid;
-    gap: 1.5rem;
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: 10px;
 }
 
-.form__group {
-    position: relative;
+.contact__form .form__group {
+  position: relative;
 }
 
-.contact__input {
-    width: 100%;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    color: #fff;
-    transition: all 0.3s;
-}
-
-.contact__input:focus {
-    border-color: var(--first-color);
-    outline: none;
-    background: rgba(43, 191, 240, 0.05);
-}
-
+.contact__input,
 .contact__textarea {
-    resize: vertical;
-    min-height: 150px;
+  width: 100%;
+  padding: 1rem;
+  background: #222;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: border 0.3s;
+}
+
+.contact__input:focus,
+.contact__textarea:focus {
+  border: 1px solid #2bbff0;
+  outline: none;
 }
 
 .form__label {
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
-    color: #bbb;
-    transition: all 0.3s;
-    pointer-events: none;
-}
-
-.contact__input:focus + .form__label,
-.contact__input:not(:placeholder-shown) + .form__label {
-    transform: translateY(-1.8rem) scale(0.9);
-    background: #1a1a1a;
-    padding: 0 0.5rem;
-    color: var(--first-color);
-}
-
-.form__footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  position: absolute;
+  top: -12px;
+  left: 10px;
+  background: #111;
+  padding: 0 5px;
+  font-size: 0.85rem;
+  color: #2bbff0;
 }
 
 .contact__button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--first-color);
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: #2bbff0;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 .contact__button:hover {
-    background: #1e9bc9;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(43, 191, 240, 0.2);
-}
-
-.button__icon {
-    font-size: 1.2rem;
-    transition: transform 0.3s;
-}
-
-.contact__button:hover .button__icon {
-    transform: translateX(3px);
+  background: #23a8d6;
 }
 
 .form__notice {
-    color: #bbb;
-    font-size: 0.9rem;
-    text-align: center;
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-top: 0.5rem;
 }
 
-@media screen and (min-width: 768px) {
-    .contact__container {
-        grid-template-columns: repeat(2, 1fr);
-        align-items: start;
-    }
+/* Icônes et liens */
+.contact__icon {
+  font-size: 1.5rem;
+  color: #2bbff0;
 }
 
+.contact__link {
+  color: #2bbff0;
+  text-decoration: none;
+}
+
+.contact__social-link ion-icon {
+  font-size: 1.5rem;
+  color: #2bbff0;
+  transition: transform 0.3s;
+}
+
+.contact__social-link:hover ion-icon {
+  transform: scale(1.2);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .contact__container {
+    flex-direction: column;
+  }
+}
