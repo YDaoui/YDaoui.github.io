@@ -428,6 +428,42 @@ navLinks.forEach(link => {
         }
     });
 });
+    // Animation de l'image au chargement
+gsap.from(".home__img", {
+    duration: 1.5,
+    scale: 0.8,
+    rotation: -5,
+    opacity: 0,
+    ease: "back.out(1.7)",
+    delay: 0.5
+});
+
+// Animation au survol
+document.querySelector('.home__img').addEventListener('mouseenter', () => {
+    gsap.to(".home__img img", {
+        duration: 0.5,
+        scale: 1.05,
+        rotation: 1,
+        filter: "grayscale(0%) contrast(110%) brightness(100%)",
+        ease: "power2.out"
+    });
+    
+    gsap.to(".home__img::before", {
+        duration: 0.5,
+        opacity: 0.8,
+        ease: "power2.out"
+    });
+});
+
+document.querySelector('.home__img').addEventListener('mouseleave', () => {
+    gsap.to(".home__img img", {
+        duration: 0.5,
+        scale: 1,
+        rotation: 0,
+        filter: "grayscale(15%) contrast(105%) brightness(95%)",
+        ease: "power2.out"
+    });
+});
 
     window.toggleServiceDetails = toggleServiceDetails;
     window.toggleExperienceDetails = toggleExperienceDetails;
