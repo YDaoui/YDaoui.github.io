@@ -389,31 +389,33 @@ img {
 }
 
 .service-details {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
 }
 
-.service-details.active {
-  max-height: 500px;
+.service-details.show {
+    max-height: 500px; /* Ajuste la valeur en fonction du contenu */
+    opacity: 1;
 }
 
 .service-details ul {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .service-details li {
-  margin-bottom: 0.75rem;
-  color: var(--gray-color);
-  position: relative;
-  padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--gray-color);
+    position: relative;
+    padding-left: 1.5rem;
 }
 
 .service-details li::before {
-  content: '▹';
-  position: absolute;
-  left: 0;
-  color: var(--first-color);
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--first-color);
 }
 
 .service-tech {
