@@ -396,7 +396,7 @@ img {
 }
 
 .service-details.show {
-    max-height: 500px; /* Ajuste la valeur en fonction du contenu */
+    max-height: 500px; /* Ajustez cette valeur selon votre contenu */
     opacity: 1;
 }
 
