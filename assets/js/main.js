@@ -366,6 +366,21 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.reload(true); 
     }, 500);
 });
+    // Animation GSAP pour l'image
+gsap.from(".home__img img", {
+    duration: 1.5,
+    rotation: -5,
+    opacity: 0,
+    ease: "back.out(1.7)",
+    y: 50
+});
+
+// Rafraîchissement de la page au clic sur le logo
+document.querySelector('.nav__logo').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => window.location.reload(true), 500);
+});
 
     window.toggleServiceDetails = toggleServiceDetails;
     window.toggleExperienceDetails = toggleExperienceDetails;
