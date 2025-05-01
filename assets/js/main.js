@@ -381,6 +381,53 @@ document.querySelector('.nav__logo').addEventListener('click', function(e) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => window.location.reload(true), 500);
 });
+    // Menu Hamburger
+const navToggle = document.getElementById('nav-toggle');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('.nav__link');
+
+// Animation GSAP pour le menu
+function toggleMenu() {
+    navMenu.classList.toggle('show-menu');
+    
+    if (navMenu.classList.contains('show-menu')) {
+        // Animation d'ouverture
+        gsap.from('.nav__item', {
+            x: 30,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 0.5,
+            ease: "power3.out"
+        });
+        
+        // Bloque le défilement
+        document.body.style.overflow = 'hidden';
+    } else {
+        // Animation de fermeture
+        gsap.to('.nav__item', {
+            x: 30,
+            opacity: 0,
+            stagger: 0.05,
+            duration: 0.3,
+            ease: "power3.in"
+        });
+        
+        // Rétablit le défilement
+        document.body.style.overflow = '';
+    }
+}
+
+// Événements
+navToggle.addEventListener('click', toggleMenu);
+
+// Ferme le menu quand on clique sur un lien
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navMenu.classList.contains('show-menu')) {
+            toggleMenu();
+        }
+    });
+});
 
     window.toggleServiceDetails = toggleServiceDetails;
     window.toggleExperienceDetails = toggleExperienceDetails;
