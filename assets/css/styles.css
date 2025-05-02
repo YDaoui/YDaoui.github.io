@@ -487,6 +487,7 @@ img {
 }
 
 /* Experience section */
+/* Experience section */
 .experience-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -498,7 +499,7 @@ img {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   border-left: 4px solid var(--first-color);
-  overflow: hidden;
+  overflow: visible; /* corrigé: permet l'affichage complet */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
   min-height: 120px;
@@ -515,7 +516,7 @@ img {
   padding: 1.5rem;
   cursor: pointer;
   background: rgba(43, 191, 240, 0.05);
-  min-height: 100px
+  min-height: 100px;
 }
 
 .company-logo {
@@ -559,32 +560,36 @@ img {
   overflow: hidden;
   transition: max-height 0.5s ease;
   padding: 0 1.5rem;
+  visibility: hidden; /* ajout : masqué proprement */
 }
 
 .experience-card-details.show {
   max-height: 1000px;
   padding: 0 1.5rem 1.5rem;
+  visibility: visible; /* ajout : rendre visible */
 }
 
 .experience-card-details {
-    transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .experience-card-details.show {
-    display: block !important;
+  display: block !important;
 }
 
 .experience-description p,
 .experience-description ul,
 .experience-tech {
-    opacity: 0;
-    transition: opacity 0.3s ease 0.2s;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.2s;
+  transform: translateY(10px); /* ajout: animation fluide */
 }
 
 .experience-card-details.show .experience-description p,
 .experience-card-details.show .experience-description ul,
 .experience-card-details.show .experience-tech {
-    opacity: 1;
+  opacity: 1;
+  transform: translateY(0); /* ajout: animation fluide */
 }
 
 .experience-meta {
@@ -621,6 +626,11 @@ img {
   position: absolute;
   left: 0;
   color: var(--first-color);
+}
+
+.experience-tech {
+  padding-bottom: 1rem; /* ajout : évite que le contenu soit coupé */
+  overflow-wrap: break-word; /* ajout : en cas de longues chaînes */
 }
 
 .experience-tech h4 {
