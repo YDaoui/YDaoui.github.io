@@ -4,12 +4,14 @@ document.addEventListener('DOMContentLoaded', function() {
     /* ===== MENU TOGGLE ===== */
     const showMenu = (toggleId, navId) => {
         const toggle = document.getElementById(toggleId),
-              nav = document.getElementById(navId);
+              nav = document.getElementById(navId),
+              navLinks = document.querySelectorAll('.nav__link');
 
         if (toggle && nav) {
             toggle.addEventListener('click', () => {
                 console.log("Menu toggle clicked");
                 nav.classList.toggle('show');
+                toggle.classList.toggle('active');
                 
                 if (nav.classList.contains('show')) {
                     gsap.from(nav.querySelectorAll('.nav__item'), {
@@ -17,9 +19,34 @@ document.addEventListener('DOMContentLoaded', function() {
                         y: 20,
                         duration: 0.5,
                         stagger: 0.1,
-                        ease: "power2.out"
+                        ease: "power2.out",
+                        onStart: () => {
+                            gsap.to(nav, {
+                                backgroundColor: 'rgba(17, 17, 17, 0.98)',
+                                duration: 0.3
+                            });
+                        }
+                    });
+                } else {
+                    gsap.to(nav, {
+                        backgroundColor: 'rgba(17, 17, 17, 0)',
+                        duration: 0.3
                     });
                 }
+            });
+
+            // Fermer le menu quand on clique sur un lien
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (nav.classList.contains('show')) {
+                        nav.classList.remove('show');
+                        toggle.classList.remove('active');
+                        gsap.to(nav, {
+                            backgroundColor: 'rgba(17, 17, 17, 0)',
+                            duration: 0.3
+                        });
+                    }
+                });
             });
         } else {
             console.error("Menu elements not found:", {toggleId, navId});
@@ -223,6 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const navMenu = document.getElementById('nav-menu');
                 if (navMenu && navMenu.classList.contains('show')) {
                     navMenu.classList.remove('show');
+                    document.getElementById('nav-toggle').classList.remove('active');
                 }
 
                 window.scrollTo({
@@ -295,62 +323,67 @@ document.addEventListener('DOMContentLoaded', function() {
         details.style.opacity = '0';
     });
 
-    /* ===== EXPERIENCE CARDS TOGGLE ===== */
-   /* ===== EXPERIENCE CARDS TOGGLE - VERSION CORRIGÉE ===== */
-function toggleExperienceDetails(id) {
-    const details = document.getElementById(id);
-    if (!details) return;
+    /* ===== EXPERIENCE CARDS TOGGLE - VERSION CORRIGÉE ===== */
+    function toggleExperienceDetails(id) {
+        const details = document.getElementById(id);
+        if (!details) return;
 
-    const arrow = details.previousElementSibling.querySelector('.experience-arrow');
-    const card = details.closest('.experience-card');
+        const arrow = details.previousElementSibling.querySelector('.experience-arrow');
+        const card = details.closest('.experience-card');
 
-    if (details.classList.contains('show')) {
-        gsap.to(details, {
-            height: 0,
-            opacity: 0,
-            paddingTop: 0,
-            paddingBottom: 0,
-            marginTop: 0,
-            duration: 0.3,
-            ease: "power1.inOut",
-            onComplete: () => {
-                details.classList.remove('show');
-                // Réinitialiser la hauteur pour les animations futures
-                details.style.height = '';
-            }
-        });
-        if (arrow) arrow.style.transform = 'rotate(0deg)';
-    } else {
-        details.classList.add('show');
-        // Calculer la hauteur nécessaire pour afficher tout le contenu
-        const contentHeight = details.scrollHeight;
-        
-        gsap.to(details, {
-            height: contentHeight,
-            opacity: 1,
-            paddingTop: '1rem',
-            paddingBottom: '1.5rem',
-            marginTop: '1rem',
-            duration: 0.3,
-            ease: "power1.inOut",
-            onStart: () => {
-                // Assurer que le contenu est visible avant l'animation
-                details.style.display = 'block';
-            }
-        });
-        if (arrow) arrow.style.transform = 'rotate(180deg)';
+        if (details.classList.contains('show')) {
+            gsap.to(details, {
+                height: 0,
+                opacity: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
+                marginTop: 0,
+                duration: 0.3,
+                ease: "power1.inOut",
+                onComplete: () => {
+                    details.classList.remove('show');
+                    details.style.height = '';
+                }
+            });
+            if (arrow) arrow.style.transform = 'rotate(0deg)';
+        } else {
+            details.classList.add('show');
+            const contentHeight = details.scrollHeight;
+            
+            gsap.to(details, {
+                height: contentHeight,
+                opacity: 1,
+                paddingTop: '1rem',
+                paddingBottom: '1.5rem',
+                marginTop: '1rem',
+                duration: 0.3,
+                ease: "power1.inOut",
+                onStart: () => {
+                    details.style.display = 'block';
+                }
+            });
+            if (arrow) arrow.style.transform = 'rotate(180deg)';
+        }
     }
-}
 
-// Initialisation des cartes d'expérience
-document.querySelectorAll('.experience-card-details').forEach(details => {
-    details.style.height = '0';
-    details.style.opacity = '0';
-    details.style.paddingTop = '0';
-    details.style.paddingBottom = '0';
-    details.style.marginTop = '0';
-    details.style.overflow = 'hidden';
-});
+    // Initialisation des cartes d'expérience
+    document.querySelectorAll('.experience-card-details').forEach(details => {
+        details.style.height = '0';
+        details.style.opacity = '0';
+        details.style.paddingTop = '0';
+        details.style.paddingBottom = '0';
+        details.style.marginTop = '0';
+        details.style.overflow = 'hidden';
+    });
+
+    // Animation au survol des cartes de service
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            gsap.to(card.querySelector('.service-header h3'), {
+                color: "#2bbff0",
+                duration: 0.3
+            });
+        });
         
         card.addEventListener('mouseleave', () => {
             gsap.to(card.querySelector('.service-header h3'), {
