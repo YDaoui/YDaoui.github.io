@@ -962,3 +962,23 @@ img {
         border-bottom-color: var(--first-color);
     }
 }
+.experience-card-details {
+    transition: all 0.3s ease-out;
+}
+
+.experience-card-details.show {
+    display: block !important; /* Force l'affichage */
+}
+
+.experience-description p,
+.experience-description ul,
+.experience-tech {
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s; /* Retard pour l'animation */
+}
+
+.experience-card-details.show .experience-description p,
+.experience-card-details.show .experience-description ul,
+.experience-card-details.show .experience-tech {
+    opacity: 1;
+}
