@@ -253,102 +253,278 @@
         </section>
 
         <!-- ===== EXPERIENCE SECTION ===== -->
-       <!-- ======== EXPERIENCE ======== -->
-<section id="experiences" class="experiences">
-  <div class="main-text scroll-scale">
-    <span>Ce que j'ai fait</span>
-    <h2>Expériences professionnelles</h2>
-  </div>
+      corrige cette partie et n enleve rien corrige comme l expeinece de bouyuges mais sépare les autre sexperience === <section class="section" id="blog"> <div class="bd-grid"> <h2 class="section-title anime-text">Expériences Professionnelles</h2>
 
-  <div class="experience-box scroll-scale">
-    
-    <!-- Bouygues Telecom -->
-    <div class="experience">
-      <div class="top">
-        <h3>Bouygues Telecom</h3>
-        <span>CDI - Analyste Données Décisionnelles | Depuis Juin 2023</span>
-      </div>
-      <div class="description">
-        <p>Suivi d'activités, réalisation de reportings et de dashboards via Power BI et SQL Server. Analyse de données pour aider à la prise de décisions stratégiques et opérationnelles.</p>
-        <div class="tech-tags">
-          <span><ion-icon name="logo-microsoft"></ion-icon> Power BI</span>
-          <span><ion-icon name="server-outline"></ion-icon> SQL Server</span>
-          <span><ion-icon name="code-slash-outline"></ion-icon> DAX</span>
-          <span><ion-icon name="analytics-outline"></ion-icon> Analyse décisionnelle</span>
+```
+            <div class="experience-container">
+                <!-- Bouygues Telecom -->
+                <div class="experience-card">
+                    <div class="experience-card-header" onclick="toggleExperienceDetails('bouygues-details')">
+                        <div class="company-logo">
+                            <img src="./assets/img/bouygues_telecom_logo.jpeg" alt="Bouygues Telecom">
+                        </div>
+                        <div class="experience-title">
+                            <h3>Data Miner</h3>
+                            <p>Bouygues Telecom</p>
+                        </div>
+                        <ion-icon name="chevron-down-outline" class="experience-arrow"></ion-icon>
+                    </div>
+                    
+                    <div id="bouygues-details" class="experience-card-details">
+                        <div class="experience-meta">
+                            <span class="experience-date">Avril 2022 - Juillet 2024 (2 ans 4 mois)</span>
+                            <span class="experience-location">Hybride</span>
+                        </div>
+                        
+                        <div class="experience-description">
+                            <p>Analyse des données pour le compte de Bouygues Telecom, automatisation des processus et développement de solutions d'analyse de données avancées.</p>
+                            <ul>
+                                <li>Conception et implémentation de solutions data pour optimiser les processus métiers</li>
+                                <li>Création de dashboards interactifs avec Power BI et R Shiny</li>
+                                <li>Développement d'outils d'automatisation avec VBA et C# ainsi que la Gestion de données sur les clouds Azure, AWS et GCP</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tech-tags">
+                        <span class="tech-tag" data-tech="vba">
+                        <ion-icon name="logo-windows"></ion-icon> VBA
+                    </span>
+                        <span class="tech-tag" data-tech="sql">
+                        <ion-icon name="server-outline"></ion-icon> SQL Server
+                    </span>
+                    <span class="tech-tag" data-tech="rshiny">
+                        <ion-icon name="stats-chart-outline"></ion-icon> R Shiny
+                    </span>
+                    <span class="tech-tag" data-tech="csharp">
+                        <ion-icon name="code-slash-outline"></ion-icon> C#
+                    </span>
+                    <span class="tech-tag" data-tech="azure">
+                        <ion-icon name="cloud-outline"></ion-icon> Azure
+                    </span>
+                    <span class="tech-tag" data-tech="aws">
+                        <ion-icon name="cloud-outline"></ion-icon> AWS
+                    </span>
+                    <span class="tech-tag" data-tech="gcp">
+                        <ion-icon name="cloud-outline"></ion-icon> GCP
+                    </span>
+                    <span class="tech-tag" data-tech="powerbi">
+                        <ion-icon name="bar-chart-outline"></ion-icon> Power BI
+                    </span>
+                </div>
+                
+                <!-- Fujitsu -->
+                <div class="experience-card">
+                    <div class="experience-card-header" onclick="toggleExperienceDetails('fujitsu-details')">
+                        <div class="company-logo">
+                            <img src="./assets/img/fujitsu_logo.jpeg" alt="Fujitsu">
+                        </div>
+                        <div class="experience-title">
+                            <h3>Développeur Managérial</h3>
+                            <p>Fujitsu</p>
+                        </div>
+                        <ion-icon name="chevron-down-outline" class="experience-arrow"></ion-icon>
+                    </div>
+                    
+                    <div id="fujitsu-details" class="experience-card-details">
+                        <div class="experience-meta">
+                            <span class="experience-date">Mai 2021 - Décembre 2021 (8 mois)</span>
+                            <span class="experience-location">Hybride</span>
+                        </div>
+                        
+                        <div class="experience-description">
+                            <p>Gestion des stations de carburant Total par Fujitsu Simens, automatisation des fichiers via VBA et mise en place de dashboards Power BI pour le reporting dynamique.</p>
+                            <ul>
+                                <li>Digitalisation des processus de gestion des stations Total & Automatisation des rapports avec VBA et Python</li>
+                                <li>Développement d'applications conteneurisées avec Docker</li>
+                                <li>Création de solutions de visualisation avec Power BI</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="experience-tech">
+                            <h4>Technologies utilisées :</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">VBA</span>
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">RShiny</span>
+                                <span class="tech-tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Glovo -->
+                <div class="experience-card">
+                    <div class="experience-card-header" onclick="toggleExperienceDetails('glovo-details')">
+                        <div class="company-logo">
+                            <img src="./assets/img/glovo_app_logo.jpeg" alt="Glovo">
+                        </div>
+                        <div class="experience-title">
+                            <h3>Concepteur Reporting</h3>
+                            <p>Glovo</p>
+                        </div>
+                        <ion-icon name="chevron-down-outline" class="experience-arrow"></ion-icon>
+                    </div>
+                    
+                    <div id="glovo-details" class="experience-card-details">
+                        <div class="experience-meta">
+                            <span class="experience-date">Janvier 2021 - Avril 2021 (4 mois)</span>
+                            <span class="experience-location">Hybride</span>
+                        </div>
+                        
+                        <div class="experience-description">
+                            <p>Automatisation de l'importation des fichiers via VBA, stockage dans SQL et présentation des résultats sous forme de tableaux de bord dynamiques avec Power BI.</p>
+                            <ul>
+                                <li>Conception de pipelines de données pour le reporting & Optimisation des requêtes SQL pour les rapports</li>
+                                <li>Formation des équipes à l'utilisation des dashboards</li>
+                                <li>Animation de webinaires sur l'analyse de données</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="experience-tech">
+                            <h4>Technologies utilisées :</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">SQL Server</span>
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Webinar</span>
+                                <span class="tech-tag">VBA</span>
+                                <span class="tech-tag">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ADM VALUE -->
+                <div class="experience-card">
+                    <div class="experience-card-header" onclick="toggleExperienceDetails('adm-details')">
+                        <div class="company-logo">
+                            <img src="./assets/img/adm_value_logo.jpeg" alt="ADM VALUE">
+                        </div>
+                        <div class="experience-title">
+                            <h3>Statisticien</h3>
+                            <p>ADM VALUE</p>
+                        </div>
+                        <ion-icon name="chevron-down-outline" class="experience-arrow"></ion-icon>
+                    </div>
+                    
+                    <div id="adm-details" class="experience-card-details">
+                        <div class="experience-meta">
+                            <span class="experience-date">Novembre 2016 - Mars 2019 (2 ans 5 mois)</span>
+                            <span class="experience-location">Maroc</span>
+                        </div>
+                        
+                        <div class="experience-description">
+                            <p>Développement d'outils de planification et mise en place d'outils pour les tâches statistiques et de reporting avec Excel et Power BI après migration.</p>
+                            <ul>
+                                <li>Analyse de données avec Merise & Automatisation des processus avec VBA </li>
+                                <li>Création d'applications statistiques avec R Shiny</li>
+                                <li>Migration des systèmes de reporting vers Power BI</li>                               
+                            </ul>
+                        </div>
+                        
+                        <div class="experience-tech">
+                            <h4>Technologies utilisées :</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Merise</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">VBA</span>
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">RShiny</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accor -->
+                <div class="experience-card">
+                    <div class="experience-card-header" onclick="toggleExperienceDetails('accor-details')">
+                        <div class="company-logo">
+                            <img src="./assets/img/accor_logo.jpeg" alt="Accor">
+                        </div>
+                        <div class="experience-title">
+                            <h3>Analyste de Données</h3>
+                            <p>Accor</p>
+                        </div>
+                        <ion-icon name="chevron-down-outline" class="experience-arrow"></ion-icon>
+                    </div>
+                    
+                    <div id="accor-details" class="experience-card-details">
+                        <div class="experience-meta">
+                            <span class="experience-date">Mai 2014 - Juin 2016 (2 ans 2 mois)</span>
+                            <span class="experience-location">Maroc</span>
+                        </div>
+                        
+                        <div class="experience-description">
+                            <p>Centralisation et automatisation des données, avec une présentation via des rapports dynamiques et des tableaux de bord interactifs dans Power BI.</p>
+                            <ul>
+                                <li>Uniformisation des sources de données hôtelières & Création de modèles de prédiction de fréquentation</li>
+                                <li>Développement d'outils d'analyse avec Excel/VBA et création de Dashboards intéractifes sous Power Bi</li>
+                                <li>Formation des équipes à l'analyse de données</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="experience-tech">
+                            <h4>Technologies utilisées :</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Merise</span>
+                                <span class="tech-tag">Excel</span>
+                                <span class="tech-tag">VBA</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Power BI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AXA -->
+                <div class="experience-card">
+                    <div class="experience-card-header" onclick="toggleExperienceDetails('axa-details')">
+                        <div class="company-logo">
+                            <img src="./assets/img/Axa_logo.jpeg" alt="AXA">
+                        </div>
+                        <div class="experience-title">
+                            <h3>Planificateur</h3>
+                            <p>Axa-Services-Maroc</p>
+                        </div>
+                        <ion-icon name="chevron-down-outline" class="experience-arrow"></ion-icon>
+                    </div>
+                    
+                    <div id="axa-details" class="experience-card-details">
+                        <div class="experience-meta">
+                            <span class="experience-date">Décembre 2009 - Février 2014 (5 ans 4 mois)</span>
+                            <span class="experience-location">Maroc</span>
+                        </div>
+                        
+                        <div class="experience-description">
+                            <p>Planification et optimisation des ressources, perfectionnement et développement des outils de production et managériaux, gestion des effectifs et des mouvements, ainsi que la coordination entre les départements.</p>
+                            <ul>
+                                <li>Conception de systèmes de planification des ressources ainsi que l'Automatisation des rapports avec VBA</li>
+                                <li>Développement d'applications web avec ASP.NET</li>
+                                <li>Création de bases de données SQL pour le suivi des opérations</li>
+                                <li></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="experience-tech">
+                            <h4>Technologies utilisées :</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Merise</span>
+                                <span class="tech-tag">Excel</span>
+                                <span class="tech-tag">VBA</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">ASP.NET</span>
+                                <span class="tech-tag">SQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-
-    <!-- BPCE (Stage) -->
-    <div class="experience">
-      <div class="top">
-        <h3>BPCE</h3>
-        <span>Stage - Data Analyst | Avril 2022 - Octobre 2022</span>
-      </div>
-      <div class="description">
-        <p>Réalisation de tableaux de bord pour les différentes entités du groupe. Utilisation de Power BI, Excel avancé et scripts SQL pour automatiser les reportings. Documentation technique.</p>
-        <div class="tech-tags">
-          <span><ion-icon name="logo-microsoft"></ion-icon> Power BI</span>
-          <span><ion-icon name="logo-windows"></ion-icon> Excel VBA</span>
-          <span><ion-icon name="server-outline"></ion-icon> SQL</span>
-          <span><ion-icon name="document-text-outline"></ion-icon> Documentation</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- LCL (Stage) -->
-    <div class="experience">
-      <div class="top">
-        <h3>LCL</h3>
-        <span>Stage - Chargé d'Études Statistiques | Août 2021 - Novembre 2021</span>
-      </div>
-      <div class="description">
-        <p>Création de rapports d’analyse sur la satisfaction client. Développement de scripts Python et de rapports Excel dynamiques. Visualisation des indicateurs clés de performance (KPI).</p>
-        <div class="tech-tags">
-          <span><ion-icon name="logo-python"></ion-icon> Python</span>
-          <span><ion-icon name="logo-windows"></ion-icon> Excel VBA</span>
-          <span><ion-icon name="bar-chart-outline"></ion-icon> KPIs</span>
-          <span><ion-icon name="document-text-outline"></ion-icon> Reporting</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Les Ateliers Gaîté -->
-    <div class="experience">
-      <div class="top">
-        <h3>Les Ateliers Gaîté</h3>
-        <span>CDI - Responsable Adjoint | Septembre 2020 - Août 2021</span>
-      </div>
-      <div class="description">
-        <p>Organisation des événements culturels, analyse de la fréquentation et des recettes. Réalisation de tableaux de bord pour le pilotage des performances de l’espace commercial.</p>
-        <div class="tech-tags">
-          <span><ion-icon name="people-outline"></ion-icon> Événementiel</span>
-          <span><ion-icon name="cash-outline"></ion-icon> Analyse recettes</span>
-          <span><ion-icon name="bar-chart-outline"></ion-icon> Tableau de bord</span>
-          <span><ion-icon name="calendar-outline"></ion-icon> Planification</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Conforama -->
-    <div class="experience">
-      <div class="top">
-        <h3>Conforama</h3>
-        <span>CDI - Conseiller Commercial | Juin 2016 - Août 2020</span>
-      </div>
-      <div class="description">
-        <p>Suivi des ventes et reporting hebdomadaire. Contribution à l’amélioration des processus de vente. Analyse des indicateurs commerciaux pour le pilotage de l’activité.</p>
-        <div class="tech-tags">
-          <span><ion-icon name="pricetags-outline"></ion-icon> Ventes</span>
-          <span><ion-icon name="analytics-outline"></ion-icon> Indicateurs</span>
-          <span><ion-icon name="document-text-outline"></ion-icon> Reporting</span>
-          <span><ion-icon name="people-outline"></ion-icon> Relation client</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
+    </section>
+```
 
 
         <!-- ===== CONTACT SECTION ===== -->
