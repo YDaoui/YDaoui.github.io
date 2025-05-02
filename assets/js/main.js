@@ -296,55 +296,61 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     /* ===== EXPERIENCE CARDS TOGGLE ===== */
-    function toggleExperienceDetails(id) {
-        const details = document.getElementById(id);
-        if (!details) return;
+   /* ===== EXPERIENCE CARDS TOGGLE - VERSION CORRIGÉE ===== */
+function toggleExperienceDetails(id) {
+    const details = document.getElementById(id);
+    if (!details) return;
 
-        const arrow = details.previousElementSibling.querySelector('.experience-arrow');
+    const arrow = details.previousElementSibling.querySelector('.experience-arrow');
+    const card = details.closest('.experience-card');
 
-        if (details.classList.contains('show')) {
-            gsap.to(details, {
-                height: 0,
-                opacity: 0,
-                paddingTop: 0,
-                paddingBottom: 0,
-                duration: 0.3,
-                ease: "power1.inOut",
-                onComplete: () => details.classList.remove('show')
-            });
-            arrow.style.transform = 'rotate(0deg)';
-        } else {
-            details.classList.add('show');
-            gsap.to(details, {
-                height: 'auto',
-                opacity: 1,
-                paddingTop: 0,
-                paddingBottom: '1.5rem',
-                duration: 0.3,
-                ease: "power1.inOut"
-            });
-            arrow.style.transform = 'rotate(180deg)';
-        }
-    }
-
-    // Initialisation des cartes
-    document.querySelectorAll('.service-details, .experience-card-details').forEach(details => {
-        details.style.height = '0';
-        details.style.opacity = '0';
-        if (details.classList.contains('experience-card-details')) {
-            details.style.paddingTop = '0';
-            details.style.paddingBottom = '0';
-        }
-    });
-
-    // Animation au survol des cartes de service
-    document.querySelectorAll('.service-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            gsap.to(card.querySelector('.service-header h3'), {
-                color: "#2bbff0",
-                duration: 0.3
-            });
+    if (details.classList.contains('show')) {
+        gsap.to(details, {
+            height: 0,
+            opacity: 0,
+            paddingTop: 0,
+            paddingBottom: 0,
+            marginTop: 0,
+            duration: 0.3,
+            ease: "power1.inOut",
+            onComplete: () => {
+                details.classList.remove('show');
+                // Réinitialiser la hauteur pour les animations futures
+                details.style.height = '';
+            }
         });
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+    } else {
+        details.classList.add('show');
+        // Calculer la hauteur nécessaire pour afficher tout le contenu
+        const contentHeight = details.scrollHeight;
+        
+        gsap.to(details, {
+            height: contentHeight,
+            opacity: 1,
+            paddingTop: '1rem',
+            paddingBottom: '1.5rem',
+            marginTop: '1rem',
+            duration: 0.3,
+            ease: "power1.inOut",
+            onStart: () => {
+                // Assurer que le contenu est visible avant l'animation
+                details.style.display = 'block';
+            }
+        });
+        if (arrow) arrow.style.transform = 'rotate(180deg)';
+    }
+}
+
+// Initialisation des cartes d'expérience
+document.querySelectorAll('.experience-card-details').forEach(details => {
+    details.style.height = '0';
+    details.style.opacity = '0';
+    details.style.paddingTop = '0';
+    details.style.paddingBottom = '0';
+    details.style.marginTop = '0';
+    details.style.overflow = 'hidden';
+});
         
         card.addEventListener('mouseleave', () => {
             gsap.to(card.querySelector('.service-header h3'), {
