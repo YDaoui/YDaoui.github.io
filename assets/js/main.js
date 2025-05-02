@@ -356,4 +356,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.toggleServiceDetails = toggleServiceDetails;
     window.toggleExperienceDetails = toggleExperienceDetails;
-});====mais les card sous service nafiche plus les details
+});
