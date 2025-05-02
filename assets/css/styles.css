@@ -1000,3 +1000,15 @@ img {
     position: relative;
     overflow: hidden;
 }
+@keyframes colorCycle {
+  0% { color: #2bbff0; }   /* bleu */
+  25% { color: #ffffff; }  /* blanc */
+  50% { color: #000000; }  /* noir */
+  75% { color: #dddddd; }  /* gris */
+  100% { color: #2bbff0; } /* retour au bleu */
+}
+
+.animated-name {
+  animation: colorCycle 4s infinite;
+}
+
