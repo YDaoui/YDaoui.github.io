@@ -468,3 +468,19 @@ document.querySelector('.home__img').addEventListener('mouseleave', () => {
     window.toggleServiceDetails = toggleServiceDetails;
     window.toggleExperienceDetails = toggleExperienceDetails;
 });
+// Menu mobile
+const navMenu = document.getElementById('nav-menu');
+const navToggle = document.getElementById('nav-toggle');
+
+navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('show-menu');
+    document.body.style.overflow = navMenu.classList.contains('show-menu') ? 'hidden' : '';
+});
+
+// Fermer le menu quand on clique sur un lien
+document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu');
+        document.body.style.overflow = '';
+    });
+});
