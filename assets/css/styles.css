@@ -564,7 +564,7 @@ img {
 }
 
 .experience-card-details.show {
-  max-height: 1000px;
+  max-height: 1200px;
   padding: 0 1.5rem 1.5rem;
   visibility: visible; /* ajout : rendre visible */
 }
