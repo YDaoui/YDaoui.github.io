@@ -146,9 +146,67 @@ img {
   display: inline-flex;
 }
 
+/* Style de base pour l'icône hamburger */
+#nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100;
+}
+
+#nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--white-color);
+    transition: all 0.3s ease;
+}
+
+#nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    background: var(--first-color);
+}
+
+#nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+#nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    background: var(--first-color);
+}
+
 /* Show menu */
 .show-menu {
   top: 3rem;
+}
+
+/* Menu mobile */
+@media screen and (max-width: 767px) {
+    .nav__menu {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem 0;
+        background-color: rgba(17, 17, 17, 0);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s;
+        z-index: 99;
+        border-bottom: 2px solid transparent;
+    }
+    
+    .nav__menu.show {
+        top: 3rem;
+        background-color: rgba(17, 17, 17, 0.98);
+        border-bottom-color: var(--first-color);
+    }
 }
 
 /* Active link */
@@ -396,7 +454,7 @@ img {
 }
 
 .service-details.show {
-    max-height: 500px; /* Ajuste la valeur en fonction du contenu */
+    max-height: 500px;
     opacity: 1;
 }
 
@@ -501,9 +559,30 @@ img {
   padding: 0 1.5rem;
 }
 
-.experience-card-details.active {
+.experience-card-details.show {
   max-height: 1000px;
   padding: 0 1.5rem 1.5rem;
+}
+
+.experience-card-details {
+    transition: all 0.3s ease-out;
+}
+
+.experience-card-details.show {
+    display: block !important;
+}
+
+.experience-description p,
+.experience-description ul,
+.experience-tech {
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s;
+}
+
+.experience-card-details.show .experience-description p,
+.experience-card-details.show .experience-description ul,
+.experience-card-details.show .experience-tech {
+    opacity: 1;
 }
 
 .experience-meta {
@@ -918,67 +997,4 @@ img {
 .home__img-container {
     position: relative;
     overflow: hidden;
-}
-/* Style de base pour l'icône hamburger */
-#nav-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 24px;
-    height: 18px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 100;
-}
-
-#nav-toggle span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background: var(--white-color);
-    transition: all 0.3s ease;
-}
-
-/* Menu mobile */
-@media screen and (max-width: 767px) {
-    .nav__menu {
-        position: fixed;
-        top: -100%;
-        left: 0;
-        width: 100%;
-        padding: 1.5rem 0;
-        background-color: rgba(17, 17, 17, 0);
-        backdrop-filter: blur(10px);
-        transition: all 0.4s;
-        z-index: 99;
-        border-bottom: 2px solid transparent;
-    }
-    
-    .nav__menu.show {
-        top: 3rem;
-        background-color: rgba(17, 17, 17, 0.98);
-        border-bottom-color: var(--first-color);
-    }
-}
-.experience-card-details {
-    transition: all 0.3s ease-out;
-}
-
-.experience-card-details.show {
-    display: block !important; /* Force l'affichage */
-}
-
-.experience-description p,
-.experience-description ul,
-.experience-tech {
-    opacity: 0;
-    transition: opacity 0.3s ease 0.2s; /* Retard pour l'animation */
-}
-
-.experience-card-details.show .experience-description p,
-.experience-card-details.show .experience-description ul,
-.experience-card-details.show .experience-tech {
-    opacity: 1;
 }
