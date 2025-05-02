@@ -375,12 +375,6 @@ document.addEventListener('DOMContentLoaded', function() {
         details.style.marginTop = '0';
         details.style.overflow = 'hidden';
     });
-    onComplete: function() {
-    window.scrollTo(0, 0);
-    setTimeout(() => {
-        window.location.href = window.location.origin + window.location.pathname;
-    }, 100);
-}
 
     // Animation au survol des cartes de service
     document.querySelectorAll('.service-card').forEach(card => {
