@@ -1,12 +1,10 @@
-
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-.home__img-container {
-    position: relative;
-    width: 280px;
-    height: 280px;
-    margin: 0 auto;
+html, body {
+    background-color: #000 !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
 /*----- VARIABLES CSS -----*/
@@ -246,6 +244,7 @@ img {
         0 15px 40px rgba(43, 191, 240, 0.4),
         0 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
 .home__social {
   display: flex;
   flex-direction: column;
@@ -422,7 +421,7 @@ img {
 }
 
 .service-details.show {
-    max-height: 500px; /* Ajuste la valeur en fonction du contenu */
+    max-height: 500px;
     opacity: 1;
 }
 
@@ -820,6 +819,208 @@ img {
   }
 }
 
+/* Menu Hamburger - Mobile */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1000;
+}
+
+.menu-icon .bar {
+  width: 30px;
+  height: 3px;
+  background-color: var(--white-color);
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background-color: #111;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  nav.active {
+    display: flex;
+  }
+}
+
+/* Style de base de l'image + effets visuels */
+.home__img img {
+    filter: grayscale(20%) contrast(110%) brightness(90%) sepia(10%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 3px solid rgba(255,255,255,0.1);
+    max-width: 100%;
+    height: auto;
+    transition: all 0.3s ease;
+}
+
+/* Overlay coloré pour harmonisation */
+.home__img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(100,58,162,0.3) 0%, rgba(42,91,170,0.3) 100%);
+    mix-blend-mode: multiply;
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+/* Menu Hamburger - Mobile */
+@media (max-width: 767px) {
+    .nav__toggle {
+        display: none;
+        cursor: pointer;
+        z-index: 101;
+    }
+    
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(40, 40, 80, 0.98);
+        backdrop-filter: blur(15px);
+        z-index: 100;
+        padding: 6rem 2rem 2rem;
+        transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    
+    .nav__menu.show-menu {
+        right: 0;
+    }
+    
+    .nav__list {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+    
+    .nav__item {
+        transform: translateX(30px);
+        opacity: 0;
+        transition: all 0.4s ease;
+    }
+    
+    .show-menu .nav__item {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+    /* Animation de l'icône hamburger */
+    .nav__toggle ion-icon[name="menu"],
+    .nav__toggle ion-icon[name="close"] {
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    
+    .nav__toggle ion-icon[name="close"] {
+        position: absolute;
+        opacity: 0;
+    }
+    
+    .show-menu .nav__toggle ion-icon[name="menu"] {
+        opacity: 0;
+        transform: rotate(90deg);
+    }
+    
+    .show-menu .nav__toggle ion-icon[name="close"] {
+        opacity: 1;
+        transform: rotate(0);
+    }
+}
+
+/* Correction du menu mobile */
+@media (max-width: 767px) {
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: rgba(30, 30, 60, 0.98);
+        padding: 5rem 2rem;
+        transition: right 0.4s ease;
+        z-index: 100;
+    }
+
+    .nav__menu.show-menu {
+        right: 0;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .nav__toggle {
+        display: flex;
+        z-index: 101;
+    }
+
+    .nav__toggle ion-icon[name="close"] {
+        display: none;
+    }
+
+    .show-menu .nav__toggle ion-icon[name="menu"] {
+        display: none;
+    }
+
+    .show-menu .nav__toggle ion-icon[name="close"] {
+        display: block;
+    }
+
+    /* Correction de l'image */
+    .home__img {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto;
+    }
+
+    /* Organisation responsive */
+    .home {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 5rem;
+    }
+
+    .home__information {
+        order: 2;
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .home__social {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        order: 3;
+        margin-top: 2rem;
+    }
+
+    /* Correction des sections */
+    .section {
+        padding: 3rem 1rem;
+    }
+
+    .section-container {
+        padding: 1.5rem;
+    }
+}
+
 /*----- MEDIA QUERIES -----*/
 @media screen and (min-width: 576px) {
   .home__img {
@@ -940,210 +1141,3 @@ img {
     width: 600px;
   }
 }
-.home__img-container {
-    position: relative;
-    overflow: hidden;
-}
-.menu-icon {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-  z-index: 1000;
-}
-
-.menu-icon .bar {
-  width: 30px;
-  height: 3px;
-  background-color: white; /* ou ta couleur principale */
-}
-@media (max-width: 768px) {
-  .menu-icon {
-    display: flex;
-  }
-
-  nav {
-    display: none; /* Masquer le menu en mobile */
-    flex-direction: column;
-    background-color: #111; /* ou ta couleur de fond */
-    position: absolute;
-    top: 60px; /* ajuste selon ton header */
-    left: 0;
-    width: 100%;
-  }
-
-  nav.active {
-    display: flex; /* Affiche le menu quand l’icône est cliquée */
-  }
-}
-/* Style de base de l'image + effets visuels */
-.home__img img {
-    filter: grayscale(20%) contrast(110%) brightness(90%) sepia(10%);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    border: 3px solid rgba(255,255,255,0.1);
-    max-width: 100%;
-    height: auto;
-    transition: all 0.3s ease;
-}
-
-/* Overlay coloré pour harmonisation */
-.home__img::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(100,58,162,0.3) 0%, rgba(42,91,170,0.3) 100%);
-    mix-blend-mode: multiply;
-    border-radius: 15px;
-    pointer-events: none;
-}
-/* Menu Hamburger - Mobile */
-.nav__toggle {
-    display: none;
-    cursor: pointer;
-    z-index: 101;
-}
-
-@media (max-width: 767px) {
-    .nav__toggle {
-        display: flex;
-        font-size: 2rem;
-        color: #6a11cb;
-    }
-    
-    .nav__menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        background: rgba(40, 40, 80, 0.98);
-        backdrop-filter: blur(15px);
-        z-index: 100;
-        padding: 6rem 2rem 2rem;
-        transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-    }
-    
-    .nav__menu.show-menu {
-        right: 0;
-    }
-    
-    .nav__list {
-        flex-direction: column;
-        gap: 2.5rem;
-    }
-    
-    .nav__item {
-        transform: translateX(30px);
-        opacity: 0;
-        transition: all 0.4s ease;
-    }
-    
-    .show-menu .nav__item {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    
-    /* Animation de l'icône hamburger */
-    .nav__toggle ion-icon[name="menu"],
-    .nav__toggle ion-icon[name="close"] {
-        transition: transform 0.4s ease, opacity 0.4s ease;
-    }
-    
-    .nav__toggle ion-icon[name="close"] {
-        position: absolute;
-        opacity: 0;
-    }
-    
-    .show-menu .nav__toggle ion-icon[name="menu"] {
-        opacity: 0;
-        transform: rotate(90deg);
-    }
-    
-    .show-menu .nav__toggle ion-icon[name="close"] {
-        opacity: 1;
-        transform: rotate(0);
-    }
-}
-/* Correction du menu mobile */
-@media (max-width: 767px) {
-    .nav__menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background: rgba(30, 30, 60, 0.98);
-        padding: 5rem 2rem;
-        transition: right 0.4s ease;
-        z-index: 100;
-    }
-
-    .nav__menu.show-menu {
-        right: 0;
-    }
-
-    .nav__list {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .nav__toggle {
-        display: flex;
-        z-index: 101;
-    }
-
-    .nav__toggle ion-icon[name="close"] {
-        display: none;
-    }
-
-    .show-menu .nav__toggle ion-icon[name="menu"] {
-        display: none;
-    }
-
-    .show-menu .nav__toggle ion-icon[name="close"] {
-        display: block;
-    }
-
-    /* Correction de l'image */
-    .home__img {
-        width: 220px;
-        height: 220px;
-        margin: 0 auto;
-    }
-
-    /* Organisation responsive */
-    .home {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding-top: 5rem;
-    }
-
-    .home__information {
-        order: 2;
-        padding-left: 0;
-        border-left: none;
-    }
-
-    .home__social {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1.5rem;
-        order: 3;
-        margin-top: 2rem;
-    }
-
-    /* Correction des sections */
-    .section {
-        padding: 3rem 1rem;
-    }
-
-    .section-container {
-        padding: 1.5rem;
-    }
-}
-
