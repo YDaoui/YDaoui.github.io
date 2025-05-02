@@ -629,20 +629,36 @@ img {
   margin-bottom: 0.75rem;
 }
 
-.tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+/* Mise à jour du CSS pour les tags techno avec icônes */
+.tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(43, 191, 240, 0.2);
+    color: var(--first-color);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--first-color);
+    transition: all 0.3s ease;
+    margin-bottom: 0.3rem;
 }
 
-.tech-tag {
-  background: rgba(43, 191, 240, 0.1);
-  color: var(--first-color);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
+.tech-tag ion-icon {
+    font-size: 1rem;
+    vertical-align: middle;
 }
+
+/* Couleurs spécifiques pour certaines technologies */
+.tech-tag[data-tech="vba"] ion-icon { color: #867DB1; }
+.tech-tag[data-tech="sql"] ion-icon { color: #F29111; }
+.tech-tag[data-tech="azure"] ion-icon { color: #0089D6; }
+.tech-tag[data-tech="aws"] ion-icon { color: #FF9900; }
+.tech-tag[data-tech="gcp"] ion-icon { color: #4285F4; }
+.tech-tag[data-tech="powerbi"] ion-icon { color: #F2C811; }
+.tech-tag[data-tech="csharp"] ion-icon { color: #239120; }
+.tech-tag[data-tech="rshiny"] ion-icon { color: #276DC3; }
 
 /* Contact section */
 .contact__container {
