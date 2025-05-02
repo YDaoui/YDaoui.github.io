@@ -515,6 +515,7 @@ img {
   padding: 1.5rem;
   cursor: pointer;
   background: rgba(43, 191, 240, 0.05);
+  min-height: 100px
 }
 
 .company-logo {
