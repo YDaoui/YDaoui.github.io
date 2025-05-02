@@ -20,9 +20,9 @@
     <header class="l-header">
         <nav class="nav bd-grid">
             <div>
-                <a href="#" class="nav__logo" id="refresh-logo">
+                <a href="#" class="nav__logo">
                     <span class="logo-part1">Port</span><span class="logo-part2">folio</span>
-                </a>    
+                </a>
             </div>
 
             <div class="nav__menu" id="nav-menu">
@@ -37,49 +37,43 @@
 
             <div class="nav__toggle" id="nav-toggle">
                 <ion-icon name="menu"></ion-icon>
-                <ion-icon name="close"></ion-icon>
             </div>
         </nav>
     </header>
 
     <!-- MAIN -->
-   <main class="l-main bd-grid">
-    <section class="home" id="home">
-        <div class="home__container">
-            <!-- Partie gauche : texte -->
+    <main class="l-main bd-grid">
+        <div class="home" id="home">
             <div class="home__information">
                 <span class="home__pressent anime-text">Bonjour, Je m'appelle</span>
                 <h1 class="home__title name-animation">Yassine Daoui</h1>
                 <span class="home__pressent anime-text">Je suis<br></span>
                 <span class="home__skill job-animation">Consultant Data</span>
-
+                
                 <!-- CV BUTTON -->
                 <div>
                     <a href="./assets/cv/cv.pdf" download="Yassine-Daoui-CV.pdf" class="home__button anime-text">TÉLÉCHARGER CV</a>
                 </div>
             </div>
 
-            <!-- Partie droite : image -->
-            <div class="home__img-container">
-                <img src="./assets/img/img.jpeg" alt="Portrait de Yassine Daoui" class="home__img">
+            <!-- IMAGE -->
+            <div class="home__img">
+                <img src="./assets/img/img.jpeg" alt="Portrait de Yassine Daoui">
+            </div>
+
+            <!-- SOCIAL LINKS -->
+            <div class="home__social">
+                <a href="https://www.linkedin.com/in/yassine-daoui-56a7ab1a0/" target="_blank" rel="noopener noreferrer">
+                    <ion-icon name="logo-linkedin" class="home__social-icon"></ion-icon>
+                </a>
+                <a href="https://github.com/YDaoui/YDaoui" target="_blank" rel="noopener noreferrer">
+                    <ion-icon name="logo-github" class="home__social-icon"></ion-icon>
+                </a>
+                <a href="mailto:daoui00yassine@gmail.com" target="_blank">
+                    <ion-icon name="mail-outline" class="home__social-icon"></ion-icon>
+                </a>
             </div>
         </div>
-
-        <!-- Réseaux sociaux -->
-        <div class="home__social">
-            <a href="https://www.linkedin.com/in/yassine-daoui-56a7ab1a0/" target="_blank" rel="noopener noreferrer">
-                <ion-icon name="logo-linkedin" class="home__social-icon"></ion-icon>
-            </a>
-            <a href="https://github.com/YDaoui/YDaoui" target="_blank" rel="noopener noreferrer">
-                <ion-icon name="logo-github" class="home__social-icon"></ion-icon>
-            </a>
-            <a href="mailto:daoui00yassine@gmail.com" target="_blank">
-                <ion-icon name="mail-outline" class="home__social-icon"></ion-icon>
-            </a>
-        </div>
-    </section>
-</main>
-
 
         <!-- ===== ABOUT SECTION ===== -->
        <section class="section" id="about">
