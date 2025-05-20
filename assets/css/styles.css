@@ -275,11 +275,20 @@ img {
   bottom: 0;
   width: 280px;
   z-index: 1;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  opacity: 0.75;
-  filter: brightness(0.7);
+  border-radius: 10px; /* si tu veux garder l'arrondi sinon enlève */
+  box-shadow: none;    /* supprime l'ombre */
+  opacity: 0.8;        /* image un peu sombre */
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  filter: brightness(70%); /* rend l'image plus sombre */
+  cursor: pointer;
 }
+
+.home__img:hover {
+  filter: brightness(100%);
+  transform: scale(1.05); /* léger zoom */
+  opacity: 1;
+}
+
 
 
 .home__social {
