@@ -268,21 +268,64 @@ img {
   box-shadow: 0 6px 20px rgba(43, 191, 240, 0.4);
 }
 
+
+
+
+
+
+
 .home__img {
-  /* ... ton CSS existant pour l'image ... */
-  filter: grayscale(100%) contrast(1.2);
-  -webkit-filter: grayscale(100%) contrast(1.2); /* Pour compatibilité WebKit/Blink */
+  position: absolute; /* Garde tes propriétés de positionnement */
+  right: 0;
+  bottom: 0;
+  width: 280px; /* Conserve ta taille originale */
+  z-index: 1;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
-  mix-blend-mode: multiply;
-  -webkit-mix-blend-mode: multiply; /* Pour compatibilité WebKit/Blink */
-
+  /* --- Styles pour le "Skin" homogène --- */
+  filter: grayscale(100%) brightness(70%) contrast(1.2); /* D'abord, niveaux de gris, assombrir légèrement et contraster */
+  mix-blend-mode: overlay; /* Mélange l'image avec un arrière-plan coloré pour un effet de superposition */
   background: linear-gradient(
     135deg,
-    var(--first-color) 0%,
-    var(--black-color-light) 100%
+    var(--first-color-dark) 0%, /* Commence avec un bleu un peu plus foncé pour la base */
+    var(--first-color) 70%, /* Le bleu ciel dominant */
+    var(--black-color-light) 100% /* Finit sur une touche de noir pour les ombres profondes */
   );
-  opacity: 0.9;
+  opacity: 0.95; /* Légèrement transparent pour voir le fond sombre du site si applicable */
+  object-fit: cover; /* Assure que l'image couvre l'espace sans déformation */
 }
+
+/* Optionnel : Ajoute un léger halo lumineux sur le bord si tu veux */
+.home__img:hover {
+  box-shadow: 0 0 25px rgba(43, 191, 240, 0.6), 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: scale(1.02); /* Petit zoom à l'hover */
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .home__social {
   display: flex;
