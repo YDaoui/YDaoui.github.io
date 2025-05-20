@@ -12,9 +12,7 @@
 }
 
 /*----- BASE -----*/
-*,
-::before,
-::after {
+*, ::before, ::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -33,10 +31,7 @@ body {
   line-height: 1.6;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   margin: 0;
   font-weight: 700;
   line-height: 1.2;
@@ -153,38 +148,38 @@ img {
 
 /* Style de base pour l'icône hamburger */
 #nav-toggle {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 24px;
-  height: 18px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100;
 }
 
 #nav-toggle span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--white-color);
-  transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--white-color);
+    transition: all 0.3s ease;
 }
 
 #nav-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-  background: var(--first-color);
+    transform: rotate(45deg) translate(5px, 5px);
+    background: var(--first-color);
 }
 
 #nav-toggle.active span:nth-child(2) {
-  opacity: 0;
+    opacity: 0;
 }
 
 #nav-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-  background: var(--first-color);
+    transform: rotate(-45deg) translate(5px, -5px);
+    background: var(--first-color);
 }
 
 /* Show menu */
@@ -194,24 +189,24 @@ img {
 
 /* Menu mobile */
 @media screen and (max-width: 767px) {
-  .nav__menu {
-    position: fixed;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    padding: 1.5rem 0;
-    background-color: rgba(17, 17, 17, 0);
-    backdrop-filter: blur(10px);
-    transition: all 0.4s;
-    z-index: 99;
-    border-bottom: 2px solid transparent;
-  }
-
-  .nav__menu.show {
-    top: 3rem;
-    background-color: rgba(17, 17, 17, 0.98);
-    border-bottom-color: var(--first-color);
-  }
+    .nav__menu {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem 0;
+        background-color: rgba(17, 17, 17, 0);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s;
+        z-index: 99;
+        border-bottom: 2px solid transparent;
+    }
+   
+    .nav__menu.show {
+        top: 3rem;
+        background-color: rgba(17, 17, 17, 0.98);
+        border-bottom-color: var(--first-color);
+    }
 }
 
 /* Active link */
@@ -273,47 +268,15 @@ img {
   box-shadow: 0 6px 20px rgba(43, 191, 240, 0.4);
 }
 
-/* --- DEBUT DE LA MODIFICATION POUR L'IMAGE HOME --- */
 .home__img {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 280px; /* Taille pour mobile */
+  width: 280px;
   z-index: 1;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-
-  /* Assure que l'image est bien couvrante et sans espace */
-  display: block;
-  height: auto; /* Permet à la hauteur de s'adapter proportionnellement à la largeur */
-  object-fit: cover; /* Assure que l'image remplit l'espace sans déformation */
-  object-position: center; /* Centre l'image dans son cadre */
-
-  /* Effets pour un style homogène */
-  filter: grayscale(100%) brightness(70%) contrast(1.2);
-  -webkit-filter: grayscale(100%) brightness(70%) contrast(1.2); /* Préfixe pour Edge/Chrome */
-  
-  mix-blend-mode: overlay;
-  -webkit-mix-blend-mode: overlay; /* Préfixe pour Edge/Chrome */
-
-  background: linear-gradient(
-    135deg,
-    var(--first-color-dark) 0%,
-    var(--first-color) 70%,
-    var(--black-color-light) 100%
-  );
-  opacity: 0.95; /* Légèrement transparent pour fondre avec le thème */
-
-  /* Ajout d'une transition pour les propriétés de l'image (si tu ajoutes des effets hover) */
-  transition: filter 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.home__img:hover {
-  box-shadow: 0 0 25px rgba(43, 191, 240, 0.6), 0 10px 30px rgba(0, 0, 0, 0.5);
-  transform: scale(1.02); /* Petit zoom à l'hover pour interactivité */
-}
-/* --- FIN DE LA MODIFICATION POUR L'IMAGE HOME --- */
-
 
 .home__social {
   display: flex;
@@ -484,33 +447,33 @@ img {
 }
 
 .service-details {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.5s ease, opacity 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
 }
 
 .service-details.show {
-  max-height: 500px;
-  opacity: 1;
+    max-height: 500px;
+    opacity: 1;
 }
 
 .service-details ul {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .service-details li {
-  margin-bottom: 0.75rem;
-  color: var(--gray-color);
-  position: relative;
-  padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--gray-color);
+    position: relative;
+    padding-left: 1.5rem;
 }
 
 .service-details li::before {
-  content: '▹';
-  position: absolute;
-  left: 0;
-  color: var(--first-color);
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--first-color);
 }
 
 .service-tech {
@@ -524,6 +487,7 @@ img {
 }
 
 /* Experience section */
+/* Experience section */
 .experience-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -535,7 +499,7 @@ img {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   border-left: 4px solid var(--first-color);
-  overflow: visible;
+  overflow: visible; /* corrigé: permet l'affichage complet */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
   min-height: 120px;
@@ -596,13 +560,13 @@ img {
   overflow: hidden;
   transition: max-height 0.5s ease;
   padding: 0 1.5rem;
-  visibility: hidden;
+  visibility: hidden; /* ajout : masqué proprement */
 }
 
 .experience-card-details.show {
   max-height: 1200px;
   padding: 0 1.5rem 1.5rem;
-  visibility: visible;
+  visibility: visible; /* ajout : rendre visible */
 }
 
 .experience-card-details {
@@ -618,14 +582,14 @@ img {
 .experience-tech {
   opacity: 0;
   transition: opacity 0.3s ease 0.2s;
-  transform: translateY(10px);
+  transform: translateY(10px); /* ajout: animation fluide */
 }
 
 .experience-card-details.show .experience-description p,
 .experience-card-details.show .experience-description ul,
 .experience-card-details.show .experience-tech {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0); /* ajout: animation fluide */
 }
 
 .experience-meta {
@@ -665,8 +629,8 @@ img {
 }
 
 .experience-tech {
-  padding-bottom: 1rem;
-  overflow-wrap: break-word;
+  padding-bottom: 1rem; /* ajout : évite que le contenu soit coupé */
+  overflow-wrap: break-word; /* ajout : en cas de longues chaînes */
 }
 
 .experience-tech h4 {
@@ -677,57 +641,34 @@ img {
 
 /* Mise à jour du CSS pour les tags techno avec icônes */
 .tech-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  background: rgba(43, 191, 240, 0.2);
-  color: var(--first-color);
-  padding: 0.4rem 0.9rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border: 1px solid var(--first-color);
-  transition: all 0.3s ease;
-  margin-bottom: 0.3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(43, 191, 240, 0.2);
+    color: var(--first-color);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--first-color);
+    transition: all 0.3s ease;
+    margin-bottom: 0.3rem;
 }
 
 .tech-tag ion-icon {
-  font-size: 1rem;
-  vertical-align: middle;
+    font-size: 1rem;
+    vertical-align: middle;
 }
 
 /* Couleurs spécifiques pour certaines technologies */
-.tech-tag[data-tech="vba"] ion-icon {
-  color: #867DB1;
-}
-
-.tech-tag[data-tech="sql"] ion-icon {
-  color: #F29111;
-}
-
-.tech-tag[data-tech="azure"] ion-icon {
-  color: #0089D6;
-}
-
-.tech-tag[data-tech="aws"] ion-icon {
-  color: #FF9900;
-}
-
-.tech-tag[data-tech="gcp"] ion-icon {
-  color: #4285F4;
-}
-
-.tech-tag[data-tech="powerbi"] ion-icon {
-  color: #F2C811;
-}
-
-.tech-tag[data-tech="csharp"] ion-icon {
-  color: #239120;
-}
-
-.tech-tag[data-tech="rshiny"] ion-icon {
-  color: #276DC3;
-}
+.tech-tag[data-tech="vba"] ion-icon { color: #867DB1; }
+.tech-tag[data-tech="sql"] ion-icon { color: #F29111; }
+.tech-tag[data-tech="azure"] ion-icon { color: #0089D6; }
+.tech-tag[data-tech="aws"] ion-icon { color: #FF9900; }
+.tech-tag[data-tech="gcp"] ion-icon { color: #4285F4; }
+.tech-tag[data-tech="powerbi"] ion-icon { color: #F2C811; }
+.tech-tag[data-tech="csharp"] ion-icon { color: #239120; }
+.tech-tag[data-tech="rshiny"] ion-icon { color: #276DC3; }
 
 /* Contact section */
 .contact__container {
@@ -965,12 +906,12 @@ img {
   .home__img {
     width: 330px;
   }
-
+ 
   .home__social {
     flex-direction: row;
     column-gap: 1.5rem;
   }
-
+ 
   .home__social-icon {
     font-size: 1.75rem;
   }
@@ -980,15 +921,15 @@ img {
   body {
     margin: 0;
   }
-
+ 
   .section {
     padding: 7rem 0;
   }
-
+ 
   .nav {
     height: 4rem;
   }
-
+ 
   .nav__menu {
     position: static;
     width: auto;
@@ -996,52 +937,52 @@ img {
     background-color: transparent;
     border: none;
   }
-
+ 
   .nav__list {
     flex-direction: row;
     column-gap: 2rem;
   }
-
+ 
   .nav__link {
     text-transform: initial;
     font-size: 0.9375rem;
   }
-
+ 
   .nav__toggle {
     display: none;
   }
-
+ 
   .home {
     height: 100vh;
     grid-template-rows: max-content;
     align-content: center;
     padding-top: 4rem;
   }
-
+ 
   .home__information {
     padding-left: 2rem;
   }
-
+ 
   .home__title {
     font-size: 3.5rem;
   }
-
+ 
   .home__skill {
     font-size: 1.5rem;
   }
-
+ 
   .home__img {
-    width: 450px; /* Conserve tes tailles responsives existantes */
+    width: 450px;
   }
-
+ 
   .contact__container {
     grid-template-columns: 1fr 1fr;
   }
-
+ 
   .contact__form {
     order: 0;
   }
-
+ 
   .contact__info {
     order: 1;
   }
@@ -1052,16 +993,16 @@ img {
     margin-left: auto;
     margin-right: auto;
   }
-
+ 
   .home__title {
     font-size: 4.5rem;
   }
-
+ 
   .home__img {
-    width: 550px; /* Conserve tes tailles responsives existantes */
+    width: 550px;
     right: 5%;
   }
-
+ 
   .services__grid {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
@@ -1071,75 +1012,52 @@ img {
   .home__information {
     padding-left: 3rem;
   }
-
+ 
   .home__title {
     font-size: 5rem;
   }
-
+ 
   .home__img {
-    width: 600px; /* Conserve tes tailles responsives existantes */
+    width: 600px;
   }
 }
 
-/* Cette classe ne semble pas utilisée pour l'image principale, mais je la laisse comme elle est */
 .home__img-container {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
-
 @keyframes colorCycle {
-  0% {
-    color: #2bbff0;
-  }
-
-  /* bleu */
-  25% {
-    color: #ffffff;
-  }
-
-  /* blanc */
-  50% {
-    color: #000000;
-  }
-
-  /* noir */
-  75% {
-    color: #dddddd;
-  }
-
-  /* gris */
-  100% {
-    color: #2bbff0;
-  }
-
-  /* retour au bleu */
+  0% { color: #2bbff0; }   /* bleu */
+  25% { color: #ffffff; }  /* blanc */
+  50% { color: #000000; }  /* noir */
+  75% { color: #dddddd; }  /* gris */
+  100% { color: #2bbff0; } /* retour au bleu */
 }
 
 .animated-name {
   animation: colorCycle 4s infinite;
 }
-
-/*----- ajouté -----*/
+/*----- ajouté  -----*/
 /* Ajoutez ce CSS pour améliorer la visibilité des tags techno */
 .tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
 }
 
 .tech-tag {
-  background: rgba(43, 191, 240, 0.2);
-  color: var(--first-color);
-  padding: 0.35rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border: 1px solid var(--first-color);
-  transition: all 0.3s ease;
+    background: rgba(43, 191, 240, 0.2);
+    color: var(--first-color);
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--first-color);
+    transition: all 0.3s ease;
 }
 
 .tech-tag:hover {
-  background: rgba(43, 191, 240, 0.4);
-  transform: translateY(-2px);
+    background: rgba(43, 191, 240, 0.4);
+    transform: translateY(-2px);
 }
