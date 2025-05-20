@@ -269,13 +269,16 @@ img {
 }
 
 .home__img {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 280px;
-  z-index: 1;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* ... ton CSS existant pour l'image ... */
+  filter: grayscale(100%) contrast(1.2); /* D'abord, convertir en niveaux de gris et améliorer le contraste */
+  mix-blend-mode: multiply; /* ou screen, overlay, darken, lighten - à tester selon l'effet désiré */
+  background: linear-gradient(
+    135deg,
+    var(--first-color) 0%,
+    var(--black-color-light) 100%
+  ); /* Appliquer un dégradé en arrière-plan */
+  /* Ajuste l'opacité si nécessaire pour un effet plus subtil */
+  opacity: 0.9;
 }
 
 .home__social {
