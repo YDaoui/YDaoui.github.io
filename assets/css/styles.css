@@ -277,7 +277,8 @@ img {
   z-index: 1;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  opacity: 0.95;
+  opacity: 0.75;
+  filter: brightness(0.7);
 }
 
 
