@@ -215,146 +215,100 @@ img {
 }
 
 /* Home section */
-/* Hero Animation */
 .home {
-  overflow: hidden;
+  position: relative;
+  height: calc(100vh - 3rem);
+  display: grid;
+  grid-template-rows: max-content max-content;
+  align-content: space-around;
+  row-gap: 2.5rem;
+  padding: 1.5rem 0;
 }
 
 .home__information {
-  position: relative;
-}
-
-.home__information::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(43, 191, 240, 0.1);
-  z-index: -1;
-  animation: pulse 6s infinite ease-in-out;
-}
-
-.home__information::after {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: rgba(43, 191, 240, 0.05);
-  z-index: -1;
-  animation: pulse 8s infinite ease-in-out 2s;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.4;
-  }
+  padding-left: 1.5rem;
+  border-left: 5px solid var(--first-color);
+  z-index: 10;
 }
 
 .home__pressent {
-  animation: fadeInLeft 0.8s ease-out both;
+  font-size: 0.875rem;
+  color: var(--first-color);
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .home__title {
-  animation: fadeInLeft 0.8s ease-out 0.2s both;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--white-color);
 }
 
 .home__skill {
-  animation: fadeInLeft 0.8s ease-out 0.4s both;
+  font-size: 1.25rem;
+  color: var(--gray-color);
+  margin-bottom: 1.5rem;
+  display: block;
 }
 
 .home__button {
-  animation: fadeInUp 0.8s ease-out 0.6s both;
+  display: inline-block;
+  background-color: var(--first-color);
+  color: var(--black-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(43, 191, 240, 0.3);
 }
 
-.home__social {
-  animation: fadeIn 1s ease-out 0.8s both;
+.home__button:hover {
+  background-color: var(--first-color-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(43, 191, 240, 0.4);
 }
+
 
 .home__img {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-/* Subtle background animation */
-.home::after {
-  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 70% 30%, rgba(43, 191, 240, 0.03) 0%, transparent 50%);
-  z-index: -1;
-  animation: bgMove 20s linear infinite;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  z-index: 1;
+  border-radius: 10px; /* si tu veux garder l'arrondi sinon enlève */
+  box-shadow: none;    /* supprime l'ombre */
+  opacity: 0.8;        /* image un peu sombre */
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  filter: brightness(70%); /* rend l'image plus sombre */
+  cursor: pointer;
 }
 
-@keyframes bgMove {
-  0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(-5%, 5%);
-  }
-  50% {
-    transform: translate(-10%, 0);
-  }
-  75% {
-    transform: translate(-5%, -5%);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
+.home__img:hover {
+  filter: brightness(100%);
+  transform: scale(1.05); /* léger zoom */
+  opacity: 1;
 }
+
+
+
+.home__social {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  z-index: 10;
+}
+
+.home__social-icon {
+  color: var(--white-color);
+  font-size: 1.5rem;
+  transition: all 0.3s;
+}
+
+.home__social-icon:hover {
+  color: var(--first-color);
+  transform: translateY(-3px);
+}
+
 /* Sections common styles */
 .section {
   padding: 5rem 0;
