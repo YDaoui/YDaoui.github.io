@@ -1,6 +1,126 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM fully loaded");
 
+    /* ===== FONCTION POUR REJOUER LES ANIMATIONS ===== */
+    function replayAnimations() {
+        console.log("Replaying animations...");
+        
+        // 1. Reset overlays
+        gsap.set(".first", { top: 0 });
+        gsap.set(".second", { top: 0 });
+        gsap.set(".third", { top: 0 });
+        
+        // 2. Rejouer l'animation des overlays
+        const overlays = gsap.timeline();
+        overlays
+            .to(".first", {duration: 1.5, top: "-100%", ease: "expo.inOut"})
+            .to(".second", {duration: 1.5, top: "-100%", ease: "expo.inOut"}, "-=1.2")
+            .to(".third", {duration: 1.5, top: "-100%", ease: "expo.inOut"}, "-=1.2");
+
+        // 3. Rejouer l'animation de l'image
+        gsap.fromTo(".home__img", 
+            { x: 100, opacity: 0 },
+            { duration: 2, x: 0, opacity: 1, ease: "power3.out", delay: 1.5 }
+        );
+
+        // 4. Rejouer l'animation de la section home
+        const homeTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+        
+        homeTimeline.fromTo('.home__information', 
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 1.2, delay: 1.5 }
+        );
+
+        homeTimeline.fromTo('.home__pressent', 
+            { opacity: 0, y: 20 },
+            { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8, 
+                stagger: 0.15,
+                onStart: function() {
+                    document.querySelectorAll('.home__pressent').forEach(el => {
+                        el.style.color = "#646d70";
+                    });
+                }
+            }, "-=0.8"
+        );
+
+        homeTimeline.fromTo(".home__title", 
+            { x: -150, opacity: 0 },
+            { 
+                x: 0, 
+                opacity: 1, 
+                duration: 1.5, 
+                ease: "elastic.out(1, 0.8)",
+                onStart: function() {
+                    document.querySelector('.home__title').style.color = "#ffffff";
+                    gsap.to(".home__title", {
+                        color: "#2bbff0",
+                        duration: 1.8,
+                        ease: "sine.inOut"
+                    });
+                }
+            }, "-=0.5"
+        );
+
+        homeTimeline.fromTo(".home__skill", 
+            { x: 150, opacity: 0 },
+            { 
+                x: 0, 
+                opacity: 1, 
+                duration: 1.5, 
+                ease: "back.out(3)",
+                onStart: function() {
+                    document.querySelector('.home__skill').style.color = "#ffffff";
+                },
+                onComplete: function() {
+                    gsap.to(".home__skill", {
+                        color: "#2bbff0",
+                        duration: 0.8,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: "power1.inOut"
+                    });
+                }
+            }, "-=1"
+        );
+
+        homeTimeline.fromTo('.home__button', 
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "bounce.out" }, "-=0.5"
+        );
+
+        // 5. Rejouer l'animation du logo
+        gsap.fromTo('.nav__logo', 
+            { opacity: 0, y: 25 },
+            { opacity: 1, y: 0, duration: 1.5, delay: 1, ease: "expo.out" }
+        );
+
+        // 6. Rejouer l'animation des icônes sociales
+        gsap.fromTo('.home__social-icon', 
+            { opacity: 0, y: 25 },
+            { opacity: 1, y: 0, duration: 1.5, delay: 2.5, stagger: 0.15, ease: "back.out(2)" }
+        );
+    }
+
+    /* ===== GESTION DU CLIC SUR LE LOGO ===== */
+    document.getElementById('logo-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Scroll vers le haut
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Masquer temporairement le contenu
+        gsap.to('body', { opacity: 0, duration: 0.3 });
+        
+        // Après un court délai, réafficher et rejouer les animations
+        setTimeout(() => {
+            gsap.to('body', { opacity: 1, duration: 0.3 });
+            replayAnimations();
+        }, 500);
+    });
+
     /* ===== MENU TOGGLE ===== */
     const showMenu = (toggleId, navId) => {
         const toggle = document.getElementById(toggleId),
