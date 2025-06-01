@@ -621,7 +621,8 @@
             <!-- Formulaire de contact -->
             <form id="contactForm" class="contact__form contact-form" 
                   action="https://formsubmit.co/daoui00yassine@gmail.com" 
-                  method="POST">
+                  method="POST"
+                  enctype="text/plain">
                 
                 <!-- Paramètres FormSubmit -->
                 <input type="hidden" name="_subject" value="Nouveau message portfolio - daoui00yassine@gmail.com">
@@ -651,7 +652,10 @@
                 </div>
                 
                 <div class="form__footer">
+                    <input type="hidden" name="_next" value="https://ydaoui.github.io/MySiteWeb/merci.html">
+                    <input type="hidden" name="_captcha" value="false">
                     <button type="submit" class="contact__button">
+                        
                         <span>Envoyer le message</span>
                         <ion-icon name="send-outline" class="button__icon"></ion-icon>
                     </button>
