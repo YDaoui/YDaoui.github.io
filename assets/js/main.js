@@ -516,3 +516,49 @@ document.addEventListener('DOMContentLoaded', function() {
     window.toggleServiceDetails = toggleServiceDetails;
     window.toggleExperienceDetails = toggleExperienceDetails;
 });
+// Solution de repli si FormSubmit échoue
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const button = form.querySelector('button[type="submit"]');
+    
+    // Désactive le bouton pendant l'envoi
+    button.disabled = true;
+    button.innerHTML = '<span>Envoi en cours...</span>';
+    
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(new FormData(form))
+        });
+        
+        if (response.ok) {
+            window.location.href = form.querySelector('input[name="_next"]').value;
+        } else {
+            throw new Error('Erreur FormSubmit');
+        }
+    } catch (error) {
+        // Solution alternative via EmailJS
+        await sendWithEmailJS(form);
+        button.disabled = false;
+        button.innerHTML = '<span>Envoyer le message</span><ion-icon name="send-outline" class="button__icon"></ion-icon>';
+    }
+});
+
+// Solution de secours avec EmailJS
+async function sendWithEmailJS(form) {
+    // Configurez d'abord EmailJS (gratuit jusqu'à 200 emails/mois)
+    emailjs.init('VOTRE_USER_ID_EMAILJS');
+    
+    const templateParams = {
+        from_name: form.querySelector('[name="name"]').value,
+        reply_to: form.querySelector('[name="email"]').value,
+        message: form.querySelector('[name="message"]').value
+    };
+    
+    await emailjs.send('service_id', 'template_id', templateParams);
+    window.location.href = form.querySelector('input[name="_next"]').value;
+}
