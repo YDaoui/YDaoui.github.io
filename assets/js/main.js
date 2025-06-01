@@ -516,52 +516,10 @@ document.addEventListener('DOMContentLoaded', function() {
     window.toggleServiceDetails = toggleServiceDetails;
     window.toggleExperienceDetails = toggleExperienceDetails;
 });
-// Solution de repli si FormSubmit échoue
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const button = form.querySelector('button[type="submit"]');
-    
-    // Désactive le bouton pendant l'envoi
-    button.disabled = true;
-    button.innerHTML = '<span>Envoi en cours...</span>';
-    
-    try {
-        const response = await fetch(form.action, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams(new FormData(form))
-        });
-        
-        if (response.ok) {
-            window.location.href = form.querySelector('input[name="_next"]').value;
-        } else {
-            throw new Error('Erreur FormSubmit');
-        }
-    } catch (error) {
-        // Solution alternative via EmailJS
-        await sendWithEmailJS(form);
-        button.disabled = false;
-        button.innerHTML = '<span>Envoyer le message</span><ion-icon name="send-outline" class="button__icon"></ion-icon>';
-    }
-});
 
-// Solution de secours avec EmailJS
-async function sendWithEmailJS(form) {
-    // Configurez d'abord EmailJS (gratuit jusqu'à 200 emails/mois)
-    emailjs.init('VOTRE_USER_ID_EMAILJS');
-    
-    const templateParams = {
-        from_name: form.querySelector('[name="name"]').value,
-        reply_to: form.querySelector('[name="email"]').value,
-        message: form.querySelector('[name="message"]').value
-    };
-    
-    await emailjs.send('service_id', 'template_id', templateParams);
-    window.location.href = form.querySelector('input[name="_next"]').value;
-}
+
+
+
 // Gestion du formulaire de contact
 function initContactForm() {
     const form = document.getElementById('contactForm');
@@ -571,7 +529,6 @@ function initContactForm() {
         e.preventDefault();
         const button = form.querySelector('button[type="submit"]');
         
-        // Désactive le bouton pendant l'envoi
         button.disabled = true;
         button.innerHTML = '<span>Envoi en cours...</span>';
         
@@ -593,7 +550,7 @@ function initContactForm() {
             }
         } catch (error) {
             console.error('Erreur avec FormSubmit:', error);
-            // Fallback vers l'envoi par mailto
+            // Fallback vers mailto
             const name = encodeURIComponent(form.querySelector('[name="name"]').value);
             const email = encodeURIComponent(form.querySelector('[name="email"]').value);
             const subject = encodeURIComponent(form.querySelector('[name="subject"]').value);
@@ -601,11 +558,9 @@ function initContactForm() {
             
             window.location.href = `mailto:daoui00yassine@gmail.com?subject=${subject}&body=Nom: ${name}%0AEmail: ${email}%0A%0AMessage: ${message}`;
             
-            // Réactive le bouton
             button.disabled = false;
             button.innerHTML = '<span>Envoyer le message</span><ion-icon name="send-outline" class="button__icon"></ion-icon>';
             
-            // Affiche un message de confirmation
             alert("Le formulaire a rencontré un problème. Une fenêtre d'email s'est ouverte à la place.");
         }
     });
@@ -613,8 +568,6 @@ function initContactForm() {
 
 // Initialisation au chargement
 document.addEventListener('DOMContentLoaded', function() {
-    // Votre code d'animation existant...
-    
     // Cache les overlays immédiatement
     gsap.set([".first", ".second", ".third"], { top: "-100%" });
     
