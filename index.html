@@ -620,16 +620,18 @@
             
             <!-- Formulaire de contact -->
             <form id="contactForm" class="contact__form contact-form" 
-                  action="https://formsubmit.co/daoui00yassine@gmail.com" 
-                  method="POST"
-                  enctype="text/plain">
-                
-                <!-- Paramètres FormSubmit -->
-                <input type="hidden" name="_subject" value="Nouveau message portfolio - daoui00yassine@gmail.com">
-                <input type="hidden" name="_autoresponse" value="Merci pour votre message ! Je vous répondrai sous 48h. - Yassine Daoui">
-                <input type="hidden" name="_template" value="box">
-                <input type="text" name="_honey" style="display:none">
-                
+      action="https://formsubmit.co/daoui00yassine@gmail.com" 
+      method="POST"
+      enctype="multipart/form-data">
+    
+    <input type="hidden" name="_subject" value="Nouveau message portfolio">
+    <input type="hidden" name="_autoresponse" value="Merci pour votre message! Je vous répondrai sous 48h.">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://ydaoui.github.io/MySiteWeb/merci.html">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_honey" style="display:none">
+
+         
                 <!-- Champs du formulaire -->
                 <div class="form__group">
                     <input type="text" name="Nom" id="name" class="contact__input" required>
