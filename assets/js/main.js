@@ -562,3 +562,62 @@ async function sendWithEmailJS(form) {
     await emailjs.send('service_id', 'template_id', templateParams);
     window.location.href = form.querySelector('input[name="_next"]').value;
 }
+// Gestion du formulaire de contact
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const button = form.querySelector('button[type="submit"]');
+        
+        // Désactive le bouton pendant l'envoi
+        button.disabled = true;
+        button.innerHTML = '<span>Envoi en cours...</span>';
+        
+        try {
+            // Essai avec FormSubmit
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(new FormData(form))
+            });
+            
+            if (response.ok) {
+                window.location.href = form.querySelector('input[name="_next"]').value;
+            } else {
+                throw new Error('Erreur FormSubmit');
+            }
+        } catch (error) {
+            console.error('Erreur avec FormSubmit:', error);
+            // Fallback vers l'envoi par mailto
+            const name = encodeURIComponent(form.querySelector('[name="name"]').value);
+            const email = encodeURIComponent(form.querySelector('[name="email"]').value);
+            const subject = encodeURIComponent(form.querySelector('[name="subject"]').value);
+            const message = encodeURIComponent(form.querySelector('[name="message"]').value);
+            
+            window.location.href = `mailto:daoui00yassine@gmail.com?subject=${subject}&body=Nom: ${name}%0AEmail: ${email}%0A%0AMessage: ${message}`;
+            
+            // Réactive le bouton
+            button.disabled = false;
+            button.innerHTML = '<span>Envoyer le message</span><ion-icon name="send-outline" class="button__icon"></ion-icon>';
+            
+            // Affiche un message de confirmation
+            alert("Le formulaire a rencontré un problème. Une fenêtre d'email s'est ouverte à la place.");
+        }
+    });
+}
+
+// Initialisation au chargement
+document.addEventListener('DOMContentLoaded', function() {
+    // Votre code d'animation existant...
+    
+    // Cache les overlays immédiatement
+    gsap.set([".first", ".second", ".third"], { top: "-100%" });
+    
+    // Initialise le formulaire
+    initContactForm();
+});
