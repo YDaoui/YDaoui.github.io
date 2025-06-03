@@ -598,53 +598,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-// Gestion du formulaire de contact
-function initContactForm() {
-    const form = document.getElementById('contactForm');
-    const successPopup = document.getElementById('successPopup');
-    const closePopupBtn = document.querySelector('.close-popup-btn');
-
-    if (!form) return;
-
-    // Gestion de la popup
-    if (successPopup && closePopupBtn) {
-        closePopupBtn.addEventListener('click', () => {
-            successPopup.classList.remove('show-popup');
-            // Retirer le paramètre 'success' de l'URL sans recharger la page
-            if (window.location.search.includes('success=true')) {
-                const newUrl = window.location.pathname;
-                history.replaceState({}, document.title, newUrl);
-            }
-        });
-    }
-
-    // Vérifie si on doit afficher la popup après redirection
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('success') === 'true') {
-        showSuccessPopup();
-    }
-}
-
-function showSuccessPopup() {
-    const successPopup = document.getElementById('successPopup');
-    if (successPopup) {
-        successPopup.classList.add('show-popup');
-        
-        // Fermeture automatique après 5s
-        setTimeout(() => {
-            successPopup.classList.remove('show-popup');
-            // Nettoyer l'URL après fermeture
-            if (window.location.search.includes('success=true')) {
-                const newUrl = window.location.pathname;
-                history.replaceState({}, document.title, newUrl);
-            }
-        }, 5000);
-    }
-}
-
-// Initialisation au chargement
+// Vérifie si l'URL contient le paramètre success=true
 document.addEventListener('DOMContentLoaded', function() {
-    initContactForm();
+    const urlParams = new URLSearchParams(window.location.search);
+    const successParam = urlParams.get('success');
+    
+    if (successParam === 'true') {
+        // Affiche le popup de confirmation
+        document.getElementById('successPopup').style.display = 'flex';
+        
+        // Nettoie l'URL pour enlever le paramètre
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+    
+    // Fermeture du popup
+    document.querySelector('.close-popup-btn').addEventListener('click', function() {
+        document.getElementById('successPopup').style.display = 'none';
+    });
+});
+
+// Gestion de l'envoi du formulaire
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Envoi du formulaire
+    fetch(this.action, {
+        method: this.method,
+        body: new FormData(this)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Affiche le popup après envoi réussi
+            document.getElementById('successPopup').style.display = 'flex';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 });
