@@ -574,3 +574,77 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialise le formulaire
     initContactForm();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Gestion du formulaire de contact
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    const successPopup = document.getElementById('successPopup');
+    const closePopupBtn = document.querySelector('.close-popup-btn');
+
+    if (!form) return;
+
+    // Gestion de la popup
+    if (successPopup && closePopupBtn) {
+        closePopupBtn.addEventListener('click', () => {
+            successPopup.classList.remove('show-popup');
+            // Retirer le paramètre 'success' de l'URL sans recharger la page
+            if (window.location.search.includes('success=true')) {
+                const newUrl = window.location.pathname;
+                history.replaceState({}, document.title, newUrl);
+            }
+        });
+    }
+
+    // Vérifie si on doit afficher la popup après redirection
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+        showSuccessPopup();
+    }
+}
+
+function showSuccessPopup() {
+    const successPopup = document.getElementById('successPopup');
+    if (successPopup) {
+        successPopup.classList.add('show-popup');
+        
+        // Fermeture automatique après 5s
+        setTimeout(() => {
+            successPopup.classList.remove('show-popup');
+            // Nettoyer l'URL après fermeture
+            if (window.location.search.includes('success=true')) {
+                const newUrl = window.location.pathname;
+                history.replaceState({}, document.title, newUrl);
+            }
+        }, 5000);
+    }
+}
+
+// Initialisation au chargement
+document.addEventListener('DOMContentLoaded', function() {
+    initContactForm();
+});
