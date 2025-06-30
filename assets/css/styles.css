@@ -312,13 +312,13 @@ img {
 
 /* Mobile (écrans < 768px) */
 @media (max-width: 768px) {
-    .home__img-container {
-        width: 8cm;
-        height: 8cm;
-        right: 50%;
-        transform: translateX(50%);
-        bottom: 2rem;
-    }
+   /* Dans la media query mobile */
+.home__img-container {
+    position: relative;
+    margin: 0 auto 2rem;
+    right: auto;
+    bottom: auto;
+}
     
     .home__img {
         width: calc(100% - 6mm);
