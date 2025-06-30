@@ -275,53 +275,47 @@ img {
 }
 
 .home__img-container {
-  /* Use absolute positioning to place it relative to .home, but center it horizontally */
-  position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 2rem;
-  width: 12cm; /* Keep fixed width for the container */
-  height: 12cm; /* Keep fixed height for the container */
-  margin: 0 auto; /* This centers the container horizontally */
-  display: flex; /* Use flexbox to center content vertically and horizontally */
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    width: 12cm;
+    height: 12cm;
+    display: grid;
+    place-items: center; /* Centre tout le contenu */
+    z-index: 1;
 }
 
 .home__img {
-  width: 11.4cm;
-  height: 11.4cm;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center center;
-  position: relative;
-  z-index: 3;
-  filter: grayscale(20%) contrast(110%);
-  border: 3mm solid var(--black-color);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transform: translateZ(0);
-  /* Removed margin: 0 auto; from here as it's handled by flexbox on the parent */
+    width: 11.4cm;
+    height: 11.4cm;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center center;
+    position: relative;
+    z-index: 3;
+    filter: grayscale(20%) contrast(110%);
+    border: 3mm solid var(--black-color);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin: 0 auto; /* Centre l'image horizontalement */
 }
 
 .home__img-border {
-  position: absolute;
-  width: 12cm;
-  height: 12cm;
-  border-radius: 50%;
-  background: conic-gradient(
-      from 0deg,
-      var(--first-color),
-      var(--first-color-dark),
-      var(--black-color) 70%,
-      var(--first-color)
+    position: absolute;
+    width: 12cm;
+    height: 12cm;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        var(--first-color),
+        var(--first-color-dark),
+        var(--black-color) 70%,
+        var(--first-color)
     );
-  animation: rotateBorder 4s linear infinite;
-  z-index: 1;
-  padding: 1.5mm;
-  /* Ensure the border covers the container and is centered */
-  top: 0;
-  left: 0;
+    animation: rotateBorder 4s linear infinite;
+    z-index: 1;
+    padding: 1.5mm;
+    top: 0;
+    left: 0;
 }
 
 .home__img-border::before {
