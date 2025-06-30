@@ -281,17 +281,16 @@ img {
 }
 
 .home__img {
-    width: calc(100% - 8mm); /* 4mm de marge (2×4mm) */
-    height: calc(100% - 8mm);
+    width: calc(100% - 6mm); /* 3mm de chaque côté (2x3mm = 6mm) */
+    height: calc(100% - 6mm);
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
     position: relative;
-    z-index: 3;
-    border: 2mm solid var(--black-color);
+    z-index: 2;
     filter: grayscale(20%) contrast(110%);
-    transform: translateZ(0);
-    transition: all 0.4s ease;
+    border: 1mm solid var(--black-color); /* Bordure noire fine */
+    box-sizing: content-box; /* Important pour le calcul des dimensions */
 }
 
 .home__img-border {
@@ -302,29 +301,42 @@ img {
     background: conic-gradient(
         var(--first-color),
         var(--first-color-dark),
-        var(--black-color) 180deg,
+        var(--black-color),
+        var(--black-color),
         var(--first-color)
     );
-    animation: rotateBorder 3.5s linear infinite;
-    z-index: 1;
-    padding: 1mm;
+    background-size: 200% 200%;
+    animation: rotateBorder 3s linear infinite;
+    padding: 1mm; /* Espace de 1mm entre l'image et la bordure */
     box-sizing: border-box;
 }
 
-/* Mobile (écrans < 768px) */
-@media (max-width: 768px) {
-   /* Dans la media query mobile */
-.home__img-container {
-    position: relative;
-    margin: 0 auto 2rem;
-    right: auto;
-    bottom: auto;
+/* Version alternative plus précise avec pseudo-element */
+.home__img-border::after {
+    content: '';
+    position: absolute;
+    top: 1mm;
+    left: 1mm;
+    right: 1mm;
+    bottom: 1mm;
+    background: var(--black-color);
+    border-radius: 50%;
+    z-index: 1;
 }
-    
-    .home__img {
-        width: calc(100% - 6mm);
-        height: calc(100% - 6mm);
-        border-width: 1.5mm;
+
+.home__img:hover {
+    filter: grayscale(0%) contrast(120%);
+    transform: scale(1.02);
+}
+
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg);
+        background-position: 0% 50%;
+    }
+    100% {
+        transform: rotate(360deg);
+        background-position: 100% 50%;
     }
 }
 /* Supprimez les media queries pour les grandes tailles si vous voulez garder 7cm partout */
