@@ -224,38 +224,13 @@ img {
   position: relative;
   height: calc(100vh - 3rem);
   display: grid;
-  /* Adjust for mobile layout */
-  grid-template-columns: 1fr; /* Default to single column for small screens */
-  grid-template-rows: max-content max-content auto; /* Order elements vertically */
-  align-content: start; /* Align content to the start */
+  grid-template-rows: max-content max-content; /* Original desktop rows */
+  align-content: space-around; /* Original desktop alignment */
   row-gap: 2.5rem;
   padding: 1.5rem 0;
 }
 
-/* For mobile, ensure the image container is part of the flow */
-.home__img-container {
-  /* Remove absolute positioning for mobile to allow grid placement */
-  position: static;
-  width: 12cm; /* Keep original size */
-  height: 12cm; /* Keep original size */
-  display: grid;
-  place-items: center;
-  z-index: 1;
-  /* Add margin to center it horizontally in the grid flow */
-  margin: 0 auto;
-}
-
-/* Adjust the order of elements within the grid for mobile */
-.home__social {
-  order: 2; /* Social icons appear after information, before image on mobile */
-  display: flex;
-  flex-direction: column;
-  row-gap: 1.5rem;
-  z-index: 10;
-}
-
 .home__information {
-  order: 1; /* Information appears first */
   padding-left: 1.5rem;
   border-left: 5px solid var(--first-color);
   z-index: 10;
@@ -296,6 +271,19 @@ img {
   background-color: var(--first-color-dark);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(43, 191, 240, 0.4);
+}
+
+.home__img-container {
+  position: absolute;
+  /* Centering the container itself */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12cm;
+  height: 12cm;
+  display: grid;
+  place-items: center;
+  z-index: 1;
 }
 
 .home__img {
@@ -360,6 +348,13 @@ img {
 .home__img-container:hover .home__img-border {
   animation-duration: 2s;
   box-shadow: 0 0 20px rgba(43, 191, 240, 0.7);
+}
+
+.home__social {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  z-index: 10;
 }
 
 .home__social-icon {
@@ -968,6 +963,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(17, 17, 17, 0.95);
   z-index: 1000;
   transform: scaleY(0);
   transform-origin: top;
@@ -1170,6 +1166,60 @@ img {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .home {
+    grid-template-columns: 1fr 1fr; /* Two columns for mobile */
+    grid-template-rows: auto auto; /* Adjust rows as needed */
+    gap: 1.5rem; /* Space between columns and rows */
+    align-items: center; /* Vertically align items in the grid */
+    padding: 1.5rem; /* Add padding to the home section itself */
+  }
+
+  .home__information {
+    grid-column: 1 / 2; /* First column */
+    grid-row: 1 / 2; /* First row */
+    padding-left: 0; /* Remove left padding to align with content */
+    border-left: none; /* Remove border */
+    text-align: left;
+  }
+
+  .home__pressent,
+  .home__title,
+  .home__skill,
+  .home__button {
+    text-align: left;
+  }
+
+  .home__social {
+    grid-column: 1 / 2; /* First column */
+    grid-row: 2 / 3; /* Second row */
+    flex-direction: row; /* Keep social icons in a row */
+    justify-content: flex-start; /* Align social icons to the start */
+    margin-top: 1rem;
+  }
+
+  .home__img-container {
+    grid-column: 2 / 3; /* Second column */
+    grid-row: 1 / 3; /* Span both rows */
+    justify-self: end; /* Align image to the end of the column */
+    align-self: center; /* Center image vertically within its grid cell */
+    width: 10cm; /* Adjust size for mobile */
+    height: 10cm; /* Adjust size for mobile */
+    margin: 0; /* Remove auto margin as grid will handle positioning */
+    position: static; /* Ensure it's static for mobile grid flow */
+  }
+
+  .home__img {
+    width: 9.4cm; /* Adjust size for mobile */
+    height: 9.4cm; /* Adjust size for mobile */
+  }
+
+  .home__img-border {
+    width: 10cm; /* Adjust size for mobile */
+    height: 10cm; /* Adjust size for mobile */
+  }
+}
+
 @media screen and (min-width: 768px) {
   body {
     margin: 0;
@@ -1207,13 +1257,55 @@ img {
 
   .home {
     height: 100vh;
+    display: grid; /* Keep grid for desktop */
+    grid-template-columns: max-content 1fr; /* desktop: content then image */
     grid-template-rows: max-content;
     align-content: center;
     padding-top: 4rem;
+    gap: 0; /* No specific gap in original desktop layout */
   }
 
   .home__information {
+    grid-column: 1 / 2; /* Content in the first column */
+    grid-row: 1 / 2;
     padding-left: 2rem;
+    border-left: 5px solid var(--first-color);
+    text-align: left;
+  }
+
+  .home__social {
+    grid-column: 1 / 2; /* Social icons in the first column */
+    grid-row: 1 / 2; /* They will naturally flow below information */
+    flex-direction: column; /* Back to column for desktop */
+    align-self: end; /* Align social icons to the bottom of their grid area */
+    margin-top: 0;
+    padding-left: 2rem; /* Align with info */
+  }
+
+  .home__img-container {
+    position: relative; /* Remove absolute position for desktop grid flow */
+    grid-column: 2 / 3; /* Image in the second column */
+    grid-row: 1 / 2;
+    width: 450px; /* Adjust size for desktop */
+    height: 450px; /* Adjust size for desktop */
+    display: grid;
+    place-items: center;
+    z-index: 1;
+    margin-left: auto; /* Push to the right */
+    margin-right: 0;
+    transform: none; /* Remove transform from absolute positioning */
+    top: auto; /* Remove top from absolute positioning */
+    left: auto; /* Remove left from absolute positioning */
+  }
+
+  .home__img {
+    width: 420px; /* Adjust as needed for proportional sizing */
+    height: 420px;
+  }
+
+  .home__img-border {
+    width: 450px;
+    height: 450px;
   }
 
   .home__title {
@@ -1222,10 +1314,6 @@ img {
 
   .home__skill {
     font-size: 1.5rem;
-  }
-
-  .home__img {
-    width: 450px;
   }
 
   .contact__container {
@@ -1251,8 +1339,19 @@ img {
     font-size: 4.5rem;
   }
 
+  .home__img-container {
+    width: 550px; /* Adjust size for larger desktops */
+    height: 550px;
+  }
+
   .home__img {
+    width: 520px; /* Adjust for larger desktops */
+    height: 520px;
+  }
+
+  .home__img-border {
     width: 550px;
+    height: 550px;
   }
 
   .services__grid {
@@ -1269,7 +1368,18 @@ img {
     font-size: 5rem;
   }
 
+  .home__img-container {
+    width: 600px; /* Adjust size for even larger desktops */
+    height: 600px;
+  }
+
   .home__img {
+    width: 570px; /* Adjust for even larger desktops */
+    height: 570px;
+  }
+
+  .home__img-border {
     width: 600px;
+    height: 600px;
   }
 }
