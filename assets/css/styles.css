@@ -270,74 +270,72 @@ img {
 
 .home__img-container {
     position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    width: 7cm;
-    height: 7cm;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    right: 2rem;
+    bottom: 2rem;
+   width: 15cm;
+    height: 15cm;
+    display: grid;
+    place-items: center;
     z-index: 1;
 }
 
 .home__img {
-    width: calc(100% - 6mm); /* 3mm de chaque côté (2x3mm = 6mm) */
-    height: calc(100% - 6mm);
+    width: 14.4cm; /* 15cm - 6mm (3mm de chaque côté) */
+    height: 14.4cm;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
     position: relative;
-    z-index: 2;
+    z-index: 3;
     filter: grayscale(20%) contrast(110%);
-    border: 1mm solid var(--black-color); /* Bordure noire fine */
-    box-sizing: content-box; /* Important pour le calcul des dimensions */
+    border: 3mm solid var(--black-color);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transform: translateZ(0); /* Fixe le centrage */
 }
 
 .home__img-border {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 15cm;
+    height: 15cm;
     border-radius: 50%;
     background: conic-gradient(
+        from 0deg,
         var(--first-color),
         var(--first-color-dark),
-        var(--black-color),
-        var(--black-color),
+        var(--black-color) 70%,
         var(--first-color)
     );
-    background-size: 200% 200%;
-    animation: rotateBorder 3s linear infinite;
-    padding: 1mm; /* Espace de 1mm entre l'image et la bordure */
-    box-sizing: border-box;
+    animation: rotateBorder 4s linear infinite;
+    z-index: 1;
+    padding: 1.5mm;
 }
 
-/* Version alternative plus précise avec pseudo-element */
-.home__img-border::after {
+.home__img-border::before {
     content: '';
     position: absolute;
-    top: 1mm;
-    left: 1mm;
-    right: 1mm;
-    bottom: 1mm;
+    top: 1.5mm;
+    left: 1.5mm;
+    right: 1.5mm;
+    bottom: 1.5mm;
     background: var(--black-color);
     border-radius: 50%;
-    z-index: 1;
-}
-
-.home__img:hover {
-    filter: grayscale(0%) contrast(120%);
-    transform: scale(1.02);
+    z-index: 2;
 }
 
 @keyframes rotateBorder {
-    0% {
-        transform: rotate(0deg);
-        background-position: 0% 50%;
-    }
-    100% {
-        transform: rotate(360deg);
-        background-position: 100% 50%;
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animation au survol */
+.home__img-container:hover .home__img {
+    filter: grayscale(0%) contrast(120%);
+    transform: scale(1.02) translateZ(0);
+}
+
+.home__img-container:hover .home__img-border {
+    animation-duration: 2s;
+    box-shadow: 0 0 20px rgba(43, 191, 240, 0.7);
 }
 /* Supprimez les media queries pour les grandes tailles si vous voulez garder 7cm partout */
 
