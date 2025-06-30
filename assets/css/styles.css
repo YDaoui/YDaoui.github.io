@@ -291,7 +291,7 @@ img {
     border: 3mm solid var(--black-color);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     transform: translateZ(0);
-    margin: 0 auto; /* Ajout de cette ligne pour centrer parfaitement */
+    margin: 0 auto;
 }
 
 .home__img-border {
@@ -328,7 +328,6 @@ img {
     100% { transform: rotate(360deg); }
 }
 
-/* Animation au survol */
 .home__img-container:hover .home__img {
     filter: grayscale(0%) contrast(120%);
     transform: scale(1.02) translateZ(0);
@@ -338,7 +337,6 @@ img {
     animation-duration: 2s;
     box-shadow: 0 0 20px rgba(43, 191, 240, 0.7);
 }
-/* Supprimez les media queries pour les grandes tailles si vous voulez garder 7cm partout */
 
 .home__social {
   display: flex;
@@ -1201,5 +1199,74 @@ img {
   
   .home__img {
     width: 600px;
+  }
+}
+
+/* Modification spécifique pour mobile */
+@media screen and (max-width: 767px) {
+  .home {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 2rem;
+  }
+
+  .home__information {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+
+  .home__social {
+    order: 2;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .home__img-container {
+    order: 3;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .home__img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .home__img-border {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .home {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .home__information {
+    width: 100%;
+  }
+
+  .home__social {
+    width: 50%;
+    order: 3;
+    justify-content: flex-start;
+  }
+
+  .home__img-container {
+    width: 50%;
+    order: 4;
+    justify-content: flex-end;
   }
 }
