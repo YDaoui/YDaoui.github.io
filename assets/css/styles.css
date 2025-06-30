@@ -270,9 +270,9 @@ img {
 
 .home__img-container {
     position: absolute;
-    right: 1.5rem;
-    bottom: 1.5rem;
-   width: 12cm;
+    right: 1rem;
+    bottom: 1rem;
+    width: 12cm;
     height: 12cm;
     display: grid;
     place-items: center;
@@ -280,62 +280,51 @@ img {
 }
 
 .home__img {
-    width: 14.4cm; /* 15cm - 6mm (3mm de chaque côté) */
-    height: 14.4cm;
+    width: calc(100% - 8mm); /* 4mm de marge (2×4mm) */
+    height: calc(100% - 8mm);
     border-radius: 50%;
     object-fit: cover;
-    object-position: center center;
+    object-position: center;
     position: relative;
     z-index: 3;
+    border: 2mm solid var(--black-color);
     filter: grayscale(20%) contrast(110%);
-    border: 3mm solid var(--black-color);
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    transform: translateZ(0); /* Fixe le centrage */
+    transform: translateZ(0);
+    transition: all 0.4s ease;
 }
 
 .home__img-border {
     position: absolute;
-    width: 15cm;
-    height: 15cm;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     background: conic-gradient(
-        from 0deg,
         var(--first-color),
         var(--first-color-dark),
-        var(--black-color) 70%,
+        var(--black-color) 180deg,
         var(--first-color)
     );
-    animation: rotateBorder 4s linear infinite;
+    animation: rotateBorder 3.5s linear infinite;
     z-index: 1;
-    padding: 1.5mm;
+    padding: 1mm;
+    box-sizing: border-box;
 }
 
-.home__img-border::before {
-    content: '';
-    position: absolute;
-    top: 1.5mm;
-    left: 1.5mm;
-    right: 1.5mm;
-    bottom: 1.5mm;
-    background: var(--black-color);
-    border-radius: 50%;
-    z-index: 2;
-}
-
-@keyframes rotateBorder {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Animation au survol */
-.home__img-container:hover .home__img {
-    filter: grayscale(0%) contrast(120%);
-    transform: scale(1.02) translateZ(0);
-}
-
-.home__img-container:hover .home__img-border {
-    animation-duration: 2s;
-    box-shadow: 0 0 20px rgba(43, 191, 240, 0.7);
+/* Mobile (écrans < 768px) */
+@media (max-width: 768px) {
+    .home__img-container {
+        width: 8cm;
+        height: 8cm;
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 2rem;
+    }
+    
+    .home__img {
+        width: calc(100% - 6mm);
+        height: calc(100% - 6mm);
+        border-width: 1.5mm;
+    }
 }
 /* Supprimez les media queries pour les grandes tailles si vous voulez garder 7cm partout */
 
