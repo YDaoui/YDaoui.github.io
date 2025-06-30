@@ -281,8 +281,8 @@ img {
 }
 
 .home__img {
-    width: 85%;
-    height: 85%;
+    width: 65%;
+    height: 65%;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
