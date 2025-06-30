@@ -224,13 +224,38 @@ img {
   position: relative;
   height: calc(100vh - 3rem);
   display: grid;
-  grid-template-rows: max-content max-content;
-  align-content: space-around;
+  /* Adjust for mobile layout */
+  grid-template-columns: 1fr; /* Default to single column for small screens */
+  grid-template-rows: max-content max-content auto; /* Order elements vertically */
+  align-content: start; /* Align content to the start */
   row-gap: 2.5rem;
   padding: 1.5rem 0;
 }
 
+/* For mobile, ensure the image container is part of the flow */
+.home__img-container {
+  /* Remove absolute positioning for mobile to allow grid placement */
+  position: static;
+  width: 12cm; /* Keep original size */
+  height: 12cm; /* Keep original size */
+  display: grid;
+  place-items: center;
+  z-index: 1;
+  /* Add margin to center it horizontally in the grid flow */
+  margin: 0 auto;
+}
+
+/* Adjust the order of elements within the grid for mobile */
+.home__social {
+  order: 2; /* Social icons appear after information, before image on mobile */
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  z-index: 10;
+}
+
 .home__information {
+  order: 1; /* Information appears first */
   padding-left: 1.5rem;
   border-left: 5px solid var(--first-color);
   z-index: 10;
@@ -271,19 +296,6 @@ img {
   background-color: var(--first-color-dark);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(43, 191, 240, 0.4);
-}
-
-.home__img-container {
-  position: absolute;
-  /* Centering the container itself */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12cm;
-  height: 12cm;
-  display: grid;
-  place-items: center;
-  z-index: 1;
 }
 
 .home__img {
@@ -348,13 +360,6 @@ img {
 .home__img-container:hover .home__img-border {
   animation-duration: 2s;
   box-shadow: 0 0 20px rgba(43, 191, 240, 0.7);
-}
-
-.home__social {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1.5rem;
-  z-index: 10;
 }
 
 .home__social-icon {
