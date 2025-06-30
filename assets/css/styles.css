@@ -274,23 +274,23 @@ img {
     bottom: 1rem;
     width: 7cm;
     height: 7cm;
-    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
 .home__img {
-    width: 90%;
-    height: 90%;
+    width: calc(100% - 6mm); /* 3mm de chaque côté (2x3mm = 6mm) */
+    height: calc(100% - 6mm);
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
     position: relative;
     z-index: 2;
     filter: grayscale(20%) contrast(110%);
-    transition: all 0.4s ease;
-    border: 3px solid var(--black-color);
+    border: 1mm solid var(--black-color); /* Bordure noire fine */
+    box-sizing: content-box; /* Important pour le calcul des dimensions */
 }
 
 .home__img-border {
@@ -307,8 +307,26 @@ img {
     );
     background-size: 200% 200%;
     animation: rotateBorder 3s linear infinite;
+    padding: 1mm; /* Espace de 1mm entre l'image et la bordure */
+    box-sizing: border-box;
+}
+
+/* Version alternative plus précise avec pseudo-element */
+.home__img-border::after {
+    content: '';
+    position: absolute;
+    top: 1mm;
+    left: 1mm;
+    right: 1mm;
+    bottom: 1mm;
+    background: var(--black-color);
+    border-radius: 50%;
     z-index: 1;
-    box-shadow: 0 0 10px rgba(43, 191, 240, 0.3);
+}
+
+.home__img:hover {
+    filter: grayscale(0%) contrast(120%);
+    transform: scale(1.02);
 }
 
 @keyframes rotateBorder {
@@ -321,7 +339,6 @@ img {
         background-position: 100% 50%;
     }
 }
-
 /* Supprimez les media queries pour les grandes tailles si vous voulez garder 7cm partout */
 
 .home__social {
