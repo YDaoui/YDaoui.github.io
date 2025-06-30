@@ -272,8 +272,8 @@ img {
     position: absolute;
     right: 2rem;
     bottom: 2rem;
-   width: 15cm;
-    height: 15cm;
+   width: 12cm;
+    height: 12cm;
     display: grid;
     place-items: center;
     z-index: 1;
