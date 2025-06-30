@@ -18,25 +18,31 @@ document.addEventListener('DOMContentLoaded', function() {
             .to(".third", { duration: 1.5, top: "-100%", ease: "expo.inOut" }, "-=1.2");
 
         // 3. Animation de l'image
-        // Dans la fonction playInitialAnimations(), remplacer l'animation existante par :
-// Dans la fonction playInitialAnimations(), remplacer l'animation existante par :
-        gsap.fromTo(".home__img",
-            { 
-                x: 100, 
+       
+            gsap.from(".home__img-container", {
+                duration: 2,
+                x: 100,
                 opacity: 0,
-                filter: "grayscale(80%) brightness(50%)",
-                scale: 0.9
-            },
-            { 
-                duration: 2, 
-                x: 0, 
-                opacity: 0.9,
-                filter: "grayscale(20%) brightness(90%)",
-                scale: 1,
-                ease: "power3.out", 
-                delay: 1.5 
-            }
-        );
+                rotation: -30,
+                ease: "power3.out",
+                delay: 1.5
+            });
+            
+            gsap.from(".home__img", {
+                duration: 1.5,
+                scale: 0.8,
+                opacity: 0,
+                ease: "elastic.out(1, 0.5)",
+                delay: 2
+            });
+            
+            gsap.from(".home__img-border", {
+                duration: 2,
+                scale: 0,
+                opacity: 0,
+                ease: "back.out(4)",
+                delay: 1.8
+            });
 
         // 4. Animation principale de la section home
         const homeTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
