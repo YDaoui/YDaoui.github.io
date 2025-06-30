@@ -274,8 +274,9 @@ img {
     bottom: 1rem;
     width: 12cm;
     height: 12cm;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 1;
 }
 
