@@ -207,7 +207,43 @@ img {
     background-color: rgba(17, 17, 17, 0.98);
     border-bottom-color: var(--first-color);
   }
+
+  /* Adjustments for home section on mobile */
+  .home {
+    display: flex; /* Change to flexbox */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: space-around; /* Distribute space */
+    align-items: center; /* Center items horizontally */
+    height: auto; /* Allow height to adjust */
+    padding-bottom: 3rem; /* Add some padding at the bottom */
+  }
+
+  .home__information {
+    order: 0; /* Place information section first */
+    padding-left: 1.5rem;
+    border-left: 5px solid var(--first-color);
+    margin-bottom: 2.5rem; /* Space between info and image/social */
+    text-align: center; /* Center align text */
+    padding-right: 1.5rem; /* Ensure padding on both sides */
+  }
+
+  .home__img-container {
+    position: static; /* Remove absolute positioning */
+    width: 12cm; /* Keep existing size */
+    height: 12cm; /* Keep existing size */
+    margin: 0 auto 2rem auto; /* Center and add space below */
+    order: 1; /* Place image container after information */
+  }
+
+  .home__social {
+    order: 2; /* Place social icons after image container */
+    flex-direction: row; /* Keep social icons in a row */
+    justify-content: center; /* Center social icons */
+    width: 100%; /* Take full width */
+    column-gap: 1.5rem; /* Maintain spacing */
+  }
 }
+
 
 /* Active link */
 .active-link {
@@ -1139,10 +1175,13 @@ img {
     grid-template-rows: max-content;
     align-content: center;
     padding-top: 4rem;
+    display: grid; /* Revert to grid for larger screens */
   }
   
   .home__information {
     padding-left: 2rem;
+    border-left: 5px solid var(--first-color);
+    text-align: left; /* Revert text alignment */
   }
   
   .home__title {
@@ -1155,6 +1194,17 @@ img {
   
   .home__img {
     width: 450px;
+  }
+  
+  .home__img-container {
+    position: absolute; /* Revert to absolute positioning */
+    right: 2rem;
+    bottom: 2rem;
+    width: 12cm;
+    height: 12cm;
+    display: grid;
+    place-items: center;
+    z-index: 1;
   }
   
   .contact__container {
