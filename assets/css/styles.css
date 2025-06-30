@@ -210,24 +210,49 @@ img {
   }
 
   .home__img-container {
-    position: relative; /* Relative au lieu de absolute */
-    width: 100px; /* Taille réduite */
-    height: 100px;
-    margin: 0;
-    order: 2; /* Position à droite */
-  }
-
-  .home__img {
-    width: 94px; /* 100px - 6mm de bordure */
-    height: 94px;
-  }
-
-  .home__img-border {
-    width: 100px;
-    height: 100px;
-  }
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    width: 12cm;
+    height: 12cm;
+    display: flex; /* Changé de grid à flex */
+    justify-content: center; /* Centrage horizontal */
+    align-items: center; /* Centrage vertical */
+    z-index: 1;
 }
 
+.home__img {
+    width: 11.4cm;
+    height: 11.4cm;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center center;
+    position: relative; /* Relative au lieu de absolute */
+    z-index: 3;
+    filter: grayscale(20%) contrast(110%);
+    border: 3mm solid var(--black-color);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin: 0; /* Suppression du margin: auto */
+}
+
+.home__img-border {
+    position: absolute; /* Garde absolute */
+    width: 100%; /* Prend toute la taille du conteneur */
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        var(--first-color),
+        var(--first-color-dark),
+        var(--black-color) 70%,
+        var(--first-color)
+    );
+    animation: rotateBorder 4s linear infinite;
+    z-index: 1;
+    padding: 1.5mm;
+    top: 0;
+    left: 0;
+}
 /* GARDE TOUT LE RESTE DU CODE EXISTANT INTACT */
 @keyframes rotateBorder {
     0% { transform: rotate(0deg); }
