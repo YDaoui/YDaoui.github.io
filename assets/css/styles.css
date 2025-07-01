@@ -1166,17 +1166,17 @@ img {
     width: 330px;
   }
 
+  /* Social icons are already row and centered for mobile up to this breakpoint */
   .home__social {
     flex-direction: row;
     column-gap: 1.5rem;
+    justify-content: center;
   }
 
   .home__social-icon {
     font-size: 1.75rem;
   }
 }
-
-/* No specific changes for max-width 767px as mobile-first is default now */
 
 @media screen and (min-width: 768px) {
   body {
@@ -1245,10 +1245,10 @@ img {
 
   .home__social {
     grid-area: social;
-    flex-direction: column; /* Back to column for desktop */
-    justify-content: flex-start; /* Align social icons to the start (top) of their column */
+    flex-direction: row; /* Horizontal for desktop */
+    justify-content: flex-start; /* Align social icons to the start (left) */
     align-items: flex-start; /* Align social icons to the left */
-    row-gap: 1.5rem; /* Space between icons */
+    column-gap: 1.5rem; /* Space between icons horizontally */
     margin-top: 0; /* Remove top margin as grid gap handles spacing */
     padding-left: 2rem; /* Align with info */
   }
@@ -1256,8 +1256,8 @@ img {
   .home__img-container {
     grid-area: image;
     position: relative; /* Keep relative or static as needed for grid flow */
-    width: 450px; /* Adjust size for desktop */
-    height: 450px; /* Adjust size for desktop */
+    width: 400px; /* Adjusted size for desktop (slightly smaller) */
+    height: 400px; /* Adjusted size for desktop (slightly smaller) */
     margin-left: auto; /* Push to the right */
     margin-right: 0; /* Remove right margin */
     align-self: center; /* Vertically center in its grid area */
@@ -1266,13 +1266,13 @@ img {
   }
 
   .home__img {
-    width: 420px; /* Adjust as needed for proportional sizing */
-    height: 420px;
+    width: 380px; /* Adjusted for proportional sizing */
+    height: 380px;
   }
 
   .home__img-border {
-    width: 450px;
-    height: 450px;
+    width: 400px;
+    height: 400px;
   }
 
   .home__title {
@@ -1307,18 +1307,18 @@ img {
   }
 
   .home__img-container {
-    width: 550px; /* Adjust size for larger desktops */
-    height: 550px;
+    width: 500px; /* Adjusted size for larger desktops (slightly smaller) */
+    height: 500px;
   }
 
   .home__img {
-    width: 520px; /* Adjust for larger desktops */
-    height: 520px;
+    width: 470px; /* Adjusted for larger desktops */
+    height: 470px;
   }
 
   .home__img-border {
-    width: 550px;
-    height: 550px;
+    width: 500px;
+    height: 500px;
   }
 
   .services__grid {
@@ -1336,17 +1336,17 @@ img {
   }
 
   .home__img-container {
-    width: 600px; /* Adjust size for even larger desktops */
-    height: 600px;
+    width: 550px; /* Adjusted size for even larger desktops (slightly smaller) */
+    height: 550px;
   }
 
   .home__img {
-    width: 570px; /* Adjust for even larger desktops */
-    height: 570px;
+    width: 520px; /* Adjusted for even larger desktops */
+    height: 520px;
   }
 
   .home__img-border {
-    width: 600px;
-    height: 600px;
+    width: 550px;
+    height: 550px;
   }
 }
