@@ -25,7 +25,7 @@ html {
 }
 
 body {
-  margin: 3rem 0 0 0; /* Margin for fixed header on mobile */
+  margin: 3rem 0 0 0;
   font-family: 'Poppins', sans-serif;
   background-color: var(--black-color);
   color: var(--white-color);
@@ -52,7 +52,7 @@ a {
 }
 
 img {
-  max-width: 100%; /* Ensure images don't overflow */
+  max-width: 75%;
   height: auto;
   display: block;
 }
@@ -99,15 +99,14 @@ img {
 
 .nav__menu {
   position: fixed;
-  top: -100%; /* Hidden by default */
+  top: -100%;
   left: 0;
   width: 100%;
   padding: 1.5rem 0 1rem;
-  background-color: rgba(17, 17, 17, 0); /* Transparent initially */
-  backdrop-filter: blur(0px); /* No blur initially */
-  transition: all .4s;
+  background-color: var(--black-color-light);
+  transition: .4s;
   z-index: 99;
-  border-bottom: 2px solid transparent; /* Transparent border */
+  border-bottom: 2px solid var(--first-color);
 }
 
 .nav__list {
@@ -152,7 +151,7 @@ img {
   display: inline-flex;
 }
 
-/* Hamburger icon styles */
+/* Style de base pour l'icône hamburger */
 #nav-toggle {
   display: flex;
   flex-direction: column;
@@ -189,11 +188,30 @@ img {
 }
 
 /* Show menu */
-.nav__menu.show-menu {
+.show-menu {
   top: 3rem;
-  background-color: rgba(17, 17, 17, 0.98); /* Solid background when shown */
-  backdrop-filter: blur(10px);
-  border-bottom-color: var(--first-color);
+}
+
+/* Menu mobile */
+@media screen and (max-width: 767px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 0;
+    background-color: rgba(17, 17, 17, 0);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s;
+    z-index: 99;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav__menu.show {
+    top: 3rem;
+    background-color: rgba(17, 17, 17, 0.98);
+    border-bottom-color: var(--first-color);
+  }
 }
 
 /* Active link */
@@ -201,10 +219,10 @@ img {
   color: var(--first-color);
 }
 
-/*--- HOME SECTION (Mobile First) ---*/
+/* Home section (Mobile First) */
 .home {
   position: relative;
-  height: calc(100vh - 3rem); /* Full viewport height minus header */
+  height: calc(100vh - 3rem);
   display: grid;
   grid-template-areas:
     "gap"
@@ -213,17 +231,17 @@ img {
     "button"
     "social";
   grid-template-columns: 1fr;
-  align-content: start;
-  row-gap: 1rem;
+  align-content: start; /* Align content to the top initially */
+  row-gap: 1rem; /* Reduced row gap */
   padding: 1.5rem;
-  text-align: left; /* Default text alignment for content */
+  text-align: left;
 }
 
 .home::before {
   content: '';
   grid-area: gap;
   display: block;
-  height: 2rem; /* Space below header before content */
+  height: 2rem; /* Add some space below the header */
 }
 
 .home__img-container {
@@ -234,7 +252,10 @@ img {
   display: grid;
   place-items: center;
   z-index: 1;
-  margin: 0 auto 1rem auto; /* Center image horizontally */
+  margin: 0 auto 1rem auto; /* Reduced bottom margin */
+  transform: none;
+  top: auto;
+  left: auto;
 }
 
 .home__img {
@@ -248,7 +269,7 @@ img {
   filter: grayscale(20%) contrast(110%);
   border: 3mm solid var(--black-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transform: translateZ(0); /* For smooth animations */
+  transform: translateZ(0);
 }
 
 .home__img-border {
@@ -289,24 +310,25 @@ img {
   }
 }
 
-/* Image hover animation */
+/* Animation au survol */
 .home__img-container:hover .home__img {
   filter: grayscale(0%) contrast(120%);
   transform: scale(1.02) translateZ(0);
 }
 
 .home__img-container:hover .home__img-border {
-  animation-duration: 2s; /* Faster rotation on hover */
+  animation-duration: 2s;
   box-shadow: 0 0 20px rgba(43, 191, 240, 0.7);
 }
 
 .home__information {
   grid-area: info;
-  padding-left: 1rem; /* Re-added blue bar for mobile */
+  /* Re-added for mobile */
+  padding-left: 1rem; /* Adjust as needed for spacing */
   border-left: 3px solid var(--first-color); /* The blue bar */
   z-index: 10;
   text-align: left;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; /* Reduced bottom margin */
 }
 
 .home__pressent {
@@ -317,21 +339,21 @@ img {
 }
 
 .home__title {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 2rem; /* Slightly smaller title on mobile */
+  margin-bottom: 0.5rem; /* Reduced bottom margin */
   color: var(--white-color);
 }
 
 .home__skill {
-  font-size: 1rem;
+  font-size: 1rem; /* Slightly smaller skill text on mobile */
   color: var(--gray-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; /* Reduced bottom margin */
   display: block;
 }
 
 .home__button {
   grid-area: button;
-  display: inline-block; /* Changed to inline-block for centering */
+  display: inline-block;
   background-color: var(--first-color);
   color: var(--black-color);
   padding: 0.75rem 1.5rem;
@@ -339,8 +361,8 @@ img {
   font-weight: 600;
   transition: all 0.3s;
   box-shadow: 0 4px 15px rgba(43, 191, 240, 0.3);
-  text-align: center; /* Ensures text inside is centered */
-  margin: 0 auto 1.5rem auto; /* Center button horizontally */
+  text-align: center; /* Center the button */
+  margin: 0 auto 1.5rem auto; /* Center and add bottom margin */
 }
 
 .home__button:hover {
@@ -354,10 +376,10 @@ img {
   display: flex;
   flex-direction: row; /* Horizontal for mobile */
   justify-content: center; /* Center social icons horizontally */
-  align-items: center;
+  align-items: center; /* Center social icons vertically */
   gap: 1.5rem;
-  margin-top: 0;
-  padding-bottom: 1.5rem;
+  margin-top: 0; /* Remove top margin */
+  padding-bottom: 1.5rem; /* Add some padding at the bottom */
 }
 
 .home__social-icon {
@@ -373,17 +395,17 @@ img {
 
 /* Sections common styles */
 .section {
-  padding: 5rem 0; /* Default padding for sections */
+  padding: 5rem 0;
   background-color: var(--black-color);
 }
 
 .section-container {
   max-width: 1200px;
-  margin: 0 1.5rem; /* Ensure margin on mobile */
+  margin: 0 auto;
   background: rgba(0, 0, 0, 0.7);
   border: 2px solid var(--first-color);
   border-radius: 15px;
-  padding: 2.5rem 1.5rem; /* Adjusted padding for mobile */
+  padding: 2.5rem;
   box-shadow: 0 0 30px rgba(43, 191, 240, 0.2);
   position: relative;
   overflow: hidden;
@@ -403,8 +425,8 @@ img {
 }
 
 .section-title {
-  font-size: 2rem; /* Adjusted for mobile */
-  margin-bottom: 2rem; /* Adjusted for mobile */
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
   color: var(--white-color);
   text-align: center;
   position: relative;
@@ -413,7 +435,7 @@ img {
 .section-title::after {
   content: '';
   position: absolute;
-  width: 80px; /* Adjusted for mobile */
+  width: 100px;
   height: 3px;
   background: var(--first-color);
   bottom: -10px;
@@ -430,14 +452,14 @@ img {
 
 .about__content h3 {
   color: var(--first-color);
-  font-size: 1.25rem; /* Adjusted for mobile */
+  font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
 .about__content h4 {
   color: var(--white-color);
-  font-size: 1rem; /* Adjusted for mobile */
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
   font-weight: 400;
 }
 
@@ -445,7 +467,6 @@ img {
   margin-bottom: 1.5rem;
   color: var(--gray-color);
   line-height: 1.8;
-  font-size: 0.9375rem; /* Adjusted for mobile */
 }
 
 .about__description strong {
@@ -455,8 +476,8 @@ img {
 
 .social-badges {
   display: flex;
-  gap: 0.75rem; /* Adjusted gap for mobile */
-  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-top: 2rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -473,14 +494,14 @@ img {
 /* Services section */
 .services__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width for mobile */
-  gap: 1.5rem; /* Adjusted gap for mobile */
-  margin-top: 2rem; /* Adjusted margin for mobile */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
 .service-card {
   background: rgba(0, 0, 0, 0.3);
-  padding: 1.5rem; /* Adjusted padding for mobile */
+  padding: 2rem;
   border-radius: 10px;
   border-left: 4px solid var(--first-color);
   transition: all 0.4s ease;
@@ -496,32 +517,32 @@ img {
 .service-header {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem; /* Adjusted margin for mobile */
+  margin-bottom: 1.5rem;
   cursor: pointer;
 }
 
 .service-header ion-icon {
-  font-size: 1.8rem; /* Adjusted for mobile */
+  font-size: 2rem;
   color: var(--first-color);
-  margin-right: 0.75rem; /* Adjusted for mobile */
+  margin-right: 1rem;
 }
 
 .service-header h3 {
-  font-size: 1.1rem; /* Adjusted for mobile */
+  font-size: 1.25rem;
   color: var(--white-color);
   flex-grow: 1;
 }
 
 .service-arrow {
   color: var(--first-color);
-  font-size: 1.1rem; /* Adjusted for mobile */
+  font-size: 1.25rem;
   transition: transform 0.3s;
 }
 
 .service-brief {
   color: var(--gray-color);
-  margin-bottom: 0.75rem; /* Adjusted for mobile */
-  font-size: 0.875rem; /* Adjusted for mobile */
+  margin-bottom: 1rem;
+  font-size: 0.9375rem;
 }
 
 .service-details {
@@ -532,20 +553,19 @@ img {
 }
 
 .service-details.show {
-  max-height: 500px; /* Sufficient height */
+  max-height: 500px;
   opacity: 1;
 }
 
 .service-details ul {
-  margin-bottom: 1rem; /* Adjusted for mobile */
+  margin-bottom: 1.5rem;
 }
 
 .service-details li {
-  margin-bottom: 0.5rem; /* Adjusted for mobile */
+  margin-bottom: 0.75rem;
   color: var(--gray-color);
   position: relative;
-  padding-left: 1.25rem; /* Adjusted for mobile */
-  font-size: 0.875rem; /* Adjusted for mobile */
+  padding-left: 1.5rem;
 }
 
 .service-details li::before {
@@ -556,7 +576,7 @@ img {
 }
 
 .service-tech {
-  font-size: 0.8rem; /* Adjusted for mobile */
+  font-size: 0.875rem;
   color: var(--gray-color);
 }
 
@@ -569,18 +589,18 @@ img {
 .experience-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem; /* Adjusted gap for mobile */
-  margin-top: 2rem; /* Adjusted margin for mobile */
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
 .experience-card {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   border-left: 4px solid var(--first-color);
-  overflow: hidden; /* Changed from visible to hidden for consistency */
+  overflow: visible;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
-  min-height: 100px; /* Adjusted min-height */
+  min-height: 120px;
 }
 
 .experience-card:hover {
@@ -591,26 +611,25 @@ img {
 .experience-card-header {
   display: flex;
   align-items: center;
-  padding: 1.25rem; /* Adjusted padding */
+  padding: 1.5rem;
   cursor: pointer;
   background: rgba(43, 191, 240, 0.05);
-  min-height: 80px; /* Adjusted min-height */
+  min-height: 100px;
 }
 
 .company-logo {
-  width: 45px; /* Consistent size for mobile */
-  height: 45px; /* Consistent size for mobile */
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 1rem;
+  margin-right: 1.5rem;
   flex-shrink: 0;
 }
 
 .company-logo img {
   width: 100%;
-  height: auto; /* Ensure image scales correctly */
-  object-fit: contain; /* **FIXED: Ensures entire image is visible** */
-  display: block; /* Ensures image is treated as a block for sizing */
+  height: 100%;
+  object-fit: cover;
 }
 
 .experience-title {
@@ -618,19 +637,19 @@ img {
 }
 
 .experience-title h3 {
-  font-size: 1.1rem; /* Adjusted for mobile */
+  font-size: 1.25rem;
   color: var(--white-color);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
 }
 
 .experience-title p {
   color: var(--first-color);
-  font-size: 0.85rem; /* Adjusted for mobile */
+  font-size: 0.9375rem;
 }
 
 .experience-arrow {
   color: var(--first-color);
-  font-size: 1.1rem; /* Adjusted for mobile */
+  font-size: 1.25rem;
   transition: transform 0.3s;
 }
 
@@ -638,30 +657,29 @@ img {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease;
-  padding: 0 1.25rem; /* Adjusted padding */
-  visibility: hidden; /* Hide content until expanded */
+  padding: 0 1.5rem;
+  visibility: hidden;
 }
 
 .experience-card-details.show {
-  max-height: 1200px; /* Sufficient height */
-  padding: 0 1.25rem 1.25rem; /* Add bottom padding when shown */
+  max-height: 1200px;
+  padding: 0 1.5rem 1.5rem;
   visibility: visible;
 }
 
 .experience-card-details {
-  transition: all 0.3s ease-out; /* Smooth transition */
+  transition: all 0.3s ease-out;
 }
 
-/* Ensure display block when shown for proper layout */
 .experience-card-details.show {
-  display: block;
+  display: block !important;
 }
 
 .experience-description p,
 .experience-description ul,
 .experience-tech {
   opacity: 0;
-  transition: opacity 0.3s ease 0.2s, transform 0.3s ease 0.2s; /* Add transform transition */
+  transition: opacity 0.3s ease 0.2s;
   transform: translateY(10px);
 }
 
@@ -675,32 +693,30 @@ img {
 .experience-meta {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.75rem; /* Adjusted for mobile */
+  margin-bottom: 1rem;
   color: var(--gray-color);
-  font-size: 0.8rem; /* Adjusted for mobile */
+  font-size: 0.875rem;
 }
 
 .experience-description {
-  margin-bottom: 1rem; /* Adjusted for mobile */
+  margin-bottom: 1.5rem;
 }
 
 .experience-description p {
   color: var(--gray-color);
-  margin-bottom: 0.75rem; /* Adjusted for mobile */
-  font-size: 0.875rem; /* Adjusted for mobile */
+  margin-bottom: 1rem;
 }
 
 .experience-description ul {
-  margin-left: 1.25rem; /* Adjusted for mobile */
-  margin-bottom: 1rem; /* Adjusted for mobile */
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .experience-description li {
   color: var(--gray-color);
-  margin-bottom: 0.4rem; /* Adjusted for mobile */
+  margin-bottom: 0.5rem;
   position: relative;
-  padding-left: 1rem; /* Adjusted for mobile */
-  font-size: 0.875rem; /* Adjusted for mobile */
+  padding-left: 1rem;
 }
 
 .experience-description li::before {
@@ -716,28 +732,21 @@ img {
 }
 
 .experience-tech h4 {
-  font-size: 0.9rem; /* Adjusted for mobile */
+  font-size: 1rem;
   color: var(--white-color);
-  margin-bottom: 0.5rem; /* Adjusted for mobile */
+  margin-bottom: 0.75rem;
 }
 
 /* Tech tags with icons */
-.tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem; /* Adjusted gap for mobile */
-  margin-top: 0.75rem; /* Adjusted margin for mobile */
-}
-
 .tech-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.2rem; /* Adjusted gap for mobile */
+  gap: 0.3rem;
   background: rgba(43, 191, 240, 0.2);
   color: var(--first-color);
-  padding: 0.3rem 0.7rem; /* Adjusted padding for mobile */
+  padding: 0.4rem 0.9rem;
   border-radius: 20px;
-  font-size: 0.75rem; /* Adjusted for mobile */
+  font-size: 0.8rem;
   font-weight: 600;
   border: 1px solid var(--first-color);
   transition: all 0.3s ease;
@@ -745,7 +754,7 @@ img {
 }
 
 .tech-tag ion-icon {
-  font-size: 0.9rem; /* Adjusted for mobile */
+  font-size: 1rem;
   vertical-align: middle;
 }
 
@@ -782,57 +791,49 @@ img {
   color: #276DC3;
 }
 
-/* Tech tag hover */
-.tech-tag:hover {
-  background: rgba(43, 191, 240, 0.4);
-  transform: translateY(-2px);
-}
-
 /* Contact section */
 .contact__container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem; /* Adjusted gap for mobile */
-  margin-top: 2rem; /* Adjusted margin for mobile */
+  gap: 3rem;
+  margin-top: 3rem;
 }
 
 .contact__info {
-  order: 1; /* Order for mobile, form first */
+  order: 1;
 }
 
 .contact__subtitle {
-  font-size: 1.25rem; /* Adjusted for mobile */
+  font-size: 1.5rem;
   color: var(--white-color);
-  margin-bottom: 0.75rem; /* Adjusted for mobile */
+  margin-bottom: 1rem;
 }
 
 .contact__text {
   color: var(--gray-color);
-  margin-bottom: 1.5rem; /* Adjusted for mobile */
-  font-size: 0.9375rem; /* Adjusted for mobile */
+  margin-bottom: 2rem;
 }
 
 .contact__details {
   display: grid;
-  gap: 1rem; /* Adjusted gap for mobile */
-  margin-bottom: 1.5rem; /* Adjusted for mobile */
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .contact__detail {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem; /* Adjusted gap for mobile */
+  gap: 1rem;
 }
 
 .contact__icon {
-  font-size: 1.1rem; /* Adjusted for mobile */
+  font-size: 1.25rem;
   color: var(--first-color);
-  margin-top: 0.2rem;
+  margin-top: 0.25rem;
 }
 
 .contact__link {
   transition: all 0.3s;
-  font-size: 0.9375rem; /* Adjusted for mobile */
 }
 
 .contact__link:hover {
@@ -841,11 +842,11 @@ img {
 
 .contact__social {
   display: flex;
-  gap: 1.25rem; /* Adjusted gap for mobile */
+  gap: 1.5rem;
 }
 
 .contact__social-link {
-  font-size: 1.4rem; /* Adjusted for mobile */
+  font-size: 1.5rem;
   color: var(--white-color);
   transition: all 0.3s;
 }
@@ -856,25 +857,24 @@ img {
 }
 
 .contact__form {
-  order: 0; /* Form comes first on mobile */
+  order: 0;
 }
 
 .form__group {
   position: relative;
-  margin-bottom: 1.25rem; /* Adjusted for mobile */
+  margin-bottom: 1.5rem;
 }
 
 .contact__input,
 .contact__textarea {
   width: 100%;
-  padding: 0.8rem; /* Adjusted padding for mobile */
+  padding: 1rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: var(--white-color);
   font-family: 'Poppins', sans-serif;
   transition: all 0.3s;
-  font-size: 0.9375rem; /* Adjusted for mobile */
 }
 
 .contact__input:focus,
@@ -886,43 +886,32 @@ img {
 
 .contact__textarea {
   resize: vertical;
-  min-height: 150px; /* Adjusted min-height for mobile */
+  min-height: 180px;
 }
 
 .form__label {
   position: absolute;
-  top: -8px; /* Adjusted position */
+  top: -10px;
   left: 10px;
   background: var(--black-color);
   padding: 0 5px;
-  font-size: 0.75rem; /* Adjusted for mobile */
+  font-size: 0.85rem;
   color: var(--first-color);
   transition: all 0.3s;
-  pointer-events: none; /* Make sure label doesn't block input */
-}
-
-/* Style for label when input is focused or has content */
-.contact__input:focus + .form__label,
-.contact__input:not(:placeholder-shown) + .form__label,
-.contact__textarea:focus + .form__label,
-.contact__textarea:not(:placeholder-shown) + .form__label {
-  top: -8px;
-  font-size: 0.75rem;
-  color: var(--first-color);
 }
 
 .form__footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.75rem; /* Adjusted gap for mobile */
+  gap: 1rem;
 }
 
 .contact__button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.7rem 1.2rem; /* Adjusted padding for mobile */
+  padding: 0.8rem 1.5rem;
   background: var(--first-color);
   color: var(--black-color);
   border: none;
@@ -930,7 +919,6 @@ img {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
-  font-size: 0.9375rem; /* Adjusted for mobile */
 }
 
 .contact__button:hover {
@@ -940,11 +928,11 @@ img {
 }
 
 .button__icon {
-  font-size: 1rem; /* Adjusted for mobile */
+  font-size: 1.1rem;
 }
 
 .form__notice {
-  font-size: 0.8rem; /* Adjusted for mobile */
+  font-size: 0.875rem;
   color: var(--gray-color);
 }
 
@@ -1002,12 +990,6 @@ img {
   height: 100%;
   background-color: rgba(17, 17, 17, 0.95);
   z-index: 1000;
-  display: flex; /* Use flex for overlay columns */
-}
-
-.overlay-column {
-  width: 33.33%;
-  height: 100%;
   transform: scaleY(0);
   transform-origin: top;
 }
@@ -1019,11 +1001,13 @@ img {
 
 .second {
   background-color: var(--first-color);
+  left: 33.3%;
   animation: overlayAnimation 1s ease 0.2s forwards;
 }
 
 .third {
   background-color: var(--first-color);
+  left: 66.6%;
   animation: overlayAnimation 1s ease 0.4s forwards;
 }
 
@@ -1039,7 +1023,31 @@ img {
   }
 }
 
-/* Name animation (for dynamic text, if used) */
+/* Tech tags improvements */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tech-tag {
+  background: rgba(43, 191, 240, 0.2);
+  color: var(--first-color);
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--first-color);
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: rgba(43, 191, 240, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Name animation */
 @keyframes colorCycle {
   0% {
     color: #2bbff0;
@@ -1062,9 +1070,9 @@ img {
   animation: colorCycle 4s infinite;
 }
 
-/* Confirmation Popup */
+/* Popup de confirmation */
 .success-popup {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -1079,10 +1087,10 @@ img {
 
 .popup-content {
   background: var(--black-color-light);
-  padding: 2rem; /* Adjusted padding */
+  padding: 2.5rem;
   border-radius: 10px;
   text-align: center;
-  max-width: 400px; /* Adjusted max-width for mobile */
+  max-width: 500px;
   position: relative;
   border: 2px solid var(--first-color);
   box-shadow: 0 0 30px rgba(43, 191, 240, 0.3);
@@ -1101,9 +1109,9 @@ img {
 }
 
 .popup-icon {
-  font-size: 3rem; /* Adjusted size */
+  font-size: 3.5rem;
   color: var(--first-color);
-  margin-bottom: 1.25rem; /* Adjusted margin */
+  margin-bottom: 1.5rem;
   animation: bounce 0.6s;
 }
 
@@ -1124,24 +1132,24 @@ img {
 }
 
 .popup-content h3 {
-  font-size: 1.5rem; /* Adjusted size */
+  font-size: 1.8rem;
   color: var(--white-color);
-  margin-bottom: 0.75rem; /* Adjusted margin */
+  margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .popup-content p {
   color: var(--gray-color);
-  font-size: 0.9375rem; /* Adjusted size */
+  font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 1.25rem; /* Adjusted margin */
+  margin-bottom: 1.5rem;
 }
 
 .close-popup-btn {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5rem; /* Adjusted size */
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
   color: var(--gray-color);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1152,7 +1160,7 @@ img {
   transform: rotate(90deg);
 }
 
-/* Animation for popup content */
+/* Animation d'apparition du contenu */
 .popup-content h3,
 .popup-content p {
   opacity: 0;
@@ -1170,7 +1178,7 @@ img {
 /*----- MEDIA QUERIES -----*/
 @media screen and (min-width: 576px) {
   .home__img-container {
-    width: 10cm;
+    width: 10cm; /* Slightly larger image for medium screens */
     height: 10cm;
   }
 
@@ -1184,225 +1192,51 @@ img {
     height: 10cm;
   }
 
+  /* Keep horizontal for social icons on larger mobiles too, if needed */
+  .home__social {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
   .home__button {
-    margin: 0 auto 1.5rem auto; /* Still centered for medium screens */
-  }
-
-  .section-container {
-    padding: 2.5rem; /* Restore general padding for medium screens */
-  }
-
-  .section-title {
-    font-size: 2.25rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .section-title::after {
-    width: 90px;
-  }
-
-  .about__content h3 {
-    font-size: 1.5rem;
-  }
-
-  .about__content h4 {
-    font-size: 1.1rem;
-  }
-
-  .about__description p {
-    font-size: 1rem;
-  }
-
-  .services__grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-
-  .service-card {
-    padding: 2rem;
-  }
-
-  .service-header ion-icon {
-    font-size: 2rem;
-  }
-
-  .service-header h3 {
-    font-size: 1.25rem;
-  }
-
-  .service-brief {
-    font-size: 0.9375rem;
-  }
-
-  .service-details li {
-    font-size: 0.9375rem;
-  }
-
-  .experience-card-header {
-    padding: 1.5rem;
-    min-height: 100px;
-  }
-
-  .company-logo {
-    width: 50px;
-    height: 50px;
-  }
-
-  .experience-title h3 {
-    font-size: 1.25rem;
-  }
-
-  .experience-title p {
-    font-size: 0.9375rem;
-  }
-
-  .experience-arrow {
-    font-size: 1.25rem;
-  }
-
-  .experience-card-details {
-    padding: 0 1.5rem;
-  }
-
-  .experience-card-details.show {
-    padding: 0 1.5rem 1.5rem;
-  }
-
-  .experience-meta {
-    font-size: 0.875rem;
-  }
-
-  .experience-description p,
-  .experience-description ul,
-  .experience-description li {
-    font-size: 0.9375rem;
-  }
-
-  .experience-tech h4 {
-    font-size: 1rem;
-  }
-
-  .tech-tag {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.9rem;
-  }
-
-  .tech-tag ion-icon {
-    font-size: 1rem;
-  }
-
-  .contact__subtitle {
-    font-size: 1.5rem;
-  }
-
-  .contact__text {
-    font-size: 1rem;
-  }
-
-  .contact__icon {
-    font-size: 1.25rem;
-  }
-
-  .contact__link {
-    font-size: 1rem;
-  }
-
-  .contact__social-link {
-    font-size: 1.5rem;
-  }
-
-  .contact__input,
-  .contact__textarea {
-    padding: 1rem;
-    font-size: 1rem;
-  }
-
-  .form__label {
-    font-size: 0.85rem;
-  }
-
-  .contact__button {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-  }
-
-  .button__icon {
-    font-size: 1.1rem;
-  }
-
-  .form__notice {
-    font-size: 0.875rem;
-  }
-
-  .popup-content {
-    padding: 2.5rem;
-    max-width: 500px;
-  }
-
-  .popup-icon {
-    font-size: 3.5rem;
-  }
-
-  .popup-content h3 {
-    font-size: 1.8rem;
-  }
-
-  .popup-content p {
-    font-size: 1.1rem;
-  }
-
-  .close-popup-btn {
-    font-size: 1.8rem;
+    margin: 0 auto 1.5rem auto; /* Center button on medium screens */
   }
 }
 
 @media screen and (min-width: 768px) {
   body {
-    margin: 0; /* Remove top margin on desktop, as header is part of flow */
+    margin: 0;
   }
 
   .section {
-    padding: 7rem 0; /* Increased padding for desktop sections */
-  }
-
-  .section-container {
-    margin: 0 auto; /* Center container on desktop */
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .section-title::after {
-    width: 100px;
+    padding: 7rem 0;
   }
 
   .nav {
-    height: 4rem; /* Taller header on desktop */
+    height: 4rem;
   }
 
   .nav__menu {
-    position: static; /* Remove fixed positioning */
+    position: static;
     width: auto;
     padding: 0;
     background-color: transparent;
     border: none;
-    backdrop-filter: none; /* No blur on desktop */
   }
 
   .nav__list {
-    flex-direction: row; /* Horizontal menu */
+    flex-direction: row;
     column-gap: 2rem;
   }
 
   .nav__link {
-    text-transform: initial; /* Revert text transform */
+    text-transform: initial;
     font-size: 0.9375rem;
   }
 
   .nav__toggle {
-    display: none; /* Hide hamburger icon */
+    display: none;
   }
 
   /* Desktop Home Layout */
@@ -1412,42 +1246,42 @@ img {
     grid-template-areas:
       "info image"
       "social image";
-    grid-template-columns: max-content 1fr; /* Info takes content width, image takes rest */
-    grid-template-rows: max-content auto; /* Info takes content height, social/rest takes auto */
-    align-content: center; /* Vertically center content */
-    padding-top: 4rem; /* Space for fixed header */
-    gap: 0; /* Remove row gap */
-    text-align: left;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: max-content auto;
+    align-content: center;
+    padding-top: 4rem;
+    gap: 0;
+    text-align: left; /* Ensure left alignment for desktop */
   }
 
   .home__information {
     grid-area: info;
-    padding-left: 2rem; /* Consistent blue bar for desktop */
-    border-left: 5px solid var(--first-color); /* Thicker blue bar for desktop */
-    align-self: end; /* Align to bottom of its row */
-    margin-bottom: 2rem; /* Space before social icons */
-    text-align: left;
+    padding-left: 2rem;
+    border-left: 5px solid var(--first-color);
+    align-self: end;
+    margin-bottom: 2rem;
+    text-align: left; /* Explicitly left-align for desktop */
   }
 
   .home__pressent,
   .home__title,
   .home__skill {
-    text-align: left; /* Ensure left alignment */
+    text-align: left; /* Ensure left alignment for desktop */
   }
 
   .home__button {
-    margin-left: 0; /* Align left */
-    display: inline-block; /* Revert to default inline-block behavior */
+    margin-left: 0; /* Remove right alignment for desktop button */
+    display: inline-block; /* Revert to inline-block for desktop */
   }
 
   .home__social {
     grid-area: social;
-    flex-direction: row; /* Horizontal */
-    justify-content: flex-start; /* Align social icons to the left */
-    align-items: flex-start;
+    flex-direction: row; /* Horizontal for desktop */
+    justify-content: flex-start; /* Align social icons to the start (left) */
+    align-items: flex-start; /* Align social icons to the left */
     column-gap: 1.5rem;
     margin-top: 0;
-    padding-left: 2rem; /* Align with info section */
+    padding-left: 2rem;
   }
 
   .home__img-container {
@@ -1455,11 +1289,11 @@ img {
     position: relative;
     width: 400px;
     height: 400px;
-    margin-left: auto; /* Push image to the right */
+    margin-left: auto;
     margin-right: 0;
     align-self: center;
     justify-self: end;
-    transform: none; /* Reset transform */
+    transform: none;
   }
 
   .home__img {
@@ -1481,16 +1315,15 @@ img {
   }
 
   .contact__container {
-    grid-template-columns: 1fr 1fr; /* Two columns for desktop contact */
-    gap: 3rem;
+    grid-template-columns: 1fr 1fr;
   }
 
   .contact__form {
-    order: 0; /* Form first on desktop */
+    order: 0;
   }
 
   .contact__info {
-    order: 1; /* Info second on desktop */
+    order: 1;
   }
 }
 
