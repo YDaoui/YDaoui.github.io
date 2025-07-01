@@ -141,143 +141,146 @@
 
         <!-- ===== SERVICES SECTION ===== -->
         <section class="section" id="services">
-            <div class="bd-grid">
+              <div class="bd-grid">
                 <h2 class="section-title anime-text">Mes Services</h2>
                 <div class="services__grid">
-                    <!-- Service 1 - Analyse de Données -->
-                    <div class="service-card">
-                        <div class="service-header" onclick="toggleServiceDetails('analyse-details')">
-                            <ion-icon name="analytics-outline"></ion-icon>
-                            <h3>Analyse de Données</h3>
-                            <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
-                        </div>
-                        <p class="service-brief">Extraction, traitement et visualisation avancée de données</p>
-                        
-                        <div id="analyse-details" class="service-details">
-                            <ul>
-                                <li><strong>Data Mining</strong> : Extraction de insights depuis des sources multiples</li>
-                                <li><strong>Data Cleaning</strong> : Nettoyage avec Python (Pandas, NumPy)</li>
-                                <li><strong>Visualisation</strong> : Création de dashboards interactifs</li>
-                                <li><strong>Reporting</strong> : Automatisation avec Jupyter et Power BI</li>
-                            </ul>
-                            <div class="service-tech">
-                                <span>Stack technique :</span> Python · SQL · Power BI · Tableau · Spark
-                            </div>
-                        </div>
+            
+                  <!-- Service 1 - Analyse et Science de Données -->
+                  <div class="service-card">
+                    <div class="service-header" onclick="toggleServiceDetails('analyse-details')">
+                      <ion-icon name="analytics-outline"></ion-icon>
+                      <h3>Analyse & Science de Données</h3>
+                      <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
                     </div>
-
-                    <!-- Service 2 - Business Intelligence -->
-                    <div class="service-card">
-                        <div class="service-header" onclick="toggleServiceDetails('bi-details')">
-                            <ion-icon name="bar-chart-outline"></ion-icon>
-                            <h3>Business Intelligence</h3>
-                            <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
-                        </div>
-                        <p class="service-brief">Solutions complètes de BI pour votre entreprise</p>
-                        
-                        <div id="bi-details" class="service-details">
-                            <ul>
-                                <li><strong>Data Modeling</strong> : Conception de modèles star-schema</li>
-                                <li><strong>ETL/ELT</strong> : Pipelines d'intégration de données</li>
-                                <li><strong>KPI Tracking</strong> : Suivi des indicateurs clés</li>
-                                <li><strong>Training</strong> : Formation des équipes métiers</li>
-                            </ul>
-                            <div class="service-tech">
-                                <span>Outils principaux :</span> Power BI · Tableau · SSIS · DAX · MDX
-                            </div>
-                        </div>
+                    <p class="service-brief">Valorisation de vos données grâce à la data science</p>
+                    
+                    <div id="analyse-details" class="service-details">
+                      <ul>
+                        <li><strong>Exploration</strong> : Data Mining avancé, identification de patterns</li>
+                        <li><strong>Nettoyage</strong> : Préparation des données avec Python (Pandas, NumPy)</li>
+                        <li><strong>Modélisation</strong> : Statistiques, Machine Learning, prédictions</li>
+                        <li><strong>Visualisation</strong> : Dashboards interactifs et storytelling data</li>
+                      </ul>
+                      <div class="service-tech">
+                        <span>Stack technique :</span> Python · SQL · Power BI · Tableau · Scikit-Learn · Spark
+                      </div>
                     </div>
-
-                    <!-- Service 3 - Consulting Data -->
-                    <div class="service-card">
-                        <div class="service-header" onclick="toggleServiceDetails('consulting-details')">
-                            <ion-icon name="bulb-outline"></ion-icon>
-                            <h3>Consulting Data</h3>
-                            <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
-                        </div>
-                        <p class="service-brief">Stratégie data sur mesure pour votre organisation</p>
-                        
-                        <div id="consulting-details" class="service-details">
-                            <ul>
-                                <li><strong>Data Audit</strong> : Évaluation de votre maturité data</li>
-                                <li><strong>Roadmap</strong> : Plan d'action priorisé</li>
-                                <li><strong>Governance</strong> : Politiques de gestion des données</li>
-                                <li><strong>Use Cases</strong> : Identification des cas d'usage</li>
-                            </ul>
-                            <div class="service-tech">
-                                <span>Méthodologies :</span> CRISP-DM · TDSP · Data Mesh
-                            </div>
-                        </div>
+                  </div>
+            
+                  <!-- Service 2 - Business Intelligence (BI) -->
+                  <div class="service-card">
+                    <div class="service-header" onclick="toggleServiceDetails('bi-details')">
+                      <ion-icon name="bar-chart-outline"></ion-icon>
+                      <h3>Business Intelligence</h3>
+                      <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
                     </div>
-
-                    <!-- Service 4 - Migration Data -->
-                    <div class="service-card">
-                        <div class="service-header" onclick="toggleServiceDetails('migration-details')">
-                            <ion-icon name="cloud-upload-outline"></ion-icon>
-                            <h3>Migration Data</h3>
-                            <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
-                        </div>
-                        <p class="service-brief">Transition sécurisée entre systèmes</p>
-                        
-                        <div id="migration-details" class="service-details">
-                            <ul>
-                                <li><strong>Assessment</strong> : Analyse de compatibilité</li>
-                                <li><strong>Schema Mapping</strong> : Conversion des modèles</li>
-                                <li><strong>Data Transfer</strong> : Migration incrémentale</li>
-                                <li><strong>Validation</strong> : Vérification d'intégrité</li>
-                            </ul>
-                            <div class="service-tech">
-                                <span>Technologies :</span> Azure Data Factory · AWS DMS · Talend · Informatica
-                            </div>
-                        </div>
+                    <p class="service-brief">Conception et pilotage de solutions décisionnelles</p>
+                    
+                    <div id="bi-details" class="service-details">
+                      <ul>
+                        <li><strong>Data Modeling</strong> : Schémas en étoile et en flocon</li>
+                        <li><strong>ETL/ELT</strong> : Pipelines robustes d’intégration de données</li>
+                        <li><strong>Indicateurs</strong> : Conception de KPI pertinents</li>
+                        <li><strong>Gouvernance</strong> : Sécurité et gestion des accès</li>
+                      </ul>
+                      <div class="service-tech">
+                        <span>Outils :</span> Power BI · Tableau · SSIS · DAX · MDX
+                      </div>
                     </div>
-
-                    <!-- Service 5 - Automatisation des Tâches -->
-                    <div class="service-card">
-                        <div class="service-header" onclick="toggleServiceDetails('automation-details')">
-                            <ion-icon name="repeat-outline"></ion-icon>
-                            <h3>Automatisation des Tâches</h3>
-                            <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
-                        </div>
-                        <p class="service-brief">Optimisation des processus métiers par l'automatisation</p>
-                        
-                        <div id="automation-details" class="service-details">
-                            <ul>
-                                <li><strong>Workflows</strong> : Automatisation des processus répétitifs</li>
-                                <li><strong>RPA</strong> : Robots pour tâches manuelles</li>
-                                <li><strong>Scripting</strong> : Développement de scripts sur mesure</li>
-                                <li><strong>Monitoring</strong> : Suivi des processus automatisés</li>
-                            </ul>
-                            <div class="service-tech">
-                                <span>Outils :</span> Python · UiPath · Power Automate · Zapier · Bash
-                            </div>
-                        </div>
+                  </div>
+            
+                  <!-- Service 3 - Consulting Data & Méthodes Agiles -->
+                  <div class="service-card">
+                    <div class="service-header" onclick="toggleServiceDetails('consulting-details')">
+                      <ion-icon name="bulb-outline"></ion-icon>
+                      <h3>Consulting Data & Agilité</h3>
+                      <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
                     </div>
-
-                    <!-- Service 6 - Formation Continue -->
-                    <div class="service-card">
-                        <div class="service-header" onclick="toggleServiceDetails('training-details')">
-                            <ion-icon name="school-outline"></ion-icon>
-                            <h3>Formation Continue</h3>
-                            <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
-                        </div>
-                        <p class="service-brief">Montée en compétences de vos équipes data</p>
-                        
-                        <div id="training-details" class="service-details">
-                            <ul>
-                                <li><strong>Workshops</strong> : Sessions pratiques sur outils spécifiques</li>
-                                <li><strong>Certifications</strong> : Préparation aux certifications data</li>
-                                <li><strong>Coaching</strong> : Accompagnement personnalisé</li>
-                                <li><strong>E-learning</strong> : Plateforme de cours en ligne</li>
-                            </ul>
-                            <div class="service-tech">
-                                <span>Domaines :</span> Data Literacy · Python avancé · BI · Machine Learning · Data Governance
-                            </div>
-                        </div>
+                    <p class="service-brief">Stratégie et gouvernance data en mode agile</p>
+                    
+                    <div id="consulting-details" class="service-details">
+                      <ul>
+                        <li><strong>Audit</strong> : Évaluation de la maturité Data & BI</li>
+                        <li><strong>Scrum</strong> : Mise en place de cycles itératifs (Sprints, backlog, cérémonies)</li>
+                        <li><strong>Roadmap</strong> : Feuille de route alignée aux priorités business</li>
+                        <li><strong>Use Cases</strong> : Identification et suivi de cas d’usage à forte valeur</li>
+                      </ul>
+                      <div class="service-tech">
+                        <span>Méthodologies :</span> Scrum · Kanban · CRISP-DM · Data Mesh
+                      </div>
                     </div>
+                  </div>
+            
+                  <!-- Service 4 - Migration Technologique -->
+                  <div class="service-card">
+                    <div class="service-header" onclick="toggleServiceDetails('migration-details')">
+                      <ion-icon name="cloud-upload-outline"></ion-icon>
+                      <h3>Migration Technologique</h3>
+                      <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
+                    </div>
+                    <p class="service-brief">Transition vers des solutions data plus modernes</p>
+                    
+                    <div id="migration-details" class="service-details">
+                      <ul>
+                        <li><strong>Legacy ➜ Moderne</strong> : Migration de Excel VBA vers Power BI & Python</li>
+                        <li><strong>Schema Mapping</strong> : Cartographie et transformation des modèles de données</li>
+                        <li><strong>Transfert Sécurisé</strong> : Data migration avec ADF, Talend ou Informatica</li>
+                        <li><strong>Tests & Validation</strong> : Contrôles qualité et vérification d’intégrité</li>
+                      </ul>
+                      <div class="service-tech">
+                        <span>Technologies :</span> Power BI · Python · Azure Data Factory · AWS DMS · Talend · Informatica
+                      </div>
+                    </div>
+                  </div>
+            
+                  <!-- Service 5 - Automatisation & RPA -->
+                  <div class="service-card">
+                    <div class="service-header" onclick="toggleServiceDetails('automation-details')">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                      <h3>Automatisation & RPA</h3>
+                      <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
+                    </div>
+                    <p class="service-brief">Gagnez en efficacité grâce à l’automatisation intelligente</p>
+                    
+                    <div id="automation-details" class="service-details">
+                      <ul>
+                        <li><strong>Workflows</strong> : Digitalisation des tâches répétitives</li>
+                        <li><strong>Robots</strong> : RPA pour traitement automatique de données</li>
+                        <li><strong>Scripting</strong> : Scripts Python / Bash pour automatiser vos flux</li>
+                        <li><strong>Monitoring</strong> : Supervision et alertes</li>
+                      </ul>
+                      <div class="service-tech">
+                        <span>Outils :</span> Python · UiPath · Power Automate · Zapier
+                      </div>
+                    </div>
+                  </div>
+            
+                  <!-- Service 6 - Formation & Coaching -->
+                  <div class="service-card">
+                    <div class="service-header" onclick="toggleServiceDetails('training-details')">
+                      <ion-icon name="school-outline"></ion-icon>
+                      <h3>Formation & Coaching</h3>
+                      <ion-icon name="chevron-down-outline" class="service-arrow"></ion-icon>
+                    </div>
+                    <p class="service-brief">Renforcez les compétences data de vos équipes</p>
+                    
+                    <div id="training-details" class="service-details">
+                      <ul>
+                        <li><strong>Workshops</strong> : Ateliers pratiques sur Python, Power BI, SQL</li>
+                        <li><strong>Certifications</strong> : Préparation aux certifications (Azure, Power BI, Data Analyst)</li>
+                        <li><strong>Coaching Agile</strong> : Accompagnement des équipes Scrum</li>
+                        <li><strong>E-learning</strong> : Programmes sur mesure pour data literacy</li>
+                      </ul>
+                      <div class="service-tech">
+                        <span>Domaines :</span> Data Analysis · Python avancé · BI · Data Science · Agilité Scrum
+                      </div>
+                    </div>
+                  </div>
+            
                 </div>
-            </div>
-        </section>
+              </div>
+            </section>
+
 
         <!-- ===== EXPERIENCE SECTION ===== -->
         <section class="section" id="blog">
