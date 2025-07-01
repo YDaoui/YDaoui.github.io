@@ -225,33 +225,42 @@ img {
   height: calc(100vh - 3rem);
   display: grid;
   grid-template-areas:
+    "gap"
     "image"
     "info"
+    "button"
     "social";
   grid-template-columns: 1fr;
-  align-content: center;
-  row-gap: 2.5rem;
+  align-content: start; /* Align content to the top initially */
+  row-gap: 1rem; /* Reduced row gap */
   padding: 1.5rem;
-  text-align: left; /* Change to left-align text on mobile */
+  text-align: left;
+}
+
+.home::before {
+  content: '';
+  grid-area: gap;
+  display: block;
+  height: 2rem; /* Add some space below the header */
 }
 
 .home__img-container {
   grid-area: image;
   position: relative;
-  width: 8cm; /* Minimized image for mobile */
-  height: 8cm; /* Minimized image for mobile */
+  width: 8cm;
+  height: 8cm;
   display: grid;
   place-items: center;
   z-index: 1;
-  margin: 0 auto 2.5rem auto;
+  margin: 0 auto 1rem auto; /* Reduced bottom margin */
   transform: none;
   top: auto;
   left: auto;
 }
 
 .home__img {
-  width: 7.4cm; /* Proportional to minimized container */
-  height: 7.4cm; /* Proportional to minimized container */
+  width: 7.4cm;
+  height: 7.4cm;
   border-radius: 50%;
   object-fit: cover;
   object-position: center center;
@@ -265,8 +274,8 @@ img {
 
 .home__img-border {
   position: absolute;
-  width: 8cm; /* Proportional to minimized container */
-  height: 8cm; /* Proportional to minimized container */
+  width: 8cm;
+  height: 8cm;
   border-radius: 50%;
   background: conic-gradient(
       from 0deg,
@@ -317,7 +326,8 @@ img {
   padding-left: 0;
   border-left: none;
   z-index: 10;
-  text-align: left; /* Left align text on mobile */
+  text-align: left;
+  margin-bottom: 1rem; /* Reduced bottom margin */
 }
 
 .home__pressent {
@@ -328,19 +338,20 @@ img {
 }
 
 .home__title {
-  font-size: 2.5rem;
-  margin-bottom: 0.75rem;
+  font-size: 2rem; /* Slightly smaller title on mobile */
+  margin-bottom: 0.5rem; /* Reduced bottom margin */
   color: var(--white-color);
 }
 
 .home__skill {
-  font-size: 1.25rem;
+  font-size: 1rem; /* Slightly smaller skill text on mobile */
   color: var(--gray-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Reduced bottom margin */
   display: block;
 }
 
 .home__button {
+  grid-area: button;
   display: inline-block;
   background-color: var(--first-color);
   color: var(--black-color);
@@ -349,9 +360,8 @@ img {
   font-weight: 600;
   transition: all 0.3s;
   box-shadow: 0 4px 15px rgba(43, 191, 240, 0.3);
-  margin-left: auto; /* Push button to the right */
-  display: block; /* Make it a block element to push to right when justified end */
-  width: fit-content; /* Ensure it only takes up necessary width */
+  text-align: center; /* Center the button */
+  margin: 0 auto 1.5rem auto; /* Center and add bottom margin */
 }
 
 .home__button:hover {
@@ -363,11 +373,12 @@ img {
 .home__social {
   grid-area: social;
   display: flex;
-  flex-direction: column; /* Vertical for mobile */
-  align-items: flex-end; /* Right align social icons */
-  row-gap: 1.5rem; /* Space between icons */
-  margin-top: 2.5rem;
-  z-index: 10;
+  flex-direction: row; /* Horizontal for mobile */
+  justify-content: center; /* Center social icons horizontally */
+  align-items: center; /* Center social icons vertically */
+  gap: 1.5rem;
+  margin-top: 0; /* Remove top margin */
+  padding-bottom: 1.5rem; /* Add some padding at the bottom */
 }
 
 .home__social-icon {
@@ -1180,13 +1191,15 @@ img {
     height: 10cm;
   }
 
+  /* Keep horizontal for social icons on larger mobiles too, if needed */
   .home__social {
-    flex-direction: column; /* Keep vertical on mobile up to this breakpoint */
-    align-items: flex-end; /* Keep right aligned */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 
   .home__button {
-    margin-left: auto; /* Keep button right-aligned on mobile */
+    margin: 0 auto 1.5rem auto; /* Center button on medium screens */
   }
 }
 
