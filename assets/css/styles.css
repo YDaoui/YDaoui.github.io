@@ -219,71 +219,34 @@ img {
   color: var(--first-color);
 }
 
-/* Home section */
+/* Home section (Mobile First) */
 .home {
   position: relative;
   height: calc(100vh - 3rem);
   display: grid;
-  grid-template-rows: max-content max-content; /* Original desktop rows */
-  align-content: space-around; /* Original desktop alignment */
+  grid-template-areas:
+    "image"
+    "info"
+    "social"; /* Mobile layout: image, then info, then social */
+  grid-template-columns: 1fr;
+  align-content: center; /* Center content vertically */
   row-gap: 2.5rem;
-  padding: 1.5rem 0;
-}
-
-.home__information {
-  padding-left: 1.5rem;
-  border-left: 5px solid var(--first-color);
-  z-index: 10;
-}
-
-.home__pressent {
-  font-size: 0.875rem;
-  color: var(--first-color);
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.home__title {
-  font-size: 2.5rem;
-  margin-bottom: 0.75rem;
-  color: var(--white-color);
-}
-
-.home__skill {
-  font-size: 1.25rem;
-  color: var(--gray-color);
-  margin-bottom: 1.5rem;
-  display: block;
-}
-
-.home__button {
-  display: inline-block;
-  background-color: var(--first-color);
-  color: var(--black-color);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.25rem;
-  font-weight: 600;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(43, 191, 240, 0.3);
-}
-
-.home__button:hover {
-  background-color: var(--first-color-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(43, 191, 240, 0.4);
+  padding: 1.5rem; /* Add padding for mobile */
+  text-align: center; /* Center text content by default for mobile */
 }
 
 .home__img-container {
-  position: absolute;
-  /* Centering the container itself */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  grid-area: image;
+  position: relative; /* Changed from absolute for mobile flow */
   width: 12cm;
   height: 12cm;
   display: grid;
   place-items: center;
   z-index: 1;
+  margin: 0 auto 2.5rem auto; /* Center and add margin below for mobile */
+  transform: none; /* Remove transform if inherited from desktop absolute positioning */
+  top: auto;
+  left: auto;
 }
 
 .home__img {
@@ -298,7 +261,6 @@ img {
   border: 3mm solid var(--black-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transform: translateZ(0);
-  /* No need for margin: 0 auto; here as grid/place-items will handle centering */
 }
 
 .home__img-border {
@@ -350,10 +312,58 @@ img {
   box-shadow: 0 0 20px rgba(43, 191, 240, 0.7);
 }
 
+.home__information {
+  grid-area: info;
+  padding-left: 0; /* Remove left padding for mobile */
+  border-left: none; /* Remove border for mobile */
+  z-index: 10;
+  text-align: center; /* Center align text on mobile */
+}
+
+.home__pressent {
+  font-size: 0.875rem;
+  color: var(--first-color);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.home__title {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--white-color);
+}
+
+.home__skill {
+  font-size: 1.25rem;
+  color: var(--gray-color);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.home__button {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: var(--black-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(43, 191, 240, 0.3);
+}
+
+.home__button:hover {
+  background-color: var(--first-color-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(43, 191, 240, 0.4);
+}
+
 .home__social {
+  grid-area: social;
   display: flex;
-  flex-direction: column;
-  row-gap: 1.5rem;
+  flex-direction: row; /* Horizontal for mobile */
+  justify-content: center; /* Center social icons on mobile */
+  column-gap: 1.5rem; /* Space between icons */
+  margin-top: 2.5rem; /* Space above social icons */
   z-index: 10;
 }
 
@@ -1166,59 +1176,7 @@ img {
   }
 }
 
-@media screen and (max-width: 767px) {
-  .home {
-    grid-template-columns: 1fr 1fr; /* Two columns for mobile */
-    grid-template-rows: auto auto; /* Adjust rows as needed */
-    gap: 1.5rem; /* Space between columns and rows */
-    align-items: center; /* Vertically align items in the grid */
-    padding: 1.5rem; /* Add padding to the home section itself */
-  }
-
-  .home__information {
-    grid-column: 1 / 2; /* First column */
-    grid-row: 1 / 2; /* First row */
-    padding-left: 0; /* Remove left padding to align with content */
-    border-left: none; /* Remove border */
-    text-align: left;
-  }
-
-  .home__pressent,
-  .home__title,
-  .home__skill,
-  .home__button {
-    text-align: left;
-  }
-
-  .home__social {
-    grid-column: 1 / 2; /* First column */
-    grid-row: 2 / 3; /* Second row */
-    flex-direction: row; /* Keep social icons in a row */
-    justify-content: flex-start; /* Align social icons to the start */
-    margin-top: 1rem;
-  }
-
-  .home__img-container {
-    grid-column: 2 / 3; /* Second column */
-    grid-row: 1 / 3; /* Span both rows */
-    justify-self: end; /* Align image to the end of the column */
-    align-self: center; /* Center image vertically within its grid cell */
-    width: 10cm; /* Adjust size for mobile */
-    height: 10cm; /* Adjust size for mobile */
-    margin: 0; /* Remove auto margin as grid will handle positioning */
-    position: static; /* Ensure it's static for mobile grid flow */
-  }
-
-  .home__img {
-    width: 9.4cm; /* Adjust size for mobile */
-    height: 9.4cm; /* Adjust size for mobile */
-  }
-
-  .home__img-border {
-    width: 10cm; /* Adjust size for mobile */
-    height: 10cm; /* Adjust size for mobile */
-  }
-}
+/* No specific changes for max-width 767px as mobile-first is default now */
 
 @media screen and (min-width: 768px) {
   body {
@@ -1255,47 +1213,56 @@ img {
     display: none;
   }
 
+  /* Desktop Home Layout */
   .home {
     height: 100vh;
-    display: grid; /* Keep grid for desktop */
-    grid-template-columns: max-content 1fr; /* desktop: content then image */
-    grid-template-rows: max-content;
-    align-content: center;
+    display: grid;
+    grid-template-areas:
+      "info image"
+      "social image"; /* Desktop layout: info/social on left, image on right */
+    grid-template-columns: max-content 1fr; /* Info/Social take content width, image takes rest */
+    grid-template-rows: max-content auto; /* Info row takes content, social takes remaining */
+    align-content: center; /* Vertically center the entire grid content */
     padding-top: 4rem;
-    gap: 0; /* No specific gap in original desktop layout */
+    gap: 0; /* Remove gap */
+    text-align: left; /* Align text to left on desktop */
   }
 
   .home__information {
-    grid-column: 1 / 2; /* Content in the first column */
-    grid-row: 1 / 2;
-    padding-left: 2rem;
-    border-left: 5px solid var(--first-color);
-    text-align: left;
+    grid-area: info;
+    padding-left: 2rem; /* Add back padding for desktop */
+    border-left: 5px solid var(--first-color); /* Add back border for desktop */
+    align-self: end; /* Align to the bottom of its grid area */
+    margin-bottom: 2rem; /* Space between info and social */
+  }
+
+  .home__pressent,
+  .home__title,
+  .home__skill,
+  .home__button {
+    text-align: left; /* Ensure left alignment for desktop */
   }
 
   .home__social {
-    grid-column: 1 / 2; /* Social icons in the first column */
-    grid-row: 1 / 2; /* They will naturally flow below information */
+    grid-area: social;
     flex-direction: column; /* Back to column for desktop */
-    align-self: end; /* Align social icons to the bottom of their grid area */
-    margin-top: 0;
+    justify-content: flex-start; /* Align social icons to the start (top) of their column */
+    align-items: flex-start; /* Align social icons to the left */
+    row-gap: 1.5rem; /* Space between icons */
+    margin-top: 0; /* Remove top margin as grid gap handles spacing */
     padding-left: 2rem; /* Align with info */
   }
 
   .home__img-container {
-    position: relative; /* Remove absolute position for desktop grid flow */
-    grid-column: 2 / 3; /* Image in the second column */
-    grid-row: 1 / 2;
+    grid-area: image;
+    position: relative; /* Keep relative or static as needed for grid flow */
     width: 450px; /* Adjust size for desktop */
     height: 450px; /* Adjust size for desktop */
-    display: grid;
-    place-items: center;
-    z-index: 1;
     margin-left: auto; /* Push to the right */
-    margin-right: 0;
-    transform: none; /* Remove transform from absolute positioning */
-    top: auto; /* Remove top from absolute positioning */
-    left: auto; /* Remove left from absolute positioning */
+    margin-right: 0; /* Remove right margin */
+    align-self: center; /* Vertically center in its grid area */
+    justify-self: end; /* Horizontally align to the end (right) */
+    transform: none; /* Remove any previous transforms */
   }
 
   .home__img {
