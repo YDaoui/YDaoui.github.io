@@ -323,8 +323,9 @@ img {
 
 .home__information {
   grid-area: info;
-  padding-left: 0;
-  border-left: none;
+  /* Re-added for mobile */
+  padding-left: 1rem; /* Adjust as needed for spacing */
+  border-left: 3px solid var(--first-color); /* The blue bar */
   z-index: 10;
   text-align: left;
   margin-bottom: 1rem; /* Reduced bottom margin */
