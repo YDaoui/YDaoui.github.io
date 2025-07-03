@@ -619,25 +619,26 @@ img {
 }
 
 .company-logo {
-  /* Ensure a perfect square container */
   width: 50px;
   height: 50px;
-  border-radius: 50%; /* Make the container round */
-  overflow: hidden; /* Hide any overflow from the image */
+  border-radius: 50%;
+  overflow: hidden;
   margin-right: 1.5rem;
   flex-shrink: 0;
-  display: flex; /* Use flexbox to center the image */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
- 
+  display: flex; /* Pour centrer le contenu */
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-gray); /* Couleur de fond si l'image n'est pas chargée */
 }
 
 .company-logo img {
-  width: 100%; /* Make the image fill the width of its container */
-  height: 100%; /* Make the image fill the height of its container */
-  object-fit: cover; /* Ensure the image covers the entire area, cropping if necessary */
-  border-radius: 50%; /* Apply border-radius directly to the image as well */
-  display: block; /* Remove any extra space below the image */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Recouvre le cercle en coupant l'excès */
+  border-radius: 50%; /* Arrondit l'image elle-même */
+  display: block;
+  /* Optionnel : Assurer que l'image ne réduit pas */
+  flex-shrink: 0;
 }
 
 .experience-title {
