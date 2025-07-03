@@ -624,12 +624,20 @@ img {
   overflow: hidden;
   margin-right: 1.5rem;
   flex-shrink: 0;
+  display: flex; /* Pour centrer le contenu */
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-gray); /* Couleur de fond si l'image n'est pas chargée */
 }
 
 .company-logo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Recouvre le cercle en coupant l'excès */
+  border-radius: 50%; /* Arrondit l'image elle-même */
+  display: block;
+  /* Optionnel : Assurer que l'image ne réduit pas */
+  flex-shrink: 0;
 }
 
 .experience-title {
