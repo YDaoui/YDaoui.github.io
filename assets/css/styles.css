@@ -629,7 +629,7 @@ img {
   display: flex; /* Use flexbox to center the image */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  background-color: var(--dark-gray); /* Optional: a fallback background color */
+ 
 }
 
 .company-logo img {
