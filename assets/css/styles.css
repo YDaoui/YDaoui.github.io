@@ -624,20 +624,12 @@ img {
   overflow: hidden;
   margin-right: 1.5rem;
   flex-shrink: 0;
-  display: flex; /* Pour centrer le contenu */
-  justify-content: center;
-  align-items: center;
-  background-color: var(--dark-gray); /* Couleur de fond si l'image n'est pas chargée */
 }
 
 .company-logo img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Recouvre le cercle en coupant l'excès */
-  border-radius: 50%; /* Arrondit l'image elle-même */
-  display: block;
-  /* Optionnel : Assurer que l'image ne réduit pas */
-  flex-shrink: 0;
+  object-fit: cover;
 }
 
 .experience-title {
@@ -744,6 +736,7 @@ img {
   color: var(--white-color);
   margin-bottom: 0.75rem;
 }
+
 /* Tech tags with icons */
 .tech-tag {
   display: inline-flex;
@@ -766,37 +759,15 @@ img {
 }
 
 /* Specific colors for some technologies */
-.tech-tag[data-tech="vba"] ion-icon {
-  color: #867DB1;
-}
+.tech-tag[data-tech="vba"] ion-icon { color: #867DB1; }
+.tech-tag[data-tech="sql"] ion-icon { color: #F29111; }
+.tech-tag[data-tech="azure"] ion-icon { color: #0089D6; }
+.tech-tag[data-tech="aws"] ion-icon { color: #FF9900; }
+.tech-tag[data-tech="gcp"] ion-icon { color: #4285F4; }
+.tech-tag[data-tech="powerbi"] ion-icon { color: #F2C811; }
+.tech-tag[data-tech="csharp"] ion-icon { color: #239120; }
+.tech-tag[data-tech="rshiny"] ion-icon { color: #276DC3; }
 
-.tech-tag[data-tech="sql"] ion-icon {
-  color: #F29111;
-}
-
-.tech-tag[data-tech="azure"] ion-icon {
-  color: #0089D6;
-}
-
-.tech-tag[data-tech="aws"] ion-icon {
-  color: #FF9900;
-}
-
-.tech-tag[data-tech="gcp"] ion-icon {
-  color: #4285F4;
-}
-
-.tech-tag[data-tech="powerbi"] ion-icon {
-  color: #F2C811;
-}
-
-.tech-tag[data-tech="csharp"] ion-icon {
-  color: #239120;
-}
-
-.tech-tag[data-tech="rshiny"] ion-icon {
-  color: #276DC3;
-}
 
 /* Contact section */
 .contact__container {
