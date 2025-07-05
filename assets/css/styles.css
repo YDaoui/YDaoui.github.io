@@ -615,6 +615,7 @@ img {
   cursor: pointer;
   background: rgba(43, 191, 240, 0.05);
   min-height: 100px;
+  overflow: hidden;
 }
 
 .company-logo {
@@ -645,11 +646,17 @@ img {
   font-size: 1.25rem;
   color: var(--white-color);
   margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .experience-title p {
   color: var(--first-color);
   font-size: 0.9375rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .experience-arrow {
