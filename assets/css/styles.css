@@ -625,7 +625,12 @@ img {
   margin-right: 1.5rem;
   flex-shrink: 0;
 }
-
+.experience-title {
+  flex-grow: 1;
+  /* Ajout pour empêcher le texte d'empiéter sur le logo */
+  padding-right: 1rem;
+  min-width: 0; /* Permet au texte de bien se comporter avec flex */
+}
 .company-logo img {
   width: 100%;
   height: 100%;
