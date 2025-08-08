@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Yassine Daoui</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <!-- Ajout de GSAP pour les animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S06YPBJV04"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -23,12 +21,11 @@
 </head>
     
 <body>
-    <!-- OVERLAY -->
+    
     <div class="overlay first"></div>
     <div class="overlay second"></div>
     <div class="overlay third"></div>
 
-    <!-- HEADER -->
     <header class="l-header">
         <nav class="nav bd-grid">
             <div>
@@ -56,29 +53,28 @@
         </nav>
     </header>
 
-    <!-- MAIN -->
+   
     <main class="l-main bd-grid">
         <div class="home" id="home">
             <div class="home__information">
                 <span class="home__pressent anime-text">Bonjour, Je m'appelle</span>
-               <!--  <h1 class="animated-name">Yassine Daoui</h1> -->
                 <h1 class="home__title name-animation">Yassine Daoui</h1>
                 <span class="home__pressent anime-text">Je suis<br></span>
                 <span class="home__skill job-animation">Data Scientist</span>
                 
-                <!-- CV BUTTON -->
+             
                 <div>
                     <a href="./assets/cv/cv.pdf" download="Yassine-Daoui-CV.pdf" class="home__button anime-text">TÉLÉCHARGER CV</a>
                 </div>
             </div>
 
-            <!-- IMAGE -->
+         
             <div class="home__img-container">
                 <div class="home__img-border"></div>
                 <img src="./assets/img/img1.png" alt="Portrait de Yassine Daoui" class="home__img">
             </div>
 
-            <!-- SOCIAL LINKS -->
+      
             <div class="home__social">
                 <a href="https://www.linkedin.com/in/yassine-daoui-56a7ab1a0/" target="_blank" rel="noopener noreferrer">
                     <ion-icon name="logo-linkedin" class="home__social-icon"></ion-icon>
@@ -98,7 +94,7 @@
             </div>
         </div>
 
-        <!-- ===== ABOUT SECTION ===== -->
+       
         <section class="section" id="about">
             <div class="bd-grid">
                <h4 class="section-title anime-text">YASSINE DAOUI</h4> 
@@ -110,7 +106,7 @@
                     </div>
 
 
-                    <!-- Liens professionnels -->
+                  
                     <div class="social-badges">
                       <a href="https://www.linkedin.com/in/yassine-daoui-56a7ab1a0/" target="_blank" rel="noopener noreferrer">
                         <img src="https://img.shields.io/badge/LinkedIn-Profil_Professionnel-0077B5?logo=linkedin" alt="Profil LinkedIn">
@@ -130,13 +126,13 @@
             </div>
         </section>
 
-        <!-- ===== SERVICES SECTION ===== -->
+       
         <section class="section" id="services">
               <div class="bd-grid">
                 <h2 class="section-title anime-text">Mes Services</h2>
                 <div class="services__grid">
             
-                  <!-- Service 1 - Analyse et Science de Données -->
+                
                   <div class="service-card">
                     <div class="service-header" onclick="toggleServiceDetails('analyse-details')">
                       <ion-icon name="analytics-outline"></ion-icon>
@@ -158,7 +154,7 @@
                     </div>
                   </div>
             
-                  <!-- Service 2 - Business Intelligence (BI) -->
+               
                   <div class="service-card">
                     <div class="service-header" onclick="toggleServiceDetails('bi-details')">
                       <ion-icon name="bar-chart-outline"></ion-icon>
@@ -180,7 +176,7 @@
                     </div>
                   </div>
             
-                  <!-- Service 3 - Consulting Data & Méthodes Agiles -->
+              
                   <div class="service-card">
                     <div class="service-header" onclick="toggleServiceDetails('consulting-details')">
                       <ion-icon name="bulb-outline"></ion-icon>
@@ -202,7 +198,7 @@
                     </div>
                   </div>
             
-                  <!-- Service 4 - Migration Technologique -->
+                 
                   <div class="service-card">
                     <div class="service-header" onclick="toggleServiceDetails('migration-details')">
                       <ion-icon name="cloud-upload-outline"></ion-icon>
@@ -224,7 +220,7 @@
                     </div>
                   </div>
             
-                  <!-- Service 5 - Automatisation & RPA -->
+                
                   <div class="service-card">
                     <div class="service-header" onclick="toggleServiceDetails('automation-details')">
                       <ion-icon name="repeat-outline"></ion-icon>
@@ -246,7 +242,7 @@
                     </div>
                   </div>
             
-                  <!-- Service 6 - Formation & Coaching -->
+              
                   <div class="service-card">
                     <div class="service-header" onclick="toggleServiceDetails('training-details')">
                       <ion-icon name="school-outline"></ion-icon>
@@ -273,13 +269,13 @@
             </section>
 
 
-        <!-- ===== EXPERIENCE SECTION ===== -->
+      
         <section class="section" id="blog">
             <div class="bd-grid">
                 <h2 class="section-title anime-text">Expériences Professionnelles</h2>
 
                 <div class="experience-container">
-                    <!-- Bouygues Telecom -->
+                   
                     <div class="experience-card">
                         <div class="experience-card-header" onclick="toggleExperienceDetails('bouygues-details')">
                             <div class="company-logo">
@@ -334,7 +330,7 @@
                         </div>
                     </div>
 
-                    <!-- Fujitsu -->
+                    
                     <div class="experience-card">
                         <div class="experience-card-header" onclick="toggleExperienceDetails('fujitsu-details')">
                             <div class="company-logo">
@@ -388,7 +384,7 @@
                         </div>
                     </div>
                     
-                    <!-- Glovo -->
+                  
                     <div class="experience-card">
                         <div class="experience-card-header" onclick="toggleExperienceDetails('glovo-details')">
                             <div class="company-logo">
@@ -436,7 +432,7 @@
                         </div>
                     </div>
                     
-                    <!-- ADM VALUE -->
+                 
                     <div class="experience-card">
                         <div class="experience-card-header" onclick="toggleExperienceDetails('adm-details')">
                             <div class="company-logo">
@@ -481,7 +477,7 @@
                         </div>
                     </div>
                     
-                    <!-- Accor -->
+                  
                     <div class="experience-card">
                         <div class="experience-card-header" onclick="toggleExperienceDetails('accor-details')">
                             <div class="company-logo">
@@ -523,7 +519,7 @@
                         </div>
                     </div>
                     
-                    <!-- AXA -->
+                 
                     <div class="experience-card">
                         <div class="experience-card-header" onclick="toggleExperienceDetails('axa-details')">
                             <div class="company-logo">
@@ -634,11 +630,6 @@
     <input type="text" name="_honey" style="display:none">
 
 
- 
-
-
-         
-                <!-- Champs du formulaire -->
                 <div class="form__group">
                     <input type="text" name="Nom" id="name" class="contact__input" required>
                     <label for="name" class="form__label">Votre nom complet</label>
@@ -674,7 +665,7 @@
 </section>
         </section>
 
-<!-- Popup de confirmation -->
+
 <div id="successPopup" class="success-popup">
     <div class="popup-content">
         <span class="close-popup-btn">&times;</span>
@@ -685,7 +676,8 @@
 </div>
     </main>
 
-    <!-- MAIN JS -->
+    <!--  JS  fichier deja ok :-->
     <script src="./assets/js/main.js"></script>
 </body>
 </html>
+
