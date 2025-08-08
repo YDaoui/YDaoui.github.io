@@ -1,23 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM fully loaded");
 
-    /* ===== FONCTION POUR JOUER / REJOUER LES ANIMATIONS INITIALES ===== */
+ 
     function playInitialAnimations() {
         console.log("Playing/Replaying initial animations...");
 
-        // 1. Reset overlays to their starting position (off-screen top)
+       
         gsap.set(".first", { top: 0 });
         gsap.set(".second", { top: 0 });
         gsap.set(".third", { top: 0 });
 
-        // 2. Animation des overlays
+    
         const overlays = gsap.timeline();
         overlays
             .to(".first", { duration: 1.5, top: "-100%", ease: "expo.inOut" })
             .to(".second", { duration: 1.5, top: "-100%", ease: "expo.inOut" }, "-=1.2")
             .to(".third", { duration: 1.5, top: "-100%", ease: "expo.inOut" }, "-=1.2");
 
-        // 3. Animation de l'image
+    
        
             gsap.from(".home__img-container", {
                 duration: 2,
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 delay: 1.8
             });
 
-        // 4. Animation principale de la section home
+      
         const homeTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
         homeTimeline.fromTo('.home__information',
@@ -112,42 +112,42 @@ document.addEventListener('DOMContentLoaded', function() {
             { opacity: 1, y: 0, duration: 0.8, ease: "bounce.out" }, "-=0.5"
         );
 
-        // 5. Animation du logo
+     
         gsap.fromTo('.nav__logo',
             { opacity: 0, y: 25 },
             { opacity: 1, y: 0, duration: 1.5, delay: 1, ease: "expo.out" }
         );
 
-        // 6. Animation des icônes sociales
+  
         gsap.fromTo('.home__social-icon',
             { opacity: 0, y: 25 },
             { opacity: 1, y: 0, duration: 1.5, delay: 2.5, stagger: 0.15, ease: "back.out(2)" }
         );
     }
 
-    // Call initial animations on DOMContentLoaded
+  
     if (typeof gsap !== 'undefined') {
         playInitialAnimations();
     } else {
         console.error("GSAP not loaded!");
     }
 
-    /* ===== GESTION DU CLIC SUR LE LOGO (SIMULANT UN CLIC SUR "PORTFOLIO") ===== */
+ 
     document.getElementById('logo-link').addEventListener('click', function(e) {
         e.preventDefault();
 
-        // Scroll vers le haut
+  
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Masquer temporairement le contenu
+     
         gsap.to('body', { opacity: 0, duration: 0.3, onComplete: () => {
-            // Après un court délai, réafficher et rejouer les animations
+       
             gsap.to('body', { opacity: 1, duration: 0.3 });
             playInitialAnimations();
         }});
     });
 
-    /* ===== MENU TOGGLE ===== */
+ 
     const showMenu = (toggleId, navId) => {
         const toggle = document.getElementById(toggleId),
               nav = document.getElementById(navId),
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            // Fermer le menu quand on clique sur un lien
+           
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     if (nav.classList.contains('show')) {
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showMenu('nav-toggle', 'nav-menu');
 
-    /* ===== SCROLL ANIMATIONS (Keep these as they are triggered by scroll, not initial load) ===== */
+    
     gsap.from("#about .section-title", {
         scrollTrigger: {
             trigger: "#about",
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ease: "power2.out"
     });
 
-    // Animation des cartes de services
+
     gsap.from(".service-card", {
         scrollTrigger: {
             trigger: "#services",
@@ -239,10 +239,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Animation des cartes d'expérience
+  
     gsap.from(".experience-card", {
         scrollTrigger: {
-            trigger: "#blog", // Assuming #blog is where experience cards are
+            trigger: "#blog", 
             start: "top 80%",
             toggleActions: "play none none none"
         },
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ease: "power2.out"
     });
 
-    /* ===== SMOOTH SCROLLING ===== */
+   
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    /* ===== ACTIVE NAV LINK ON SCROLL ===== */
+
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav__link');
 
@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    /* ===== SERVICE CARDS TOGGLE ===== */
+  
     window.toggleServiceDetails = function(id) {
         const details = document.getElementById(id);
         if (!details) return;
@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
         details.style.opacity = '0';
     });
 
-    /* ===== EXPERIENCE CARDS TOGGLE - VERSION CORRIGÉE ===== */
+   
     window.toggleExperienceDetails = function(id) {
         const details = document.getElementById(id);
         if (!details) return;
@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Initialisation des cartes d'expérience
+   
     document.querySelectorAll('.experience-card-details').forEach(details => {
         details.style.height = '0';
         details.style.opacity = '0';
@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
         details.style.overflow = 'hidden';
     });
 
-    // Animation au survol des cartes de service
+   
     document.querySelectorAll('.service-card').forEach(card => {
         card.addEventListener('mouseenter', () => {
             gsap.to(card.querySelector('.service-header h3'), {
@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Gestion du formulaire de contact (moved inside DOMContentLoaded)
+    
     function initContactForm() {
         const form = document.getElementById('contactForm');
         if (!form) return;
@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initContactForm();
 
-    // Vérifie si l'URL contient le paramètre success=true pour le popup
+   
     const urlParams = new URLSearchParams(window.location.search);
     const successParam = urlParams.get('success');
 
@@ -490,11 +490,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('successPopup').style.display = 'none';
     });
 
-    // This part was duplicated for form submission and is now consolidated.
-    // The fetch logic for form submission is already handled in initContactForm.
-    // If you specifically want to show the popup *after* a successful form submission
-    // and not just based on the URL parameter, the `window.location.href = form.querySelector('input[name="_next"]').value;`
-    // line in `initContactForm` might redirect you away. If you intend to stay on the page
-    // and just show the popup, you'd replace that line with:
-    // `document.getElementById('successPopup').style.display = 'flex'; form.reset();`
+
 });
+
