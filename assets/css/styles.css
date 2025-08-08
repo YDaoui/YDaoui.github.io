@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-/*----- VARIABLES CSS -----*/
+
 :root {
   --first-color: #2bbff0;
   --first-color-dark: #1e9fc7;
@@ -11,7 +11,7 @@
   --dark-gray: #333333;
 }
 
-/*----- BASE -----*/
+
 *,
 ::before,
 ::after {
@@ -74,8 +74,7 @@ img {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-/*----- COMPONENTS -----*/
-/* Navigation */
+
 .nav {
   height: 3rem;
   display: flex;
@@ -151,7 +150,7 @@ img {
   display: inline-flex;
 }
 
-/* Style de base pour l'icône hamburger */
+/* hamburger Menu finale :: Ok */
 #nav-toggle {
   display: flex;
   flex-direction: column;
@@ -187,12 +186,11 @@ img {
   background: var(--first-color);
 }
 
-/* Show menu */
+
 .show-menu {
   top: 3rem;
 }
 
-/* Menu mobile */
 @media screen and (max-width: 767px) {
   .nav__menu {
     position: fixed;
@@ -214,12 +212,12 @@ img {
   }
 }
 
-/* Active link */
+
 .active-link {
   color: var(--first-color);
 }
 
-/* Home section (Mobile First) */
+
 .home {
   position: relative;
   height: calc(100vh - 3rem);
@@ -231,8 +229,8 @@ img {
     "button"
     "social";
   grid-template-columns: 1fr;
-  align-content: start; /* Align content to the top initially */
-  row-gap: 1rem; /* Reduced row gap */
+  align-content: start; 
+  row-gap: 1rem; 
   padding: 1.5rem;
   text-align: left;
 }
@@ -241,7 +239,7 @@ img {
   content: '';
   grid-area: gap;
   display: block;
-  height: 2rem; /* Add some space below the header */
+  height: 2rem; 
 }
 
 .home__img-container {
@@ -252,7 +250,7 @@ img {
   display: grid;
   place-items: center;
   z-index: 1;
-  margin: 0 auto 1rem auto; /* Reduced bottom margin */
+  margin: 0 auto 1rem auto; 
   transform: none;
   top: auto;
   left: auto;
@@ -310,7 +308,7 @@ img {
   }
 }
 
-/* Animation au survol */
+
 .home__img-container:hover .home__img {
   filter: grayscale(0%) contrast(120%);
   transform: scale(1.02) translateZ(0);
@@ -323,12 +321,12 @@ img {
 
 .home__information {
   grid-area: info;
-  /* Re-added for mobile */
-  padding-left: 1rem; /* Adjust as needed for spacing */
-  border-left: 3px solid var(--first-color); /* The blue bar */
+  
+  padding-left: 1rem; 
+  border-left: 3px solid var(--first-color); 
   z-index: 10;
   text-align: left;
-  margin-bottom: 1rem; /* Reduced bottom margin */
+  margin-bottom: 1rem; 
 }
 
 .home__pressent {
@@ -339,15 +337,15 @@ img {
 }
 
 .home__title {
-  font-size: 2rem; /* Slightly smaller title on mobile */
-  margin-bottom: 0.5rem; /* Reduced bottom margin */
+  font-size: 2rem; 
+  margin-bottom: 0.5rem; 
   color: var(--white-color);
 }
 
 .home__skill {
-  font-size: 1rem; /* Slightly smaller skill text on mobile */
+  font-size: 1rem; 
   color: var(--gray-color);
-  margin-bottom: 1rem; /* Reduced bottom margin */
+  margin-bottom: 1rem; 
   display: block;
 }
 
@@ -361,8 +359,8 @@ img {
   font-weight: 600;
   transition: all 0.3s;
   box-shadow: 0 4px 15px rgba(43, 191, 240, 0.3);
-  text-align: center; /* Center the button */
-  margin: 0 auto 1.5rem auto; /* Center and add bottom margin */
+  text-align: center; 
+  margin: 0 auto 1.5rem auto; 
 }
 
 .home__button:hover {
@@ -374,12 +372,12 @@ img {
 .home__social {
   grid-area: social;
   display: flex;
-  flex-direction: row; /* Horizontal for mobile */
-  justify-content: center; /* Center social icons horizontally */
-  align-items: center; /* Center social icons vertically */
+  flex-direction: row; 
+  justify-content: center; 
+  align-items: center; 
   gap: 1.5rem;
-  margin-top: 0; /* Remove top margin */
-  padding-bottom: 1.5rem; /* Add some padding at the bottom */
+  margin-top: 0; 
+  padding-bottom: 1.5rem; 
 }
 
 .home__social-icon {
@@ -393,7 +391,7 @@ img {
   transform: translateY(-3px);
 }
 
-/* Sections common styles */
+
 .section {
   padding: 5rem 0;
   background-color: var(--black-color);
@@ -443,7 +441,7 @@ img {
   transform: translateX(-50%);
 }
 
-/* About section */
+
 .about__content {
   display: grid;
   grid-template-columns: 1fr;
@@ -491,7 +489,7 @@ img {
   filter: brightness(1.2);
 }
 
-/* Services section */
+
 .services__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -628,9 +626,9 @@ img {
 }
 .experience-title {
   flex-grow: 1;
-  /* Ajout pour empêcher le texte d'empiéter sur le logo */
+
   padding-right: 1rem;
-  min-width: 0; /* Permet au texte de bien se comporter avec flex */
+  min-width: 0; /
 }
 .company-logo img {
   width: 100%;
@@ -749,7 +747,7 @@ img {
   margin-bottom: 0.75rem;
 }
 
-/* Tech tags with icons */
+
 .tech-tag {
   display: inline-flex;
   align-items: center;
@@ -770,7 +768,7 @@ img {
   vertical-align: middle;
 }
 
-/* Specific colors for some technologies */
+
 .tech-tag[data-tech="vba"] ion-icon { color: #867DB1; }
 .tech-tag[data-tech="sql"] ion-icon { color: #F29111; }
 .tech-tag[data-tech="azure"] ion-icon { color: #0089D6; }
@@ -781,7 +779,7 @@ img {
 .tech-tag[data-tech="rshiny"] ion-icon { color: #276DC3; }
 
 
-/* Contact section */
+
 .contact__container {
   display: grid;
   grid-template-columns: 1fr;
@@ -926,7 +924,7 @@ img {
   color: var(--gray-color);
 }
 
-/* Animations */
+
 .anime-text {
   position: relative;
   display: inline-block;
@@ -971,7 +969,7 @@ img {
   }
 }
 
-/* Overlay */
+
 .overlay {
   position: fixed;
   top: 0;
@@ -1013,7 +1011,7 @@ img {
   }
 }
 
-/* Tech tags improvements */
+
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1037,7 +1035,7 @@ img {
   transform: translateY(-2px);
 }
 
-/* Name animation */
+
 @keyframes colorCycle {
   0% {
     color: #2bbff0;
@@ -1060,7 +1058,7 @@ img {
   animation: colorCycle 4s infinite;
 }
 
-/* Popup de confirmation */
+
 .success-popup {
   display: none;
   position: fixed;
@@ -1150,7 +1148,7 @@ img {
   transform: rotate(90deg);
 }
 
-/* Animation d'apparition du contenu */
+
 .popup-content h3,
 .popup-content p {
   opacity: 0;
@@ -1165,10 +1163,10 @@ img {
   animation-delay: 0.4s;
 }
 
-/*----- MEDIA QUERIES -----*/
+
 @media screen and (min-width: 576px) {
   .home__img-container {
-    width: 10cm; /* Slightly larger image for medium screens */
+    width: 10cm;
     height: 10cm;
   }
 
@@ -1182,7 +1180,7 @@ img {
     height: 10cm;
   }
 
-  /* Keep horizontal for social icons on larger mobiles too, if needed */
+
   .home__social {
     flex-direction: row;
     justify-content: center;
@@ -1190,7 +1188,7 @@ img {
   }
 
   .home__button {
-    margin: 0 auto 1.5rem auto; /* Center button on medium screens */
+    margin: 0 auto 1.5rem auto; 
   }
 }
 
@@ -1229,7 +1227,7 @@ img {
     display: none;
   }
 
-  /* Desktop Home Layout */
+
   .home {
     height: 100vh;
     display: grid;
@@ -1241,7 +1239,7 @@ img {
     align-content: center;
     padding-top: 4rem;
     gap: 0;
-    text-align: left; /* Ensure left alignment for desktop */
+    text-align: left;
   }
 
   .home__information {
@@ -1250,25 +1248,25 @@ img {
     border-left: 5px solid var(--first-color);
     align-self: end;
     margin-bottom: 2rem;
-    text-align: left; /* Explicitly left-align for desktop */
+    text-align: left; 
   }
 
   .home__pressent,
   .home__title,
   .home__skill {
-    text-align: left; /* Ensure left alignment for desktop */
+    text-align: left; 
   }
 
   .home__button {
-    margin-left: 0; /* Remove right alignment for desktop button */
-    display: inline-block; /* Revert to inline-block for desktop */
+    margin-left: 0; 
+    display: inline-block; 
   }
 
   .home__social {
     grid-area: social;
-    flex-direction: row; /* Horizontal for desktop */
-    justify-content: flex-start; /* Align social icons to the start (left) */
-    align-items: flex-start; /* Align social icons to the left */
+    flex-direction: row; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
     column-gap: 1.5rem;
     margin-top: 0;
     padding-left: 2rem;
@@ -1371,3 +1369,4 @@ img {
     height: 550px;
   }
 }
+
