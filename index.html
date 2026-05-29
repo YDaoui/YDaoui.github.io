@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -276,6 +275,112 @@
 
                 <div class="experience-container">
                    
+                    <!-- NOUVELLE EXPÉRIENCE 1 : Exedos Tech -->
+                    <div class="experience-card">
+                        <div class="experience-card-header" onclick="toggleExperienceDetails('exedos-details')">
+                            <div class="company-logo">
+                                <img src="./assets/img/EXEDUSTECH.png" alt="Exedos Tech">
+                            </div>
+                            <div class="experience-title">
+                                <h3>Développeur & Système d'Information Sécurisé (Cybersécurité)</h3>
+                                <p>Exedos Tech</p>
+                            </div>
+                            <ion-icon name="chevron-down-outline" class="experience-arrow"></ion-icon>
+                        </div>
+                        
+                        <div id="exedos-details" class="experience-card-details">
+                            <div class="experience-meta">
+                                <span class="experience-date">Janvier 2026 - Présent</span>
+                                <span class="experience-location">France</span>
+                            </div>
+                            
+                            <div class="experience-description">
+                                <p>Mise en place d'un outil en Streamlit (Python, HTML, CSS, JS) accessible en ligne sur une plateforme Azure pour la gestion d'un parc informatique. Création d'une plateforme de virtualisation Hyper-V pour les machines, gérée par Windows Server 2019, avec des machines Linux Ubuntu pour le stockage SAN et des PC Windows 11 pour les utilisateurs (11 machines virtuelles ouvertes sur 199 postes). Administration des terminaux et des accès via Intune (MDM pour la gestion des appareils mobiles et DAM pour la gestion des actifs numériques).</p>
+                                <ul>
+                                    <li>Développement full-stack avec Streamlit, HTML/CSS/JS</li>
+                                    <li>Virtualisation Hyper-V et gestion d'infrastructure (Windows Server, Ubuntu, SAN)</li>
+                                    <li>Déploiement sur Azure et sécurisation des accès avec Intune (MDM/DAM)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tech-tags">
+                                <span class="tech-tag" data-tech="python">
+                                    <ion-icon name="logo-python"></ion-icon> Python
+                                </span>
+                                <span class="tech-tag" data-tech="streamlit">
+                                    <ion-icon name="code-slash-outline"></ion-icon> Streamlit
+                                </span>
+                                <span class="tech-tag" data-tech="azure">
+                                    <ion-icon name="cloud-outline"></ion-icon> Azure
+                                </span>
+                                <span class="tech-tag" data-tech="hyperv">
+                                    <ion-icon name="desktop-outline"></ion-icon> Hyper-V
+                                </span>
+                                <span class="tech-tag" data-tech="intune">
+                                    <ion-icon name="shield-checkmark-outline"></ion-icon> Intune MDM/DAM
+                                </span>
+                                <span class="tech-tag" data-tech="windows">
+                                    <ion-icon name="logo-windows"></ion-icon> Windows Server 2019
+                                </span>
+                                <span class="tech-tag" data-tech="ubuntu">
+                                    <ion-icon name="logo-linux"></ion-icon> Linux Ubuntu
+                                </span>
+                                <span class="tech-tag" data-tech="san">
+                                    <ion-icon name="hardware-chip-outline"></ion-icon> SAN
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NOUVELLE EXPÉRIENCE 2 : SOGEA Maroc -->
+                    <div class="experience-card">
+                        <div class="experience-card-header" onclick="toggleExperienceDetails('sogea-details')">
+                            <div class="company-logo">
+                                <img src="./assets/img/Sogea.png" alt="SOGEA Maroc (Vinci Construction)">
+                            </div>
+                            <div class="experience-title">
+                                <h3>Responsable DATA</h3>
+                                <p>SOGEA Maroc (Vinci Construction)</p>
+                            </div>
+                            <ion-icon name="chevron-down-outline" class="experience-arrow"></ion-icon>
+                        </div>
+                        
+                        <div id="sogea-details" class="experience-card-details">
+                            <div class="experience-meta">
+                                <span class="experience-date">24 Novembre 2025 - 30 Mai 2026 (CDD)</span>
+                                <span class="experience-location">Safi, Maroc (mission Jesa & OCP)</span>
+                            </div>
+                            
+                            <div class="experience-description">
+                                <p>Mission au sein de SOGEA Maroc (Vinci Construction) pour le compte de Jesa et OCP. Mise en place d'un outil centralisé en Tkinter (Python) pour l'analyse des Safety Observation Reports (HSE). Gestion des effectifs et du pointage, traçabilité des mouvements des engins via une application digitalisée avec base SQL Server et SQL Azure. Réalisation de rapports Power BI pour le suivi des différents KPI, collecte des données et analyse des besoins métier.</p>
+                                <ul>
+                                    <li>Développement d'application desktop Tkinter pour la remontée et l'analyse des rapports HSE</li>
+                                    <li>Base de données SQL Server + SQL Azure avec déploiement cloud</li>
+                                    <li>Dashboards Power BI pour le pilotage des indicateurs clés (effectifs, pointage, mouvements)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tech-tags">
+                                <span class="tech-tag" data-tech="python">
+                                    <ion-icon name="logo-python"></ion-icon> Python / Tkinter
+                                </span>
+                                <span class="tech-tag" data-tech="sqlserver">
+                                    <ion-icon name="server-outline"></ion-icon> SQL Server
+                                </span>
+                                <span class="tech-tag" data-tech="azure">
+                                    <ion-icon name="cloud-outline"></ion-icon> SQL Azure
+                                </span>
+                                <span class="tech-tag" data-tech="powerbi">
+                                    <ion-icon name="bar-chart-outline"></ion-icon> Power BI
+                                </span>
+                                <span class="tech-tag" data-tech="hse">
+                                    <ion-icon name="hardware-chip-outline"></ion-icon> HSE / Safety Reports
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expérience existante : Bouygues Telecom -->
                     <div class="experience-card">
                         <div class="experience-card-header" onclick="toggleExperienceDetails('bouygues-details')">
                             <div class="company-logo">
@@ -680,4 +785,3 @@
     <script src="./assets/js/main.js"></script>
 </body>
 </html>
-
