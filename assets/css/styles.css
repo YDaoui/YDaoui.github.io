@@ -572,7 +572,7 @@ img {
   font-weight: 600;
 }
 
-/* Experience section - with full circle images */
+/* Experience section - CORRECTED */
 .experience-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -602,7 +602,7 @@ img {
   cursor: pointer;
   background: rgba(43, 191, 240, 0.05);
   min-height: 100px;
-  overflow: visible;
+  overflow: visible; /* Correction : évite de couper le logo */
 }
 
 .company-logo {
@@ -611,7 +611,7 @@ img {
   border-radius: 50%;
   overflow: hidden;
   margin-right: 1.5rem;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Empêche le logo de rétrécir */
   background-color: var(--black-color-light);
   display: flex;
   align-items: center;
@@ -621,22 +621,21 @@ img {
 .company-logo img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Remplit tout le cercle */
+  object-fit: contain; /* Évite le rognage, l'image reste entière */
   object-position: center;
-  transform: scale(1.05); /* Léger zoom pour bien couvrir */
 }
 
 .experience-title {
   flex-grow: 1;
   padding-right: 1rem;
-  min-width: 0;
+  min-width: 0; /* Permet au texte de se couper proprement si nécessaire */
 }
 
 .experience-title h3 {
   font-size: 1.25rem;
   color: var(--white-color);
   margin-bottom: 0.25rem;
-  white-space: normal;
+  white-space: normal; /* Permet au titre de passer à la ligne */
   word-break: break-word;
 }
 
